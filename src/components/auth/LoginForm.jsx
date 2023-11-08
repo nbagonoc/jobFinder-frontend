@@ -14,10 +14,11 @@ const LoginForm = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch({ type: 'CLEAR_ALERT' }) //clear-out/reset any alert messages on globalstate
+        dispatch({ type: 'CLEAR_ALERT' }) //clear-out/reset any alert messages on state
     },[dispatch])
 
     const onChange = (e) => {
+        // console.log(e.target.name + ': ', e.target.value)
         const { name, value } = e.target
         setFormData({
             ...formData,
