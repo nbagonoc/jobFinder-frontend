@@ -1,6 +1,8 @@
+import LoginFormContainer from "../../components/auth/LoginFormContainer"
+
 const Login = () => {
   return (
-    <div>Login</div>
+    <LoginFormContainer/>
   )
 }
 

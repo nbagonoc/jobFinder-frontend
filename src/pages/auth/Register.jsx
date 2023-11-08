@@ -1,6 +1,8 @@
+import RegisterFormContainer from "../../components/auth/RegisterFormContainer"
+
 const Register = () => {
   return (
-    <div>Register</div>
+    <RegisterFormContainer />
   )
 }
 
