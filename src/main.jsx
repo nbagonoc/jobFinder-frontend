@@ -1,12 +1,12 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { GlobalProvider } from './context/GlobalContext'
-import { AuthContext } from './context/auth/AuthContext'
+import { AuthContextProvider } from './context/auth/AuthContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <AuthContext>
+    <AuthContextProvider>
         <GlobalProvider>
             <App />
         </GlobalProvider>
-    </AuthContext>
+    </AuthContextProvider>
 )
