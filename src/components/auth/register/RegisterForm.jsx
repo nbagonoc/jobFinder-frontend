@@ -53,9 +53,16 @@ const RegisterForm = () => {
             navigate('/')
         } catch (error) {
             const errors = error.response.data
+            const message = error.response.data.message
             dispatch({
                 type: 'REGISTER',
-                payload: { errors },
+                payload: {
+                    errors,
+                    alert: {
+                        message,
+                        success: false,
+                    },
+                },
             })
         }
     }

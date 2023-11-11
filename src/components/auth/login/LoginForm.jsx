@@ -8,7 +8,7 @@ import { useAuthContext } from '../../../hooks/useAuthContext'
 const LoginForm = () => {
     const { errors, dispatch } = useAuthContext()
     const [formData, setFormData] = useState({
-        username: '',
+        email: '',
         password: '',
     })
     const navigate = useNavigate()
@@ -44,7 +44,13 @@ const LoginForm = () => {
             const message = error.response.data.message
             dispatch({
                 type: 'LOGIN',
-                payload: { errors, message },
+                payload: {
+                    errors,
+                    alert: {
+                        message,
+                        success: false,
+                    },
+                },
             })
         }
     }

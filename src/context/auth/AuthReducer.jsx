@@ -8,7 +8,7 @@ const AuthReducer = (state, action) => {
         case 'LOGIN':
             return {
                 token: action.payload.token,
-                message: action.payload.message,
+                alert: action.payload.alert,
                 errors: action.payload.errors,
             }
         case 'LOGOUT':
