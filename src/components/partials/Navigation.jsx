@@ -1,6 +1,16 @@
 import { Link } from 'react-router-dom'
 
+import { useAuthContext } from '../../hooks/useAuthContext'
+
 const Navigation = () => {
+    const {dispatch} = useAuthContext()
+
+    const handleLogout = (e) => {
+        e.preventDefault()
+        localStorage.removeItem('user')
+        dispatch({type: 'LOGOUT'})
+    }
+
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
             <div className="container">
@@ -19,10 +29,10 @@ const Navigation = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div
-                    className="collapse navbar-collapse"
+                    className="collapse navbar-collapse justify-content-between"
                     id="navbarSupportedContent"
                 >
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
                                 Home
@@ -43,12 +53,21 @@ const Navigation = () => {
                                 Login
                             </Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/register" className="nav-link">
-                                Register
-                            </Link>
-                        </li>
                     </ul>
+                    <div className=''>
+                        <Link to="/login" className="btn btn-success btn-sm me-1">
+                            Login
+                        </Link>
+                        <Link to="/register" className="btn btn-primary btn-sm me-1">
+                            Register
+                        </Link>
+                        <button
+                            onClick={(e) => handleLogout(e)}
+                            className="btn btn-danger btn-sm"
+                        >
+                            Logout
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>

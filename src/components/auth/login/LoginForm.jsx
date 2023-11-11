@@ -34,6 +34,7 @@ const LoginForm = () => {
         try {
             const response = await axios.post(`${authAPI}/login`, credentials)
             const token = response.data.token
+            localStorage.setItem('user', token)//should be token instead?
             dispatch({
                 type: 'LOGIN',
                 payload: { token },
