@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
 const Navigation = () => {
-    const {dispatch} = useAuthContext()
+    const {user, dispatch} = useAuthContext()
 
     const handleLogout = (e) => {
         e.preventDefault()
@@ -34,11 +34,6 @@ const Navigation = () => {
                 >
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <Link to="/" className="nav-link">
-                                Home
-                            </Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to="/create" className="nav-link">
                                 Create
                             </Link>
@@ -48,25 +43,23 @@ const Navigation = () => {
                                 Jobs
                             </Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/login" className="nav-link">
-                                Login
-                            </Link>
-                        </li>
                     </ul>
                     <div className=''>
-                        <Link to="/login" className="btn btn-success btn-sm me-1">
-                            Login
-                        </Link>
-                        <Link to="/register" className="btn btn-primary btn-sm me-1">
-                            Register
-                        </Link>
-                        <button
-                            onClick={(e) => handleLogout(e)}
-                            className="btn btn-danger btn-sm"
-                        >
-                            Logout
-                        </button>
+                        {user && (
+                            <button onClick={(e) => handleLogout(e)} className="btn btn-danger btn-sm">
+                                Logout
+                            </button>
+                        )}
+                        {!user && (
+                            <div>
+                                <Link to="/login" className="btn btn-success btn-sm me-1">
+                                    Login
+                                </Link>
+                                <Link to="/register" className="btn btn-primary btn-sm me-1">
+                                    Register
+                                </Link>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
