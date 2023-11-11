@@ -51,8 +51,8 @@ const RegisterForm = () => {
                 },
             })
             navigate('/')
-        } catch (err) {
-            const errors = err.response.data
+        } catch (error) {
+            const errors = error.response.data
             dispatch({
                 type: 'REGISTER',
                 payload: { errors },

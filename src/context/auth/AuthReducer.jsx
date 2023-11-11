@@ -2,14 +2,14 @@ const AuthReducer = (state, action) => {
     switch (action.type) {
         case 'REGISTER':
             return {
-                // user: action.payload.user,
                 alert: action.payload.alert,
                 errors: action.payload.errors,
             }
         case 'LOGIN':
             return {
-                user: action.payload.user,
-                alert: action.payload.alert,
+                token: action.payload.token,
+                message: action.payload.message,
+                errors: action.payload.errors,
             }
         case 'LOGOUT':
             return {

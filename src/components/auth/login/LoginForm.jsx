@@ -2,11 +2,11 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { API } from '../../../API'
-import { useGlobalContext } from '../../../hooks/useGlobalContext'
+import { authAPI } from '../../../API'
+import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const LoginForm = () => {
-    const { errors, dispatch } = useGlobalContext()
+    const { errors, dispatch } = useAuthContext()
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -14,11 +14,10 @@ const LoginForm = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch({ type: 'CLEAR_ALERT' }) //clear-out/reset any alert messages on state
-    },[dispatch])
+        dispatch({ type: 'CLEARER' })
+    }, [dispatch])
 
     const onChange = (e) => {
-        // console.log(e.target.name + ': ', e.target.value)
         const { name, value } = e.target
         setFormData({
             ...formData,
@@ -28,71 +27,68 @@ const LoginForm = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-        const item = {
-            name: formData.name,
-            weight: formData.weight,
-            size: formData.size,
+        const credentials = {
+            email: formData.email,
+            password: formData.password,
         }
-
         try {
-            const response = await axios.post(API, item);
-            const message = response.data.success.message;
+            const response = await axios.post(`${authAPI}/login`, credentials)
+            const token = response.data.token
             dispatch({
-                type: 'CREATE_ITEM',
-                payload: {
-                    alert: {
-                        message,
-                        success: true,
-                    },
-                },
+                type: 'LOGIN',
+                payload: { token },
             })
             navigate('/')
-        } catch (err) {
-            const errors = err.response.data
-            dispatch({ type: 'CREATE_ITEM', payload: errors })
+        } catch (error) {
+            const errors = error.response.data.errors
+            const message = error.response.data.message
+            dispatch({
+                type: 'LOGIN',
+                payload: { errors, message },
+            })
         }
     }
 
     return (
         <form onSubmit={onSubmit}>
-            <div className="mb-3">
-                <label htmlFor="username">Username</label>
+            <div className='mb-3'>
+                <label htmlFor='email'>Email</label>
                 <input
-                    id="username"
-                    name="username"
-                    autoComplete="off"
-                    type="text"
-                    placeholder="Enter username"
+                    id='email'
+                    name='email'
+                    autoComplete='email'
+                    type='input'
+                    placeholder='Enter email'
                     className={`form-control ${
-                        errors && errors.username ? 'border-danger' : ''
+                        errors && errors.email ? 'border-danger' : ''
                     }`}
                     onChange={onChange}
-                    value={formData.username}
+                    value={formData.email}
                 />
-                <span className="text-danger">
-                    {errors && errors.username ? errors.username.message : ''}
+                <span className='text-danger'>
+                    {errors && errors.email ? errors.email : ''}
                 </span>
             </div>
-            <div className="mb-3">
-                <label htmlFor="password">Password</label>
+            <div className='mb-3'>
+                <label htmlFor='password'>Password</label>
                 <input
-                    id="password"
-                    name="password"
-                    autoComplete="current-password"
-                    type="password"
-                    placeholder="Enter password"
+                    id='password'
+                    name='password'
+                    autoComplete='current-password'
+                    type='password'
+                    placeholder='Enter password'
                     className={`form-control ${
                         errors && errors.password ? 'border-danger' : ''
                     }`}
                     onChange={onChange}
                     value={formData.password}
                 />
-                <span className="text-danger">
-                    {errors && errors.password ? errors.password.message : ''}
+                <span className='text-danger'>
+                    {errors && errors.password ? errors.password : ''}
                 </span>
             </div>
-            <div className="mb-3">
-                <button type="submit" className="btn btn-primary">
+            <div className='mb-3'>
+                <button type='submit' className='btn btn-primary'>
                     Save
                 </button>
             </div>
