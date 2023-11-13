@@ -1,4 +1,4 @@
-import ListJobTable from './ListJobTable';
+import ListJobDetails from './ListJobDetails';
 import AlertMessage from '../../partials/AlertMessage';
 
 const ListJobContainer = () => {
@@ -6,7 +6,7 @@ const ListJobContainer = () => {
     return (
         <div className="ListJobContainer" data-testid='ListJobContainer'>
             <AlertMessage/>
-            <ListJobTable/>
+            <ListJobDetails/>
         </div>
     );
 };
