@@ -1,24 +1,24 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 
-import { API } from '../../API';
-import { useGlobalContext } from '../../hooks/useGlobalContext';
-import ListItemDetails from './ListItemDetails';
+import { API } from '../../../API';
+import { useGlobalContext } from '../../../hooks/useGlobalContext';
+import ListJobDetails from './ListJobDetails';
 
-const ListItemTable = () => {
-    const {items, dispatch} = useGlobalContext()
+const ListJobTable = () => {
+    const {jobs, dispatch} = useGlobalContext()
 
     useEffect(() => {
-        const getItems = async () => {
+        const getjobs = async () => {
             try {
                 const response = await axios.get(API);
-                const items = response.data;
-                dispatch({type: 'SET_ITEMS', payload: {items}})
+                const jobs = response.data;
+                dispatch({type: 'SET_JOBS', payload: {jobs}})
             } catch (err) {
                 console.log(err); //just log error. No need to show to user
             }
         };
-        getItems();
+        getjobs();
     }, [dispatch]);
 
     return (
@@ -33,17 +33,17 @@ const ListItemTable = () => {
             </thead>
 
             <tbody>
-            {items && items.length >= 1 ? (
-                items.map((item) => (
-                    <ListItemDetails
-                        key={item._id}
-                        item={item}
+            {jobs && jobs.length >= 1 ? (
+                jobs.map((job) => (
+                    <ListJobDetails
+                        key={job._id}
+                        job={job}
                     />
                 ))
             ) : (
                 <tr>
                     <td colSpan="4" className="text-center">
-                        No items found... 
+                        No jobs found... 
                     </td>
                 </tr>
                 )
@@ -53,4 +53,4 @@ const ListItemTable = () => {
     );
 };
 
-export default ListItemTable;
+export default ListJobTable;

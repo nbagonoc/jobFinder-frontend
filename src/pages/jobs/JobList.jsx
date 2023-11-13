@@ -1,6 +1,8 @@
+import ListJobContainer from '../../components/jobs/list_jobs/ListJobContainer'
+
 const JobList = () => {
   return (
-    <div>JobList</div>
+    <ListJobContainer/>
   )
 }
 

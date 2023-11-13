@@ -2,10 +2,10 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
 
-import { API } from '../../API'
-import { useGlobalContext } from '../../hooks/useGlobalContext'
+import { API } from '../../../API'
+import { useGlobalContext } from '../../../hooks/useGlobalContext'
 
-const ListItemActions = ({ _id }) => {
+const ListJobActions = ({ _id }) => {
     const { dispatch } = useGlobalContext()
 
     const handleDelete = async (e, _id) => {
@@ -14,7 +14,7 @@ const ListItemActions = ({ _id }) => {
             const response = await axios.delete(`${API}/${_id}`)
             const message = response.data.success.message
             dispatch({
-                type: 'DELETE_ITEM',
+                type: 'DELETE_JOB',
                 payload: {
                     _id,
                     alert: {
@@ -26,7 +26,7 @@ const ListItemActions = ({ _id }) => {
         } catch (err) {
             const message = err.response.data.errors.message
             dispatch({
-                type: 'DELETE_ITEM',
+                type: 'DELETE_JOB',
                 payload: {
                     alert: {
                         message,
@@ -55,8 +55,8 @@ const ListItemActions = ({ _id }) => {
     )
 }
 
-ListItemActions.propTypes = {
+ListJobActions.propTypes = {
     _id: PropTypes.string.isRequired,
 }
 
-export default ListItemActions
+export default ListJobActions

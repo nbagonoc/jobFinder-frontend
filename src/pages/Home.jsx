@@ -1,8 +1,6 @@
-import ListItemContainer from '../components/list_item/ListItemContainer'
-
 const Home = () => {
     return (
-      <ListItemContainer/>
+      <h1>Hello world</h1>
     )
 }
 
