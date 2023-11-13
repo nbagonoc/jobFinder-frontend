@@ -4,6 +4,7 @@ import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 
 import JobList from './pages/jobs/JobList'
+import JobView from './pages/jobs/JobView'
 
 import Home from './pages/Home'
 import View from './pages/View'
@@ -25,7 +26,7 @@ const App = () => {
                     <Route path='/register' element={<Register/>} />
 
                     <Route path='/jobs' element={<JobList/>} />
-                    <Route path='/view/:_id' element={<View/>} />
+                    <Route path='/view/:_id' element={<JobView/>} />
                     <Route path='/create' element={<Create/>} />
                     <Route path='/edit/:_id' element={<Edit/>} />
                 </Routes>
