@@ -38,10 +38,7 @@ const ListJobActions = ({ _id }) => {
     }
 
     return (
-        <td>
-            <Link to={`/view/${_id}`} className="btn btn-secondary btn-sm me-1">
-                View
-            </Link>
+        <div>
             <Link to={`/edit/${_id}`} className="btn btn-secondary btn-sm me-1">
                 Edit
             </Link>
@@ -51,7 +48,7 @@ const ListJobActions = ({ _id }) => {
             >
                 Delete
             </button>
-        </td>
+        </div>
     )
 }
 
