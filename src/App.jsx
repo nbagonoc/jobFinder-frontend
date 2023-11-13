@@ -5,9 +5,9 @@ import Register from './pages/auth/Register'
 
 import JobList from './pages/jobs/JobList'
 import JobView from './pages/jobs/JobView'
+import JobCreate from './pages/jobs/JobCreate'
 
 import Home from './pages/Home'
-import Create from './pages/Create'
 import Edit from './pages/edit'
 import Navigation from './components/partials/Navigation'
 
@@ -25,8 +25,8 @@ const App = () => {
                     <Route path='/register' element={<Register/>} />
 
                     <Route path='/jobs' element={<JobList/>} />
-                    <Route path='/view/:_id' element={<JobView/>} />
-                    <Route path='/create' element={<Create/>} />
+                    <Route path='/jobs/view/:_id' element={<JobView/>} />
+                    <Route path='/jobs/create' element={<JobCreate/>} />
                     <Route path='/edit/:_id' element={<Edit/>} />
                 </Routes>
             </div>

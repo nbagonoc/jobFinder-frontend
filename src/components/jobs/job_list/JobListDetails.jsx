@@ -28,7 +28,7 @@ const JobListDetails = () => {
                 jobs.map((job) => (
                     <div className="card mb-3" key={job._id}>
                     <div className="card-body">
-                        <Link to={`/view/${job._id}`} className='link-primary text-capitalize text-decoration-none'>
+                        <Link to={`/jobs/view/${job._id}`} className='link-primary text-capitalize text-decoration-none'>
                             <h5 className="card-title">
                                 {job.title}
                             </h5>

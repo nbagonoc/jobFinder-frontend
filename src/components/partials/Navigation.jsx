@@ -34,7 +34,7 @@ const Navigation = () => {
                 >
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <Link to="/create" className="nav-link">
+                            <Link to="/jobs/create" className="nav-link">
                                 Create
                             </Link>
                         </li>
