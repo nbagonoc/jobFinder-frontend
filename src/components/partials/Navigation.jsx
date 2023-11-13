@@ -33,11 +33,13 @@ const Navigation = () => {
                     id="navbarSupportedContent"
                 >
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item">
-                            <Link to="/jobs/create" className="nav-link">
-                                Create
-                            </Link>
-                        </li>
+                        {user && (
+                            <li className="nav-item">
+                                <Link to="/jobs/create" className="nav-link">
+                                    Create
+                                </Link>
+                            </li>
+                        )}
                         <li className="nav-item">
                             <Link to="/jobs" className="nav-link">
                                 Jobs
