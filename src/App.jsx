@@ -7,7 +7,6 @@ import JobList from './pages/jobs/JobList'
 import JobView from './pages/jobs/JobView'
 
 import Home from './pages/Home'
-import View from './pages/View'
 import Create from './pages/Create'
 import Edit from './pages/edit'
 import Navigation from './components/partials/Navigation'
