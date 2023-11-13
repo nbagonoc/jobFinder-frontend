@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 
 import { jobsAPI } from '../../../API';
 import { useJobContext } from '../../../hooks/useJobContext';
-import ListJobActions from './ListJobActions';
+import JobListActions from './JobListActions';
 
-const ListJobDetails = () => {
+const JobListDetails = () => {
     const {jobs, dispatch} = useJobContext()
 
     useEffect(() => {
@@ -34,7 +34,7 @@ const ListJobDetails = () => {
                             </h5>
                         </Link>
                         <h6 className="text-muted">{job.position} | {job.company} | {job.location}</h6>
-                        <ListJobActions _id={job._id} />                
+                        <JobListActions _id={job._id} />                
                     </div>
         </div>
                 ))
@@ -48,4 +48,4 @@ const ListJobDetails = () => {
     );
 };
 
-export default ListJobDetails;
+export default JobListDetails;

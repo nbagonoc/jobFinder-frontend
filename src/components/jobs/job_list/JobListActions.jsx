@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types'
 import { API } from '../../../API'
 import { useGlobalContext } from '../../../hooks/useGlobalContext'
 
-const ListJobActions = ({ _id }) => {
+const JobListActions = ({ _id }) => {
     const { dispatch } = useGlobalContext()
 
     const handleDelete = async (e, _id) => {
@@ -52,8 +52,8 @@ const ListJobActions = ({ _id }) => {
     )
 }
 
-ListJobActions.propTypes = {
+JobListActions.propTypes = {
     _id: PropTypes.string.isRequired,
 }
 
-export default ListJobActions
+export default JobListActions
