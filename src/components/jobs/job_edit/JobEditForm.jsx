@@ -26,11 +26,11 @@ export const JobEditForm = () => {
                 const response = await axios.get(`${jobsAPI}/${_id}`)
                 const job = response.data
                 setFormData({
-                    title: formData.title,
-                    company: formData.company,
-                    location: formData.location,
-                    position: formData.position,
-                    description: formData.description,
+                    title: job.title,
+                    company: job.company,
+                    location: job.location,
+                    position: job.position,
+                    description: job.description,
                 })
             } catch (err) {
                 let message = 'Something went wrong!'
@@ -89,7 +89,7 @@ export const JobEditForm = () => {
 
     return (
         <div>
-            {Object.keys(alert).length === 0 ? (
+            {/* {Object.keys(alert).length === 0 ? ( */}
                 <form onSubmit={onSubmit}>
                     <div className='mb-3'>
                         <label htmlFor='title'>Title</label>
@@ -186,9 +186,9 @@ export const JobEditForm = () => {
                         </button>
                     </div>
                 </form>
-            ) : (
+            {/* ) : (
                 <AlertMessage />
-            )}
+            )} */}
         </div>
     )
 }

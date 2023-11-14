@@ -6,9 +6,9 @@ import Register from './pages/auth/Register'
 import JobList from './pages/jobs/JobList'
 import JobView from './pages/jobs/JobView'
 import JobCreate from './pages/jobs/JobCreate'
+import JobEdit from './pages/jobs/JobEdit'
 
 import Home from './pages/Home'
-import Edit from './pages/edit'
 import Navigation from './components/partials/Navigation'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -27,7 +27,7 @@ const App = () => {
                     <Route path='/jobs' element={<JobList/>} />
                     <Route path='/jobs/view/:_id' element={<JobView/>} />
                     <Route path='/jobs/create' element={<JobCreate/>} />
-                    <Route path='/edit/:_id' element={<Edit/>} />
+                    <Route path='/jobs/edit/:_id' element={<JobEdit/>} />
                 </Routes>
             </div>
         </BrowserRouter>
