@@ -89,7 +89,7 @@ export const JobEditForm = () => {
 
     return (
         <div>
-            {/* {Object.keys(alert).length === 0 ? ( */}
+            {(alert === null || typeof alert !== 'object' || Object.keys(alert).length !== 0) ? (
                 <form onSubmit={onSubmit}>
                     <div className='mb-3'>
                         <label htmlFor='title'>Title</label>
@@ -186,9 +186,9 @@ export const JobEditForm = () => {
                         </button>
                     </div>
                 </form>
-            {/* ) : (
+            ) : (
                 <AlertMessage />
-            )} */}
+            )}
         </div>
     )
 }
