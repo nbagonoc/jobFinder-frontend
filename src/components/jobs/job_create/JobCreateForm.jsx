@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { jobsAPI } from '../../../API'
 import { useJobContext } from '../../../hooks/useJobContext'
+import { useAuthContext } from '../../../hooks/useAuthContext'
 
 export const JobCreateForm = () => {
     const { errors, dispatch } = useJobContext()
+    const { user } = useAuthContext()
     const [formData, setFormData] = useState({
         title: '',
         company: '',
@@ -38,8 +40,13 @@ export const JobCreateForm = () => {
             description: formData.description,
         }
 
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${ user }`
+        }
+
         try {
-            const response = await axios.post(jobsAPI, job)
+            const response = await axios.post(jobsAPI, job, { headers })
             const message = response.data
             
             dispatch({
