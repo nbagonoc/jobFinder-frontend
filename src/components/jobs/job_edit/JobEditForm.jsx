@@ -5,10 +5,12 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { jobsAPI } from '../../../API'
 import AlertMessage from '../../partials/AlertMessage'
 import { useJobContext } from '../../../hooks/useJobContext'
+import { useAuthContext } from '../../../hooks/useAuthContext'
 
 export const JobEditForm = () => {
     const { _id } = useParams()
     const { alert, errors, dispatch } = useJobContext()
+    const { user } = useAuthContext()
     const [formData, setFormData] = useState({
         title: '',
         company: '',
@@ -62,15 +64,22 @@ export const JobEditForm = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault()
+        const job = {
+            title: formData.title,
+            company: formData.company,
+            location: formData.location,
+            position: formData.position,
+            description: formData.description,
+        }
+
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user}`,
+        }
 
         try {
-            const job = {
-                name: formData.name,
-                weight: formData.weight,
-                size: formData.size,
-            }
-            const response = await axios.put(`${jobsAPI}/${_id}`, job)
-            const message = response.data.success.message
+            const response = await axios.put(`${jobsAPI}/${_id}`, job, { headers })
+            const message = response.data
             dispatch({
                 type: 'EDIT_JOB',
                 payload: {
@@ -81,15 +90,21 @@ export const JobEditForm = () => {
                 },
             })
             navigate('/')
-        } catch (err) {
-            const errors = err.response.data.errors
-            dispatch({ type: 'EDIT_JOB', payload: { errors, alert: {} } })
+        } catch (error) {
+            const errors = error.response.data.errors
+            dispatch({
+                type: 'EDIT_JOB',
+                payload: {
+                    errors,
+                    alert: {},
+                },
+            })
         }
     }
 
     return (
         <div>
-            {(alert === null || typeof alert !== 'object' || Object.keys(alert).length !== 0) ? (
+            {alert !== null || typeof alert === 'object' || Object.keys(alert).length !== 0 ? (
                 <form onSubmit={onSubmit}>
                     <div className='mb-3'>
                         <label htmlFor='title'>Title</label>
@@ -103,7 +118,9 @@ export const JobEditForm = () => {
                                 errors && errors.title ? 'border-danger' : ''
                             }`}
                             onChange={onChange}
-                            value={formData && formData.title ? formData.title : ''}
+                            value={
+                                formData && formData.title ? formData.title : ''
+                            }
                         />
                         <span className='text-danger'>
                             {errors && errors.title ? errors.title : ''}
@@ -120,7 +137,11 @@ export const JobEditForm = () => {
                                 errors && errors.company ? 'border-danger' : ''
                             }`}
                             onChange={onChange}
-                            value={formData && formData.company ? formData.company : ''}
+                            value={
+                                formData && formData.company
+                                    ? formData.company
+                                    : ''
+                            }
                         />
                         <span className='text-danger'>
                             {errors && errors.company ? errors.company : ''}
@@ -137,7 +158,11 @@ export const JobEditForm = () => {
                                 errors && errors.location ? 'border-danger' : ''
                             }`}
                             onChange={onChange}
-                            value={formData && formData.location ? formData.location : ''}
+                            value={
+                                formData && formData.location
+                                    ? formData.location
+                                    : ''
+                            }
                         />
                         <span className='text-danger'>
                             {errors && errors.location ? errors.location : ''}
@@ -154,7 +179,11 @@ export const JobEditForm = () => {
                                 errors && errors.position ? 'border-danger' : ''
                             }`}
                             onChange={onChange}
-                            value={formData && formData.position ? formData.position : ''}
+                            value={
+                                formData && formData.position
+                                    ? formData.position
+                                    : ''
+                            }
                         />
                         <span className='text-danger'>
                             {errors && errors.position ? errors.position : ''}
@@ -174,10 +203,16 @@ export const JobEditForm = () => {
                                     : ''
                             }`}
                             onChange={onChange}
-                            value={formData && formData.description ? formData.description : ''}
+                            value={
+                                formData && formData.description
+                                    ? formData.description
+                                    : ''
+                            }
                         />
                         <span className='text-danger'>
-                            {errors && errors.description ? errors.description : ''}
+                            {errors && errors.description
+                                ? errors.description
+                                : ''}
                         </span>
                     </div>
                     <div className='mb-3'>

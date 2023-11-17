@@ -24,8 +24,8 @@ const AuthReducer = (state, action) => {
         case 'CLEANER':
             return {
                 ...state,
-                alert: null,
-                errors: null,
+                alert: {},
+                errors: [],
             }
         default:
             return state
