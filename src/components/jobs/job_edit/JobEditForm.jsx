@@ -34,11 +34,13 @@ export const JobEditForm = () => {
                     position: job.position,
                     description: job.description,
                 })
-            } catch (err) {
+            } catch (error) {
                 let message = 'Something went wrong!'
-                if (err.response && err.response.data) {
-                    message = err.response.data.errors.message
+
+                if (error.response && error.response.data) {
+                    message = error.response.data.errors.message
                 }
+
                 dispatch({
                     type: 'SET_JOB',
                     payload: {
@@ -91,7 +93,9 @@ export const JobEditForm = () => {
             })
             navigate('/')
         } catch (error) {
-            const errors = error.response.data.errors
+
+            const errors = error.response.data
+
             dispatch({
                 type: 'EDIT_JOB',
                 payload: {
