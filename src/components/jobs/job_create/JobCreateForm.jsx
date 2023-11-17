@@ -62,6 +62,7 @@ export const JobCreateForm = () => {
         } catch (error) {
             const errors = error.response.data
             const message = error.response.data.message
+
             dispatch({
                 type: 'CREATE_JOB',
                 payload: {
