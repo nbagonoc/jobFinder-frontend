@@ -1,4 +1,4 @@
-// import { jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 import { PropTypes } from 'prop-types'
 import { createContext, useReducer, useEffect } from 'react'
 
@@ -8,21 +8,20 @@ export const AuthContext = createContext()
 export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AuthReducer, {
         user: null,
-        email: null,
+        token: null,
         alert: {},
         errors: [],
     })
 
     useEffect(() => {
-        const token = localStorage.getItem('user')
-        // const decodedToken = jwtDecode(token)
-        // const email = decodedToken.role
+        const token = localStorage.getItem('token')
 
         if (token) {
+            const decodedToken = jwtDecode(token)
+            const user = { name: decodedToken.firstName, role: decodedToken.role }
             dispatch({
                 type: 'LOGIN',
-                payload: { token},
-                // payload: { token, email },
+                payload: { user, token },
             })
         }
     }, [])

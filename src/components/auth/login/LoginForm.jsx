@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { jwtDecode } from 'jwt-decode'
 
 import { authAPI } from '../../../API'
 import { useAuthContext } from '../../../hooks/useAuthContext'
@@ -34,10 +35,13 @@ const LoginForm = () => {
         try {
             const response = await axios.post(`${authAPI}/login`, credentials)
             const token = response.data.token
-            localStorage.setItem('user', token)//should be token instead?
+            localStorage.setItem('token', token)
+            const decodedToken = jwtDecode(token)
+            const user = { name: decodedToken.firstName, role: decodedToken.role }
+
             dispatch({
                 type: 'LOGIN',
-                payload: { token },
+                payload: { token, user },
             })
             navigate('/')
         } catch (error) {

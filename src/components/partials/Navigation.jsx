@@ -7,7 +7,7 @@ const Navigation = () => {
 
     const handleLogout = (e) => {
         e.preventDefault()
-        localStorage.removeItem('user')
+        localStorage.removeItem('token')
         dispatch({type: 'LOGOUT'})
     }
 
@@ -33,7 +33,7 @@ const Navigation = () => {
                     id="navbarSupportedContent"
                 >
                     <ul className="navbar-nav mr-auto">
-                        {user && (
+                        {user && user.role === 'admin' && (
                             <li className="nav-item">
                                 <Link to="/jobs/create" className="nav-link">
                                     Create
@@ -48,9 +48,14 @@ const Navigation = () => {
                     </ul>
                     <div className=''>
                         {user && (
-                            <button onClick={(e) => handleLogout(e)} className="btn btn-danger btn-sm">
-                                Logout
-                            </button>
+                            <div>
+                                <span className="text-light nav-item me-2">
+                                    Welcome {user.name}
+                                </span>
+                                <button onClick={(e) => handleLogout(e)} className="btn btn-danger btn-sm">
+                                    Logout
+                                </button>
+                            </div>
                         )}
                         {!user && (
                             <div>
