@@ -7,6 +7,8 @@ export const AuthContext = createContext()
 export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AuthReducer, {
         user: null,
+        alert: {},
+        errors: [],
     })
 
     useEffect(() => {
