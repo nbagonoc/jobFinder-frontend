@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 
 import { jobsAPI } from '../../../API';
 import { useJobContext } from '../../../hooks/useJobContext';
-import JobListActions from './JobListActions';
 
 const JobListDetails = () => {
     const {jobs, dispatch} = useJobContext()
@@ -29,12 +28,11 @@ const JobListDetails = () => {
                     <div className="card mb-3" key={job._id}>
                     <div className="card-body">
                         <Link to={`/jobs/view/${job._id}`} className='link-primary text-capitalize text-decoration-none'>
-                            <h5 className="card-title">
+                            <h5 className="card-title fw-bold">
                                 {job.title}
                             </h5>
                         </Link>
-                        <h6 className="text-muted">{job.position} | {job.company} | {job.location}</h6>
-                        <JobListActions _id={job._id} />                
+                        <p className="text-muted fw-light text-lowercase">{job.position} | {job.company} | {job.location}</p>
                     </div>
         </div>
                 ))
