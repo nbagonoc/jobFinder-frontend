@@ -44,10 +44,7 @@ const Navigation = () => {
                                     </Link>
                                 </li>
                                 <li className='nav-item'>
-                                    <Link
-                                        to='/jobs/owned'
-                                        className='nav-link'
-                                    >
+                                    <Link to='/jobs/owned' className='nav-link'>
                                         My Jobs
                                     </Link>
                                 </li>
@@ -59,37 +56,52 @@ const Navigation = () => {
                             </Link>
                         </li>
                     </ul>
-                    <div className=''>
+                    <ul className='navbar-nav'>
                         {user && (
-                            <div>
-                                <span className='text-light nav-item me-2'>
-                                    Welcome {user.name}
-                                </span>
-                                <button
-                                    onClick={(e) => handleLogout(e)}
-                                    className='btn btn-danger btn-sm'
-                                >
-                                    Logout
-                                </button>
-                            </div>
+                                <li className='nav-item dropdown'>
+                                    <a
+                                        className='nav-link dropdown-toggle text-light'
+                                        href='#'
+                                        role='button'
+                                        data-bs-toggle='dropdown'
+                                        aria-expanded='false'
+                                    >
+                                        Welcome {user.name}
+                                    </a>
+                                    <ul className='dropdown-menu'>
+                                        <li>
+                                            <a className='dropdown-item' href='#'>
+                                                Dashboard
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <hr className='dropdown-divider' />
+                                        </li>
+                                        <li>
+                                            <a className='dropdown-item' onClick={(e) => handleLogout(e)} href='#'>
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
                         )}
                         {!user && (
-                            <div>
+                            <>
                                 <Link
                                     to='/login'
-                                    className='btn btn-success btn-sm me-1'
+                                    className='btn btn-success btn-sm me-0 me-md-1'
                                 >
                                     Login
                                 </Link>
                                 <Link
                                     to='/register'
-                                    className='btn btn-primary btn-sm me-1'
+                                    className='btn btn-primary btn-sm mt-2 mt-sm-0'
                                 >
                                     Register
                                 </Link>
-                            </div>
+                            </>
                         )}
-                    </div>
+                    </ul>
                 </div>
             </div>
         </nav>
