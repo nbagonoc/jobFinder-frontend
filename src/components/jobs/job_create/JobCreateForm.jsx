@@ -8,7 +8,7 @@ import { useAuthContext } from '../../../hooks/useAuthContext'
 
 export const JobCreateForm = () => {
     const { errors, dispatch } = useJobContext()
-    const { user } = useAuthContext()
+    const { token } = useAuthContext()
     const [formData, setFormData] = useState({
         title: '',
         company: '',
@@ -42,8 +42,10 @@ export const JobCreateForm = () => {
 
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${ user }`
+            'Authorization': `Bearer ${ token }`
         }
+
+        console.log(headers.Authorization)
 
         try {
             const response = await axios.post(jobsAPI, job, { headers })

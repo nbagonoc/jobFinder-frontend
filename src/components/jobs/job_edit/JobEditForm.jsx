@@ -10,7 +10,7 @@ import { useAuthContext } from '../../../hooks/useAuthContext'
 export const JobEditForm = () => {
     const { _id } = useParams()
     const { alert, errors, dispatch } = useJobContext()
-    const { user } = useAuthContext()
+    const { token } = useAuthContext()
     const [formData, setFormData] = useState({
         title: '',
         company: '',
@@ -76,7 +76,7 @@ export const JobEditForm = () => {
 
         const headers = {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${user}`,
+            'Authorization': `Bearer ${token}`,
         }
 
         try {
