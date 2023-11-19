@@ -100,7 +100,7 @@ const LoginForm = () => {
             </div>
             <div className='mb-3'>
                 <button type='submit' className='btn btn-primary'>
-                    Save
+                    Login
                 </button>
             </div>
         </form>

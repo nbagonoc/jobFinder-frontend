@@ -1,14 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
 
 const Navigation = () => {
     const { user, dispatch } = useAuthContext()
+    const navigate = useNavigate()
 
     const handleLogout = (e) => {
         e.preventDefault()
         localStorage.removeItem('token')
         dispatch({ type: 'LOGOUT' })
+        navigate('/login')
     }
 
     return (

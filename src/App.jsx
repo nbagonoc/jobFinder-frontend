@@ -23,53 +23,62 @@ const App = () => {
         <BrowserRouter>
             <Navigation />
             <div className='container mt-3'>
-                <Routes>
-                    <Route path='/' element={<Home />} />
+                <div className='row justify-content-center'>
+                    <div className='col'>
+                        <Routes>
+                            <Route path='/' element={<Home />} />
 
-                    {/* Auth */}
-                    <Route
-                        path='/login'
-                        element={user ? <Navigate to='/' /> : <Login />}
-                    />
-                    <Route
-                        path='/register'
-                        element={user ? <Navigate to='/' /> : <Register />}
-                    />
+                            {/* Auth */}
+                            <Route
+                                path='/login'
+                                element={user ? <Navigate to='/' /> : <Login />}
+                            />
+                            <Route
+                                path='/register'
+                                element={
+                                    user ? <Navigate to='/' /> : <Register />
+                                }
+                            />
 
-                    {/* Jobs */}
-                    <Route path='/jobs' element={<JobList />} />
-                    <Route
-                        path='/jobs/owned'
-                        element={
-                            user && user.role === 'recruiter' ? (
-                                <JobListRecruiter />
-                            ) : (
-                                <Navigate to='/' />
-                            )
-                        }
-                    />
-                    <Route path='/jobs/view/:_id' element={<JobView />} />
-                    <Route
-                        path='/jobs/create'
-                        element={
-                            user && user.role === 'recruiter' ? (
-                                <JobCreate />
-                            ) : (
-                                <Navigate to='/' />
-                            )
-                        }
-                    />
-                    <Route
-                        path='/jobs/edit/:_id'
-                        element={
-                            user && user.role === 'recruiter' ? (
-                                <JobEdit />
-                            ) : (
-                                <Navigate to='/' />
-                            )
-                        }
-                    />
-                </Routes>
+                            {/* Jobs */}
+                            <Route path='/jobs' element={<JobList />} />
+                            <Route
+                                path='/jobs/owned'
+                                element={
+                                    user && user.role === 'recruiter' ? (
+                                        <JobListRecruiter />
+                                    ) : (
+                                        <Navigate to='/' />
+                                    )
+                                }
+                            />
+                            <Route
+                                path='/jobs/view/:_id'
+                                element={<JobView />}
+                            />
+                            <Route
+                                path='/jobs/create'
+                                element={
+                                    user && user.role === 'recruiter' ? (
+                                        <JobCreate />
+                                    ) : (
+                                        <Navigate to='/' />
+                                    )
+                                }
+                            />
+                            <Route
+                                path='/jobs/edit/:_id'
+                                element={
+                                    user && user.role === 'recruiter' ? (
+                                        <JobEdit />
+                                    ) : (
+                                        <Navigate to='/' />
+                                    )
+                                }
+                            />
+                        </Routes>
+                    </div>
+                </div>
             </div>
         </BrowserRouter>
     )

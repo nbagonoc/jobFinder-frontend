@@ -161,7 +161,7 @@ const RegisterForm = () => {
             </div>
             <div className='mb-3'>
                 <button type='submit' className='btn btn-primary'>
-                    Save
+                    Register
                 </button>
             </div>
         </form>
