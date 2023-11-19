@@ -4,14 +4,21 @@ import { Link } from 'react-router-dom'
 
 import { jobsAPI } from '../../../API';
 import { useJobContext } from '../../../hooks/useJobContext';
+import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const JobListDetails = () => {
     const {jobs, dispatch} = useJobContext()
+    const { token } = useAuthContext()
 
     useEffect(() => {
+        const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+
         const getjobs = async () => {
             try {
-                const response = await axios.get(`${jobsAPI}/owned`);
+                const response = await axios.get(`${jobsAPI}/owned`, {headers});
                 const jobs = response.data;
                 dispatch({type: 'SET_JOBS', payload: {jobs}})
             } catch (err) {
