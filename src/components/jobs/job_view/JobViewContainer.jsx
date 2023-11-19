@@ -24,7 +24,7 @@ const JobViewContainer = () => {
                 dispatch({ type: 'SET_JOB', payload: { job } })
             } catch (err) {
                 let message = 'Something went wrong!'
-                if(err && err.response){
+                if (err && err.response) {
                     message = err.response.data.errors.message
                 }
                 dispatch({
@@ -43,23 +43,24 @@ const JobViewContainer = () => {
     }, [_id, dispatch, resetState])
 
     return (
-        <div className="card">
-            <div className="card-header">
-                <div className="row">
-                    <div className="col-6">
-                        {job && (
-                            <h3 className="mb-0">{job.title}</h3>
-                        )}
-                    <div/>
+        <div className='card'>
+            <div className='card-header'>
+                <div className='row'>
+                    <div className='col-6'>
+                        {job && <h3 className='mb-0 fw-bold'>{job.title}</h3>}
+                        <div />
                     </div>
-                    <div className="col-6">
-                        <Link to="/jobs" className="btn btn-secondary float-end">
+                    <div className='col-6'>
+                        <Link
+                            to='/jobs'
+                            className='btn btn-secondary float-end'
+                        >
                             Search other jobs
                         </Link>
                     </div>
                 </div>
             </div>
-            <div className="card-body">
+            <div className='card-body'>
                 <AlertMessage />
                 {job && <ViewJobDetails job={job} />}
             </div>
