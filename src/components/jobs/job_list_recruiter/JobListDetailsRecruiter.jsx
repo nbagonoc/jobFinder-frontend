@@ -20,7 +20,7 @@ const JobListDetails = () => {
             try {
                 const response = await axios.get(`${jobsAPI}/owned`, {headers});
                 const jobs = response.data;
-                dispatch({type: 'SET_JOBS', payload: {jobs}})
+                dispatch({type: 'SET_JOBS_OWNED', payload: {jobs}})
             } catch (err) {
                 console.log(err); //just log error. No need to show to user
             }

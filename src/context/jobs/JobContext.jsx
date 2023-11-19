@@ -7,6 +7,8 @@ export const JobContext = createContext()
 export const JobContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(JobReducer, {
         jobs: [],
+        jobsApplied: [],
+        jobsOwned: [],
         job: {},
         alert: {},
         errors: [],
