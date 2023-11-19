@@ -41,7 +41,7 @@ const JobViewActions = ({ _id }) => {
 
     return (
         <div>
-            {user && user.role === 'admin' && (
+            {user && user.role === 'recruiter' && (
                 <div>
                     <Link
                         to={`/jobs/edit/${_id}`}

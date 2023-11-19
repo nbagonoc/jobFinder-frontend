@@ -14,6 +14,7 @@ import Navigation from './components/partials/Navigation'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import { useAuthContext } from './hooks/useAuthContext'
+import JobListRecruiter from './pages/jobs/JobListRecruiter'
 
 const App = () => {
     const { user } = useAuthContext()
@@ -37,14 +38,36 @@ const App = () => {
 
                     {/* Jobs */}
                     <Route path='/jobs' element={<JobList />} />
+                    <Route
+                        path='/jobs/owned'
+                        element={
+                            user && user.role === 'recruiter' ? (
+                                <JobListRecruiter />
+                            ) : (
+                                <Navigate to='/' />
+                            )
+                        }
+                    />
                     <Route path='/jobs/view/:_id' element={<JobView />} />
                     <Route
                         path='/jobs/create'
-                        element={ user && user.role === 'admin' ? <JobCreate />  : <Navigate to='/' />}
+                        element={
+                            user && user.role === 'recruiter' ? (
+                                <JobCreate />
+                            ) : (
+                                <Navigate to='/' />
+                            )
+                        }
                     />
                     <Route
                         path='/jobs/edit/:_id'
-                        element={ user && user.role === 'admin' ? <JobEdit />  : <Navigate to='/' />}
+                        element={
+                            user && user.role === 'recruiter' ? (
+                                <JobEdit />
+                            ) : (
+                                <Navigate to='/' />
+                            )
+                        }
                     />
                 </Routes>
             </div>

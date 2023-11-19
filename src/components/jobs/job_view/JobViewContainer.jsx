@@ -55,7 +55,7 @@ const JobViewContainer = () => {
                             to='/jobs'
                             className='btn btn-secondary float-end'
                         >
-                            Search other jobs
+                            Back
                         </Link>
                     </div>
                 </div>
