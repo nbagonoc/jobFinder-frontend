@@ -9,7 +9,7 @@ const JobViewDetails = ({ job }) => {
                 {job.position} | {job.company} | {job.location}
             </h6>
             <p>{job.description}</p>
-            <JobViewActions _id={job._id} />
+            <JobViewActions ids={{'_id': job._id, 'recruiter': job.recruiter}} />
         </div>
     )
 }

@@ -6,7 +6,7 @@ import { API } from '../../../API'
 import { useGlobalContext } from '../../../hooks/useGlobalContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
-const JobViewActions = ({ _id }) => {
+const JobViewActions = ({ ids }) => {
     const { dispatch } = useGlobalContext()
     const { user } = useAuthContext()
 
@@ -41,16 +41,17 @@ const JobViewActions = ({ _id }) => {
 
     return (
         <div>
-            {user && user.role === 'recruiter' && (
+            {user && user.role === 'recruiter' &&  user._id === ids.recruiter && (
                 <div>
+                    {console.log(user)}
                     <Link
-                        to={`/jobs/edit/${_id}`}
+                        to={`/jobs/edit/${ids._id}`}
                         className='btn btn-secondary btn-sm me-1'
                     >
                         Edit
                     </Link>
                     <button
-                        onClick={(e) => handleDelete(e, _id)}
+                        onClick={(e) => handleDelete(e, ids._id)}
                         className='btn btn-danger btn-sm'
                     >
                         Delete
@@ -62,7 +63,7 @@ const JobViewActions = ({ _id }) => {
 }
 
 JobViewActions.propTypes = {
-    _id: PropTypes.string.isRequired,
+    ids: PropTypes.object.isRequired,
 }
 
 export default JobViewActions

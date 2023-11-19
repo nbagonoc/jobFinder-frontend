@@ -18,7 +18,7 @@ export const AuthContextProvider = ({ children }) => {
 
         if (token) {
             const decodedToken = jwtDecode(token)
-            const user = { name: decodedToken.firstName, role: decodedToken.role }
+            const user = { _id: decodedToken._id, name: decodedToken.firstName, role: decodedToken.role }
             dispatch({
                 type: 'LOGIN',
                 payload: { user, token },
