@@ -4,7 +4,7 @@ import RegisterForm from './RegisterForm'
 import RegisterRecruiterForm from './RegisterRecruiterForm'
 
 const RegisterFormContainer = () => {
-    const location = useLocation();
+    const location = useLocation()
     return (
         <div className='col-md-8 col-lg-4 mx-auto'>
             <div className='card'>

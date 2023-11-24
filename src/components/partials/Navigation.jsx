@@ -1,10 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 import { useAuthContext } from '../../hooks/useAuthContext'
 
 const Navigation = () => {
     const { user, dispatch } = useAuthContext()
     const navigate = useNavigate()
+    const location = useLocation()
 
     const handleLogout = (e) => {
         e.preventDefault()
@@ -12,54 +13,63 @@ const Navigation = () => {
         dispatch({ type: 'LOGOUT' })
         navigate('/login')
     }
-
+    // todo: move items to separate components to simplify/clean-up the code
     return (
-        <nav className='navbar navbar-expand-sm navbar-dark bg-dark'>
-            <div className='container'>
-                <Link to='/' className='navbar-brand'>
-                    Navbar
-                </Link>
-                <button
-                    className='navbar-toggler'
-                    type='button'
-                    data-bs-toggle='collapse'
-                    data-bs-target='#navbarSupportedContent'
-                    aria-controls='navbarSupportedContent'
-                    aria-expanded='false'
-                    aria-label='Toggle navigation'
-                >
-                    <span className='navbar-toggler-icon'></span>
-                </button>
-                <div
-                    className='collapse navbar-collapse justify-content-between'
-                    id='navbarSupportedContent'
-                >
-                    <ul className='navbar-nav mr-auto'>
-                        {user && user.role === 'recruiter' && (
-                            <>
-                                <li className='nav-item'>
-                                    <Link
-                                        to='/jobs/create'
-                                        className='nav-link'
-                                    >
-                                        Create
-                                    </Link>
-                                </li>
-                                <li className='nav-item'>
-                                    <Link to='/jobs/owned' className='nav-link'>
-                                        My Jobs
-                                    </Link>
-                                </li>
-                            </>
-                        )}
-                        <li className='nav-item'>
-                            <Link to='/jobs' className='nav-link'>
-                                Jobs
-                            </Link>
-                        </li>
-                    </ul>
-                    <ul className='navbar-nav'>
-                        {user && (
+        !(
+            location.pathname === '/register' ||
+            location.pathname === '/register-applicant' ||
+            location.pathname === '/register-recruiter' ||
+            location.pathname === '/login'
+        ) && (
+            <nav className='navbar navbar-expand-sm navbar-dark bg-dark'>
+                <div className='container'>
+                    <Link to='/' className='navbar-brand'>
+                        Navbar
+                    </Link>
+                    <button
+                        className='navbar-toggler'
+                        type='button'
+                        data-bs-toggle='collapse'
+                        data-bs-target='#navbarSupportedContent'
+                        aria-controls='navbarSupportedContent'
+                        aria-expanded='false'
+                        aria-label='Toggle navigation'
+                    >
+                        <span className='navbar-toggler-icon'></span>
+                    </button>
+                    <div
+                        className='collapse navbar-collapse justify-content-between'
+                        id='navbarSupportedContent'
+                    >
+                        <ul className='navbar-nav mr-auto'>
+                            {user && user.role === 'recruiter' && (
+                                <>
+                                    <li className='nav-item'>
+                                        <Link
+                                            to='/jobs/create'
+                                            className='nav-link'
+                                        >
+                                            Create
+                                        </Link>
+                                    </li>
+                                    <li className='nav-item'>
+                                        <Link
+                                            to='/jobs/owned'
+                                            className='nav-link'
+                                        >
+                                            My Jobs
+                                        </Link>
+                                    </li>
+                                </>
+                            )}
+                            <li className='nav-item'>
+                                <Link to='/jobs' className='nav-link'>
+                                    Jobs
+                                </Link>
+                            </li>
+                        </ul>
+                        <ul className='navbar-nav'>
+                            {user && (
                                 <li className='nav-item dropdown'>
                                     <a
                                         className='nav-link dropdown-toggle text-light'
@@ -72,7 +82,10 @@ const Navigation = () => {
                                     </a>
                                     <ul className='dropdown-menu'>
                                         <li>
-                                            <a className='dropdown-item' href='#'>
+                                            <a
+                                                className='dropdown-item'
+                                                href='#'
+                                            >
                                                 Dashboard
                                             </a>
                                         </li>
@@ -80,33 +93,38 @@ const Navigation = () => {
                                             <hr className='dropdown-divider' />
                                         </li>
                                         <li>
-                                            <a className='dropdown-item' onClick={(e) => handleLogout(e)} href='#'>
+                                            <a
+                                                className='dropdown-item'
+                                                onClick={(e) => handleLogout(e)}
+                                                href='#'
+                                            >
                                                 Logout
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
-                        )}
-                        {!user && (
-                            <>
-                                <Link
-                                    to='/login'
-                                    className='btn btn-success btn-sm me-0 me-md-1'
-                                >
-                                    Login
-                                </Link>
-                                <Link
-                                    to='/register'
-                                    className='btn btn-primary btn-sm mt-2 mt-sm-0'
-                                >
-                                    Register
-                                </Link>
-                            </>
-                        )}
-                    </ul>
+                            )}
+                            {!user && (
+                                <>
+                                    <Link
+                                        to='/login'
+                                        className='btn btn-success btn-sm me-0 me-md-1'
+                                    >
+                                        Login
+                                    </Link>
+                                    <Link
+                                        to='/register'
+                                        className='btn btn-primary btn-sm mt-2 mt-sm-0'
+                                    >
+                                        Register
+                                    </Link>
+                                </>
+                            )}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        )
     )
 }
 
