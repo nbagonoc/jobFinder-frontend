@@ -21,7 +21,7 @@ const Navigation = () => {
             location.pathname === '/register-recruiter' ||
             location.pathname === '/login'
         ) && (
-            <nav className='navbar navbar-expand-sm navbar-dark bg-dark'>
+            <nav className='navbar navbar-expand-sm bg-white shadow-sm'>
                 <div className='container'>
                     <Link to='/' className='navbar-brand'>
                         Navbar
@@ -72,7 +72,7 @@ const Navigation = () => {
                             {user && (
                                 <li className='nav-item dropdown'>
                                     <a
-                                        className='nav-link dropdown-toggle text-light'
+                                        className='nav-link dropdown-toggle'
                                         href='#'
                                         role='button'
                                         data-bs-toggle='dropdown'
@@ -108,7 +108,7 @@ const Navigation = () => {
                                 <>
                                     <Link
                                         to='/login'
-                                        className='btn btn-success btn-sm me-0 me-md-1'
+                                        className='btn btn-secondary btn-sm me-0 me-sm-1'
                                     >
                                         Login
                                     </Link>
