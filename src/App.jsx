@@ -1,9 +1,8 @@
 import './App.css'
 
 import Login from './pages/auth/Login'
+import RegisterSelect from './pages/auth/RegisterSelect'
 import Register from './pages/auth/Register'
-import RegisterApplicant from './pages/auth/RegisterApplicant'
-import RegisterRecruiter from './pages/auth/RegisterRecruiter'
 
 import JobList from './pages/jobs/JobList'
 import JobView from './pages/jobs/JobView'
@@ -38,19 +37,19 @@ const App = () => {
                             <Route
                                 path='/register'
                                 element={
-                                    user ? <Navigate to='/' /> : <Register />
+                                    user ? <Navigate to='/' /> : <RegisterSelect />
                                 }
                             />
                             <Route
                                 path='/register-applicant'
                                 element={
-                                    user ? <Navigate to='/' /> : <RegisterApplicant />
+                                    user ? <Navigate to='/' /> : <Register />
                                 }
                             />
                             <Route
                                 path='/register-recruiter'
                                 element={
-                                    user ? <Navigate to='/' /> : <RegisterRecruiter />
+                                    user ? <Navigate to='/' /> : <Register />
                                 }
                             />
 

@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import RegisterForm from './RegisterForm'
+import RegisterRecruiterForm from './RegisterRecruiterForm'
 
 const RegisterFormContainer = () => {
+    const location = useLocation();
     return (
         <div className='col-md-8 col-lg-4 mx-auto'>
             <div className='card'>
@@ -22,7 +24,12 @@ const RegisterFormContainer = () => {
                     </div>
                 </div>
                 <div className='card-body'>
+                {location.pathname === '/register-applicant' ? (
                     <RegisterForm />
+                ):(
+                    <RegisterRecruiterForm />
+                )}
+                    
                 </div>
             </div>
         </div>
