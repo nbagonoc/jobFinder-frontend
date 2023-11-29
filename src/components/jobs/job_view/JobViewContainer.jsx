@@ -43,26 +43,34 @@ const JobViewContainer = () => {
     }, [_id, dispatch, resetState])
 
     return (
-        <div className='card'>
-            <div className='card-header'>
-                <div className='row'>
-                    <div className='col-6'>
-                        {job && <h3 className='mb-0 fw-bold'>{job.title}</h3>}
-                        <div />
+        <div className='container'>
+            <div className='col-md-8 col-lg-6 mx-auto'>
+                <div className='card'>
+                    <div className='card-header'>
+                        <div className='row'>
+                            <div className='col-6'>
+                                {job && (
+                                    <h3 className='mb-0 fw-bold'>
+                                        {job.title}
+                                    </h3>
+                                )}
+                                <div />
+                            </div>
+                            <div className='col-6'>
+                                <Link
+                                    to='/jobs'
+                                    className='btn btn-secondary float-end'
+                                >
+                                    Back
+                                </Link>
+                            </div>
+                        </div>
                     </div>
-                    <div className='col-6'>
-                        <Link
-                            to='/jobs'
-                            className='btn btn-secondary float-end'
-                        >
-                            Back
-                        </Link>
+                    <div className='card-body'>
+                        <AlertMessage />
+                        {job && <ViewJobDetails job={job} />}
                     </div>
                 </div>
-            </div>
-            <div className='card-body'>
-                <AlertMessage />
-                {job && <ViewJobDetails job={job} />}
             </div>
         </div>
     )

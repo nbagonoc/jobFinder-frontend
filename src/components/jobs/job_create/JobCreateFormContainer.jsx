@@ -4,7 +4,7 @@ import JobCreateForm from './JobCreateForm'
 const JobCreateFormContainer = () => {
     return (
         <div className='container'>
-            <div className='col-md-8 col-lg-6 mx-auto mt-3'>
+            <div className='col-md-8 col-lg-6 mx-auto'>
                 <div className='card'>
                     <div className='card-header'>
                         <div className='row'>

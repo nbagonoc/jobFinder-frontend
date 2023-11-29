@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom'
 
 const RegisterSelection = () => {
     return (
-        <div className='container mt-5'>
+        <div className='d-flex flex-column min-vh-100 min-vw-100'>
+            <div className='d-md-flex flex-grow-1 justify-content-center align-items-center'>
+            <div className='container mt-3 mt-md-0'>
             <div className='mb-3'>
                 <h1 className='text-center fw-bold'>Sign-Up</h1>
                 <h3 className='text-center'>
@@ -81,6 +83,8 @@ const RegisterSelection = () => {
                         Log-in
                     </Link>
                 </p>
+            </div>
+        </div>
             </div>
         </div>
     )

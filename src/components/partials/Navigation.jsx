@@ -21,7 +21,7 @@ const Navigation = () => {
             location.pathname === '/register-recruiter' ||
             location.pathname === '/login'
         ) && (
-            <nav className='navbar navbar-expand-sm bg-white shadow-sm'>
+            <nav className='navbar navbar-expand-sm bg-white shadow-sm mb-3'>
                 <div className='container'>
                     <Link to='/' className='navbar-brand'>
                         Navbar
