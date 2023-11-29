@@ -3,9 +3,11 @@ import AlertMessage from '../../partials/AlertMessage'
 
 const JobListContainerRecruiter = () => {
     return (
-        <div className='JobListContainerRecruiter col-md-8 col-lg-6 mx-auto' data-testid='JobListContainerRecruiter'>
-            <AlertMessage />
-            <JobListDetailsRecruiter />
+        <div className='container'>
+            <div className='col-md-8 col-lg-6 mx-auto mt-3'>
+                <AlertMessage />
+                <JobListDetailsRecruiter />
+            </div>
         </div>
     )
 }
