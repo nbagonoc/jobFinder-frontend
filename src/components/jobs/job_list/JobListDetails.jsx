@@ -8,6 +8,10 @@ import { useJobContext } from '../../../hooks/useJobContext';
 const JobListDetails = () => {
     const {jobs, dispatch} = useJobContext()
 
+    const formatCategory = (category) => {
+        return category ? category.split('_').join(' ') : ''
+    }
+
     useEffect(() => {
         const getjobs = async () => {
             try {
@@ -32,7 +36,7 @@ const JobListDetails = () => {
                                 {job.title}
                             </h5>
                         </Link>
-                        <p className="text-muted fw-light text-lowercase">{job.position} | {job.company} | {job.location}</p>
+                        <p className="text-muted fw-light text-lowercase">{job.position} | {formatCategory(job.category)} | {job.salary} | {job.company} | {job.location}</p>
                     </div>
         </div>
                 ))

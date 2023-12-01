@@ -13,6 +13,8 @@ export const JobCreateForm = () => {
         title: '',
         company: '',
         location: '',
+        category: '',
+        salary: '',
         position: '',
         description: '',
     })
@@ -36,6 +38,8 @@ export const JobCreateForm = () => {
             title: formData.title,
             company: formData.company,
             location: formData.location,
+            category: formData.category,
+            salary: formData.salary,
             position: formData.position,
             description: formData.description,
         }
@@ -147,6 +151,52 @@ export const JobCreateForm = () => {
                 />
                 <span className='text-danger'>
                     {errors && errors.position ? errors.position : ''}
+                </span>
+            </div>
+            <div className='mb-3'>
+                <label htmlFor='size'>Category</label>
+                <select
+                    className={`form-select ${
+                        errors && errors.category ? 'border-danger' : ''
+                    }`}
+                    id='category'
+                    name='category'
+                    onChange={onChange}
+                    value={formData.category}
+                    defaultValue={formData.category}
+                    aria-label='Select category'
+            
+                >
+                    <option value='' disabled>Select category</option>
+                    <option value='information_and_technology'>IT</option>
+                    <option value='business_and_management'>Business Management</option>
+                    <option value='healthcare'>Healthcare</option>
+                    <option value='education'>Education</option>
+                    <option value='engineering'>Engineering</option>
+                    <option value='sales_and_customer_service'>Sales and Customer Service</option>
+                    <option value='creative_arts_and_design'>Creative Arts and Design</option>
+                    <option value='science_and_research'>Science and Research</option>
+                    <option value='hospitality_and_tourism'>Hospitality and Tourism</option>
+                </select>
+                <span className='text-danger'>
+                    {errors && errors.category ? errors.category : ''}
+                </span>
+            </div>
+            <div className='mb-3'>
+                <label htmlFor='size'>Salary</label>
+                <input
+                    id='salary'
+                    name='salary'
+                    type='text'
+                    placeholder='Enter job salary'
+                    className={`form-control ${
+                        errors && errors.salary ? 'border-danger' : ''
+                    }`}
+                    onChange={onChange}
+                    value={formData.salary}
+                />
+                <span className='text-danger'>
+                    {errors && errors.salary ? errors.salary : ''}
                 </span>
             </div>
             <div className='mb-3'>

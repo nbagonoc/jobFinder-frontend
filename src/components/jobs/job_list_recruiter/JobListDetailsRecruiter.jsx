@@ -10,6 +10,10 @@ const JobListDetails = () => {
     const { jobsOwned, dispatch } = useJobContext()
     const { token } = useAuthContext()
 
+    const formatCategory = (category) => {
+        return category ? category.split('_').join(' ') : ''
+    }
+
     useEffect(() => {
         const headers = {
             'Content-Type': 'application/json',
@@ -44,9 +48,7 @@ const JobListDetails = () => {
                                     {job.title}
                                 </h5>
                             </Link>
-                            <p className='text-muted fw-light text-lowercase'>
-                                {job.position} | {job.company} | {job.location}
-                            </p>
+                            <p className="text-muted fw-light text-lowercase">{job.position} | {formatCategory(job.category)} | {job.salary} | {job.company} | {job.location}</p>
                         </div>
                     </div>
                 ))
