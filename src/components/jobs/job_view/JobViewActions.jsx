@@ -1,20 +1,28 @@
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
 
-import { API } from '../../../API'
+import { jobsAPI } from '../../../API'
 import { useGlobalContext } from '../../../hooks/useGlobalContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const JobViewActions = ({ ids }) => {
     const { dispatch } = useGlobalContext()
-    const { user } = useAuthContext()
+    const { user, token } = useAuthContext()
+    const navigate = useNavigate()
 
     const handleDelete = async (e, _id) => {
+        e.preventDefault()
         try {
-            e.preventDefault()
-            const response = await axios.delete(`${API}/${_id}`)
-            const message = response.data.success.message
+            const headers = {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            }
+            const response = await axios.delete(`${jobsAPI}/${_id}`, {
+                headers,
+            })
+            const message = response.data.message
+
             dispatch({
                 type: 'DELETE_JOB',
                 payload: {
@@ -25,8 +33,9 @@ const JobViewActions = ({ ids }) => {
                     },
                 },
             })
+            navigate('/jobs/owned')
         } catch (err) {
-            const message = err.response.data.errors.message
+            const message = err.response.data
             dispatch({
                 type: 'DELETE_JOB',
                 payload: {
@@ -36,6 +45,7 @@ const JobViewActions = ({ ids }) => {
                     },
                 },
             })
+            navigate('/jobs/owned')
         }
     }
 
