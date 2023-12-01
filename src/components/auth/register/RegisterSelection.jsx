@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 
+import FullVertical from '../../partials/FullVertical'
+
 const RegisterSelection = () => {
     return (
-        <div className='d-flex flex-column min-vh-100 min-vw-100'>
-            <div className='d-md-flex flex-grow-1 justify-content-center align-items-center'>
-            <div className='container mt-3 mt-md-0'>
+        <FullVertical>
             <div className='mb-3'>
                 <h1 className='text-center fw-bold'>Sign-Up</h1>
                 <h3 className='text-center'>
@@ -84,9 +84,7 @@ const RegisterSelection = () => {
                     </Link>
                 </p>
             </div>
-        </div>
-            </div>
-        </div>
+        </FullVertical>
     )
 }
 
