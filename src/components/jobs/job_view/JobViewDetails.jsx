@@ -1,25 +1,27 @@
 import PropTypes from 'prop-types'
-
-import JobViewActions from './JobViewActions'
+import { Link } from 'react-router-dom'
 
 const JobViewDetails = ({ job }) => {
-    const formatCategory = (category) => {
-        return category ? category.split('_').join(' ') : ''
-    }
-
     return (
-        <div>
-            <h6 className='text-muted fw-light text-lowercase'>
-                {job.position} |&nbsp;
-                {formatCategory(job.category)} |
-                {job.salary} |&nbsp;
-                {job.company} |&nbsp;
-                {job.location} |&nbsp;
-                {job.arrangement} |&nbsp;
-                {job.type}
-            </h6>
-            <p>{job.description}</p>
-            <JobViewActions ids={{'_id': job._id, 'recruiter': job.recruiter}} />
+        <div className='card'>
+            <div className='card-header'>
+                <div className='row'>
+                    <div className='col-6'>
+                        <h3 className='mb-0 fw-bold'>About the job</h3>
+                    </div>
+                    <div className='col-6'>
+                        <Link
+                            to='/jobs'
+                            className='btn btn-secondary float-end'
+                        >
+                            Back
+                        </Link>
+                    </div>
+                </div>
+            </div>
+            <div className='card-body'>
+                <p>{job.description}</p>
+            </div>
         </div>
     )
 }

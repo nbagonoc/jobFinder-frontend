@@ -1,11 +1,12 @@
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useEffect, useCallback } from 'react'
 
 import { jobsAPI } from '../../../API'
 import AlertMessage from '../../partials/AlertMessage'
 import { useJobContext } from '../../../hooks/useJobContext'
 import ViewJobDetails from './JobViewDetails'
+import JobViewSubDetails from './JobViewSubDetails'
 
 const JobViewContainer = () => {
     const { _id } = useParams()
@@ -43,33 +44,14 @@ const JobViewContainer = () => {
     }, [_id, dispatch, resetState])
 
     return (
-        <div className='container'>
-            <div className='col-md-8 col-lg-6 mx-auto'>
-                <div className='card'>
-                    <div className='card-header'>
-                        <div className='row'>
-                            <div className='col-6'>
-                                {job && (
-                                    <h3 className='mb-0 fw-bold'>
-                                        {job.title}
-                                    </h3>
-                                )}
-                                <div />
-                            </div>
-                            <div className='col-6'>
-                                <Link
-                                    to='/jobs'
-                                    className='btn btn-secondary float-end'
-                                >
-                                    Back
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='card-body'>
-                        <AlertMessage />
-                        {job && <ViewJobDetails job={job} />}
-                    </div>
+        <div className='container-lg'>
+            <div className='row'>
+                <div className='col-md-5 mb-3'>
+                    {job && <JobViewSubDetails job={job} />}
+                </div>
+                <div className='col-md-7'>
+                    <AlertMessage />
+                    {job && <ViewJobDetails job={job} />}
                 </div>
             </div>
         </div>
