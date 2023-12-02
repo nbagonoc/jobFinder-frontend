@@ -1,12 +1,18 @@
 import JobListDetails from './JobListDetails'
+import JobListFilter from './JobListFilter'
 import AlertMessage from '../../partials/AlertMessage'
 
 const JobListContainer = () => {
     return (
-        <div className='container'>
-            <div className='col-md-8 col-lg-6 mx-auto'>
-                <AlertMessage />
-                <JobListDetails />
+        <div className='container-lg'>
+            <AlertMessage />
+            <div className='row'>
+                <div className='col-md-5 mb-3'>
+                    <JobListFilter/>
+                </div>
+                <div className='col-md-7'>
+                    <JobListDetails />
+                </div>
             </div>
         </div>
     )
