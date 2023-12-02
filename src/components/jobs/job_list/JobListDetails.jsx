@@ -8,10 +8,6 @@ import { useJobContext } from '../../../hooks/useJobContext';
 const JobListDetails = () => {
     const {jobs, dispatch} = useJobContext()
 
-    const formatCategory = (category) => {
-        return category ? category.split('_').join(' ') : ''
-    }
-
     useEffect(() => {
         const getjobs = async () => {
             try {
@@ -29,24 +25,36 @@ const JobListDetails = () => {
         <div>
             {jobs && jobs.length >= 1 ? (
                 jobs.map((job) => (
-                    <div className="card mb-3" key={job._id}>
-                    <div className="card-body">
-                        <Link to={`/jobs/view/${job._id}`} className='link-primary text-capitalize text-decoration-none'>
-                            <h5 className="card-title fw-bold">
-                                {job.title}
-                            </h5>
-                        </Link>
-                        <p className="text-muted fw-light text-lowercase">
-                            {job.position} |&nbsp;
-                            {job.salary} |&nbsp;
-                            {job.company} |&nbsp;
-                            {job.location} |&nbsp;
-                            <span className='badge bg-primary me-1'>{job.category}</span>
-                            <span className='badge bg-primary me-1'>{job.arrangement}</span>
-                            <span className='badge bg-primary me-1'>{job.type}</span>
-                        </p>
-                    </div>
-        </div>
+                    <Link to={`/jobs/view/${job._id}`} key={job._id} className='link-primary text-capitalize text-decoration-none'>
+                        <div className="card mb-3">
+                            <div className="card-body">
+                                <h3 className="card-title fw-bold text-primary fs-5">
+                                    {job.title}
+                                </h3>
+                                <h6 className='fw-bold'>
+                                    Company: <span className='text-muted fw-light'>{job.company}</span>
+                                </h6>
+                                <h6 className='fw-bold'>
+                                    Position: <span className='text-muted fw-light'>{job.position}</span>
+                                </h6>
+                                <h6 className='fw-bold'>
+                                    Salary: <span className='text-muted fw-light'>{job.salary}</span>
+                                </h6>
+                                <h6 className='fw-bold'>
+                                    Location: <span className='text-muted fw-light'>{job.location}</span>
+                                </h6>
+                                <h6 className='text-muted fw-light text-lowercase'>
+                                    <span className='badge bg-primary me-1'>
+                                        {job.category}
+                                    </span>
+                                    <span className='badge bg-primary me-1'>
+                                        {job.arrangement}
+                                    </span>
+                                    <span className='badge bg-primary me-1'>{job.type}</span>
+                                </h6>
+                            </div>
+                        </div>
+                    </Link>
                 ))
             ) : (
                     <div colSpan="4" className="text-center">

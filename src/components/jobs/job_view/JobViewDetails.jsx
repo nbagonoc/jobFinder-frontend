@@ -7,7 +7,7 @@ const JobViewDetails = ({ job }) => {
             <div className='card-header'>
                 <div className='row'>
                     <div className='col-6'>
-                        <h3 className='mb-0 fw-bold'>About the job</h3>
+                        <h3 className='fw-bold fs-4'>About the job</h3>
                     </div>
                     <div className='col-6'>
                         <Link
