@@ -48,7 +48,15 @@ const JobListDetails = () => {
                                     {job.title}
                                 </h5>
                             </Link>
-                            <p className="text-muted fw-light text-lowercase">{job.position} | {formatCategory(job.category)} | {job.salary} | {job.company} | {job.location}</p>
+                            <p className='text-muted fw-light text-lowercase'>
+                                {job.position} |&nbsp;
+                                {formatCategory(job.category)} |&nbsp;
+                                {job.salary} |&nbsp;
+                                {job.company} |&nbsp;
+                                {job.location} |&nbsp;
+                                {job.arrangement} |&nbsp;
+                                {job.type} |
+                            </p>
                         </div>
                     </div>
                 ))

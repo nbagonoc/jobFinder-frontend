@@ -10,7 +10,13 @@ const JobViewDetails = ({ job }) => {
     return (
         <div>
             <h6 className='text-muted fw-light text-lowercase'>
-                {job.position} | {formatCategory(job.category)} | {job.salary} | {job.company} | {job.location}
+                {job.position} |&nbsp;
+                {formatCategory(job.category)} |
+                {job.salary} |&nbsp;
+                {job.company} |&nbsp;
+                {job.location} |&nbsp;
+                {job.arrangement} |&nbsp;
+                {job.type}
             </h6>
             <p>{job.description}</p>
             <JobViewActions ids={{'_id': job._id, 'recruiter': job.recruiter}} />
