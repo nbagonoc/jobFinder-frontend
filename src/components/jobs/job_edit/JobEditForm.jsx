@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 
 import { jobsAPI } from '../../../API'
 import AlertMessage from '../../partials/AlertMessage'
@@ -94,7 +94,6 @@ export const JobEditForm = () => {
         }
 
         try {
-            console.log(job)
             const response = await axios.put(`${jobsAPI}/${_id}`, job, {
                 headers,
             })
@@ -200,7 +199,6 @@ export const JobEditForm = () => {
                             name='category'
                             onChange={onChange}
                             value={formData.category}
-                            defaultValue={formData.category}
                             aria-label='Select category'
                         >
                             <option value='' disabled>
@@ -282,7 +280,6 @@ export const JobEditForm = () => {
                             name='arrangement'
                             onChange={onChange}
                             value={formData.arrangement}
-                            defaultValue={formData.arrangement}
                             aria-label='Select arrangement'
                         >
                             <option value='' disabled>
@@ -308,7 +305,6 @@ export const JobEditForm = () => {
                             name='type'
                             onChange={onChange}
                             value={formData.type}
-                            defaultValue={formData.type}
                             aria-label='Select type'
                         >
                             <option value='' disabled>
@@ -348,9 +344,15 @@ export const JobEditForm = () => {
                         </span>
                     </div>
                     <div className='mb-3'>
-                        <button type='submit' className='btn btn-primary'>
+                        <button type='submit' className='btn btn-success btn-sm me-1'>
                             Save
                         </button>
+                        <Link
+                            to={`/jobs/view/${_id}`}
+                            className='btn btn-secondary btn-sm'
+                        >
+                            Cancel
+                        </Link>
                     </div>
                 </form>
             ) : (

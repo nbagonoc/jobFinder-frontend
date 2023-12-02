@@ -78,9 +78,18 @@ const RegisterSelection = () => {
             </div>
             <div className='mt-3'>
                 <p className='text-center'>
-                    Already signed-up?{' '}
+                    Already signed-up?&nbsp;
                     <Link className='btn btn-sm btn-success' to='/login'>
                         Log-in
+                    </Link>
+                </p>
+                <p className='text-center text-muted fw-lighter'>
+                    Not sure?&nbsp;
+                    <Link
+                        className=''
+                        to='/'
+                    >
+                        Go Home
                     </Link>
                 </p>
             </div>

@@ -6,22 +6,10 @@ import LoginForm from './LoginForm'
 const LoginFormContainer = () => {
     return (
         <FullVerticalFluid>
-            <div className='col-md-6 col-lg-4 col-xl-3 mx-auto'>
+            <div className='col-sm-6 col-lg-4 col-xl-3'>
                 <div className='card'>
                     <div className='card-header'>
-                        <div className='row'>
-                            <div className='col-6'>
-                                <h3 className='mb-0'>Login</h3>
-                            </div>
-                            <div className='col-6'>
-                                <Link
-                                    to='/'
-                                    className='btn btn-sm btn-secondary float-end'
-                                >
-                                    Home
-                                </Link>
-                            </div>
-                        </div>
+                        <h1 className='mb-0 fw-bold fs-3 text-center'>Sign-in</h1>
                     </div>
                     <div className='card-body'>
                         <LoginForm />
@@ -29,12 +17,21 @@ const LoginFormContainer = () => {
                 </div>
                 <div className='mt-3'>
                     <p className='text-center'>
-                        Not yet registered?{' '}
+                        Not yet registered?&nbsp;
                         <Link
                             className='btn btn-sm btn-primary'
                             to='/register'
                         >
                             Register
+                        </Link>
+                    </p>
+                    <p className='text-center text-muted fw-lighter'>
+                        Not sure?&nbsp;
+                        <Link
+                            className=''
+                            to='/'
+                        >
+                            Go Home
                         </Link>
                     </p>
                 </div>
