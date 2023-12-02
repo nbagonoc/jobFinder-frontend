@@ -23,8 +23,8 @@ const Navigation = () => {
         ) && (
             <nav className='navbar navbar-expand-sm bg-white shadow-sm mb-3'>
                 <div className='container-lg'>
-                    <Link to='/' className='navbar-brand'>
-                        Navbar
+                    <Link to='/' className='navbar-brand fw-bold text-primary'>
+                        JobFinder
                     </Link>
                     <button
                         className='navbar-toggler'

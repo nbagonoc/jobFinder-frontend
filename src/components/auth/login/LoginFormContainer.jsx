@@ -16,7 +16,7 @@ const LoginFormContainer = () => {
                     </div>
                 </div>
                 <div className='mt-3'>
-                    <p className='text-center'>
+                    <p className='text-center text-secondary fw-light'>
                         Not yet registered?&nbsp;
                         <Link
                             className='btn btn-sm btn-primary'

@@ -22,7 +22,7 @@ const RegisterFormContainer = () => {
                     </div>
                 </div>
                 <div className='mt-3'>
-                    <p className='text-center'>
+                    <p className='text-center text-secondary fw-light'>
                         Already signed-up?&nbsp;
                         <Link className='btn btn-sm btn-success' to='/login'>
                             Log-in
