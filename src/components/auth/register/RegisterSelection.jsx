@@ -6,7 +6,7 @@ const RegisterSelection = () => {
     return (
         <FullVertical>
             <div className='mb-3'>
-                <h1 className='text-center fw-bold'>Sign-Up</h1>
+                <h1 className='text-center fw-bold text-primary'>Sign-Up</h1>
                 <h3 className='text-center'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Voluptates, velit deleniti sint rerum quod sed blanditiis
@@ -22,7 +22,7 @@ const RegisterSelection = () => {
                     >
                         <div className='card p-5'>
                             <div className='card-body'>
-                                <h2 className='text-center fw-bold'>
+                                <h2 className='text-center fw-bold text-primary'>
                                     Sign-up as Applicant
                                 </h2>
                                 <p className='fw-light'>
@@ -52,7 +52,7 @@ const RegisterSelection = () => {
                     >
                         <div className='card p-5'>
                             <div className='card-body'>
-                                <h2 className='text-center fw-bold'>
+                                <h2 className='text-center fw-bold text-primary'>
                                     Sign-up as Recruiter
                                 </h2>
                                 <p className='fw-light'>
@@ -79,7 +79,7 @@ const RegisterSelection = () => {
             <div className='mt-3'>
                 <p className='text-center'>
                     Already signed-up?{' '}
-                    <Link className='btn btn-sm btn-secondary' to='/login'>
+                    <Link className='btn btn-sm btn-success' to='/login'>
                         Log-in
                     </Link>
                 </p>

@@ -99,7 +99,7 @@ const LoginForm = () => {
                 </span>
             </div>
             <div className='mb-3'>
-                <button type='submit' className='btn btn-primary'>
+                <button type='submit' className='btn btn-success'>
                     Login
                 </button>
             </div>

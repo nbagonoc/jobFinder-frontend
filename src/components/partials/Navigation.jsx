@@ -108,7 +108,7 @@ const Navigation = () => {
                                 <>
                                     <Link
                                         to='/login'
-                                        className='btn btn-secondary btn-sm me-0 me-sm-1'
+                                        className='btn btn-success btn-sm me-0 me-sm-1'
                                     >
                                         Login
                                     </Link>

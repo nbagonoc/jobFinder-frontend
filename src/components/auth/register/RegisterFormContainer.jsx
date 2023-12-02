@@ -36,7 +36,7 @@ const RegisterFormContainer = () => {
                 <div className='mt-3'>
                     <p className='text-center'>
                         Already signed-up?{' '}
-                        <Link className='btn btn-sm btn-secondary' to='/login'>
+                        <Link className='btn btn-sm btn-success' to='/login'>
                             Log-in
                         </Link>
                     </p>

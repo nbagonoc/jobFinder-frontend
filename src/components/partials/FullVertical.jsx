@@ -4,7 +4,7 @@ const FullVertical = ({ children }) => {
     return (
         <div className='d-flex flex-column min-vh-100 min-vw-100'>
             <div className='d-md-flex flex-grow-1 justify-content-center align-items-center'>
-                <div className="container mt-3 mt-md-0">
+                <div className="container-lg mt-3 mt-md-0">
                     {children}
                 </div>
             </div>

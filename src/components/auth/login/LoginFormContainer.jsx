@@ -31,7 +31,7 @@ const LoginFormContainer = () => {
                     <p className='text-center'>
                         Not yet registered?{' '}
                         <Link
-                            className='btn btn-sm btn-secondary'
+                            className='btn btn-sm btn-primary'
                             to='/register'
                         >
                             Register
