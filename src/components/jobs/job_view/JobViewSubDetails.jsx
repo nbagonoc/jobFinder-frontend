@@ -6,7 +6,7 @@ const JobViewSubDetails = ({ job }) => {
     return (
         <div className='card'>
             <div className='card-body'>
-                <h1 className='fw-bold'>{job.title}</h1>
+                <h1 className='fw-bold text-primary'>{job.title}</h1>
                 <h6 className='fw-bold'>
                     Position: <span className='text-muted fw-light'>{job.position}</span>
                 </h6>

@@ -38,12 +38,12 @@ const JobListDetails = () => {
                         </Link>
                         <p className="text-muted fw-light text-lowercase">
                             {job.position} |&nbsp;
-                            {formatCategory(job.category)} |&nbsp;
                             {job.salary} |&nbsp;
                             {job.company} |&nbsp;
                             {job.location} |&nbsp;
-                            {job.arrangement} |&nbsp;
-                            {job.type} |
+                            <span className='badge bg-primary me-1'>{job.category}</span>
+                            <span className='badge bg-primary me-1'>{job.arrangement}</span>
+                            <span className='badge bg-primary me-1'>{job.type}</span>
                         </p>
                     </div>
         </div>
