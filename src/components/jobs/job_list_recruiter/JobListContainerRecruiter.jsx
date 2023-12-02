@@ -36,7 +36,7 @@ const JobListContainerRecruiter = () => {
         <div className='container-lg'>
             <AlertMessage />
             <div className='row'>
-                <div className='col-md-5'>
+                <div className='col-md-5 mb-3'>
                     <JobListFilter />
                 </div>
                 <div className='col-md-7'>

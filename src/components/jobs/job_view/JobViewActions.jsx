@@ -51,8 +51,9 @@ const JobViewActions = ({ ids }) => {
 
     return (
         <div>
-            {user && user.role === 'recruiter' &&  user._id === ids.recruiter && (
-                <div>
+            <hr />
+            {user && user.role === 'recruiter' && user._id === ids.recruiter ? (
+                <div className='action-buttons'>
                     {console.log(user)}
                     <Link
                         to={`/jobs/edit/${ids._id}`}
@@ -61,10 +62,25 @@ const JobViewActions = ({ ids }) => {
                         Edit
                     </Link>
                     <button
+                        // onClick={(e) => handleDelete(e, ids._id)}
+                        className='btn btn-warning btn-sm me-1'
+                    >
+                        Close
+                    </button>
+                    <button
                         onClick={(e) => handleDelete(e, ids._id)}
                         className='btn btn-danger btn-sm'
                     >
                         Delete
+                    </button>
+                </div>
+            ) : (
+                <div className='action-buttons'>
+                    <button
+                        // onClick={(e) => handleDelete(e, ids._id)}
+                        className='btn btn-success me-1'
+                    >
+                        Apply
                     </button>
                 </div>
             )}

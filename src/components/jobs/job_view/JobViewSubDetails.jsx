@@ -8,13 +8,13 @@ const JobViewSubDetails = ({ job }) => {
             <div className='card-body'>
                 <h1 className='card-title fw-bold text-primary fs-4'>{job.title}</h1>
                 <h6 className='fw-bold'>
+                    Company: <span className='text-muted fw-light'>{job.company}</span>
+                </h6>
+                <h6 className='fw-bold'>
                     Position: <span className='text-muted fw-light'>{job.position}</span>
                 </h6>
                 <h6 className='fw-bold'>
                     Salary: <span className='text-muted fw-light'>{job.salary}</span>
-                </h6>
-                <h6 className='fw-bold'>
-                    Company: <span className='text-muted fw-light'>{job.company}</span>
                 </h6>
                 <h6 className='fw-bold'>
                     Location: <span className='text-muted fw-light'>{job.location}</span>

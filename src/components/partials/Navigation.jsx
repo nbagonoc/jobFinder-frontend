@@ -86,7 +86,7 @@ const Navigation = () => {
                                                 className='dropdown-item'
                                                 href='#'
                                             >
-                                                Dashboard
+                                                Dashboard (soon)
                                             </a>
                                         </li>
                                         <li>
