@@ -16,6 +16,8 @@ export const JobCreateForm = () => {
         category: '',
         salary: '',
         position: '',
+        arrangement: '',
+        type: '',
         description: '',
     })
     const navigate = useNavigate()
@@ -26,9 +28,11 @@ export const JobCreateForm = () => {
 
     const onChange = (e) => {
         const { name, value } = e.target
+        const newValue = name === 'salary' ? parseInt(value) : value; // convert salary to number/int
+
         setFormData({
             ...formData,
-            [name]: value,
+            [name]: newValue,
         })
     }
 
@@ -41,9 +45,11 @@ export const JobCreateForm = () => {
             category: formData.category,
             salary: formData.salary,
             position: formData.position,
+            arrangement: formData.arrangement,
+            type: formData.type,
             description: formData.description,
         }
-
+        console.log(job)
         const headers = {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${ token }`
@@ -168,15 +174,15 @@ export const JobCreateForm = () => {
             
                 >
                     <option value='' disabled>Select category</option>
-                    <option value='information_and_technology'>IT</option>
-                    <option value='business_and_management'>Business Management</option>
-                    <option value='healthcare'>Healthcare</option>
-                    <option value='education'>Education</option>
-                    <option value='engineering'>Engineering</option>
-                    <option value='sales_and_customer_service'>Sales and Customer Service</option>
-                    <option value='creative_arts_and_design'>Creative Arts and Design</option>
-                    <option value='science_and_research'>Science and Research</option>
-                    <option value='hospitality_and_tourism'>Hospitality and Tourism</option>
+                    <option value='Information and Technology'>Information and Technology</option>
+                    <option value='Business and Management'>Business and Management</option>
+                    <option value='Healthcare'>Healthcare</option>
+                    <option value='Education'>Education</option>
+                    <option value='Engineering'>Engineering</option>
+                    <option value='Sales and Customer Service'>Sales and Customer Service</option>
+                    <option value='Creative Arts and Design'>Creative Arts and Design</option>
+                    <option value='Science and Research'>Science and Research</option>
+                    <option value='Hospitality and Tourism'>Hospitality and Tourism</option>
                 </select>
                 <span className='text-danger'>
                     {errors && errors.category ? errors.category : ''}
@@ -187,7 +193,7 @@ export const JobCreateForm = () => {
                 <input
                     id='salary'
                     name='salary'
-                    type='text'
+                    type='number'
                     placeholder='Enter job salary'
                     className={`form-control ${
                         errors && errors.salary ? 'border-danger' : ''
@@ -197,6 +203,51 @@ export const JobCreateForm = () => {
                 />
                 <span className='text-danger'>
                     {errors && errors.salary ? errors.salary : ''}
+                </span>
+            </div>
+            <div className='mb-3'>
+                <label htmlFor='size'>Arrangement</label>
+                <select
+                    className={`form-select ${
+                        errors && errors.arrangement ? 'border-danger' : ''
+                    }`}
+                    id='arrangement'
+                    name='arrangement'
+                    onChange={onChange}
+                    value={formData.arrangement}
+                    defaultValue={formData.arrangement}
+                    aria-label='Select arrangement'
+            
+                >
+                    <option value='' disabled>Select arrangement</option>
+                    <option value='On-site'>On-site</option>
+                    <option value='Remote'>Remote</option>
+                    <option value='Hybrid'>Hybrid</option>
+                </select>
+                <span className='text-danger'>
+                    {errors && errors.arrangement ? errors.arrangement : ''}
+                </span>
+            </div>
+            <div className='mb-3'>
+                <label htmlFor='size'>Type</label>
+                <select
+                    className={`form-select ${
+                        errors && errors.type ? 'border-danger' : ''
+                    }`}
+                    id='type'
+                    name='type'
+                    onChange={onChange}
+                    value={formData.type}
+                    defaultValue={formData.type}
+                    aria-label='Select type'
+            
+                >
+                    <option value='' disabled>Select type</option>
+                    <option value='Full-time'>Full-time</option>
+                    <option value='Part-time'>Part-time</option>
+                </select>
+                <span className='text-danger'>
+                    {errors && errors.type ? errors.type : ''}
                 </span>
             </div>
             <div className='mb-3'>

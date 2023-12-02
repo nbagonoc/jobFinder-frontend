@@ -18,6 +18,8 @@ export const JobEditForm = () => {
         category: '',
         salary: '',
         position: '',
+        arrangement: '',
+        type: '',
         description: '',
     })
     const navigate = useNavigate()
@@ -36,6 +38,8 @@ export const JobEditForm = () => {
                     category: job.category,
                     salary: job.salary,
                     position: job.position,
+                    arrangement: job.arrangement,
+                    type: job.type,
                     description: job.description,
                 })
             } catch (error) {
@@ -62,9 +66,11 @@ export const JobEditForm = () => {
 
     const onChange = (e) => {
         const { name, value } = e.target
+        const newValue = name === 'salary' ? parseInt(value) : value; // convert salary to number/int
+
         setFormData({
             ...formData,
-            [name]: value,
+            [name]: newValue,
         })
     }
 
@@ -77,6 +83,8 @@ export const JobEditForm = () => {
             category: formData.category,
             salary: formData.salary,
             position: formData.position,
+            arrangement: formData.arrangement,
+            type: formData.type,
             description: formData.description,
         }
 
@@ -86,6 +94,7 @@ export const JobEditForm = () => {
         }
 
         try {
+            console.log(job)
             const response = await axios.put(`${jobsAPI}/${_id}`, job, {
                 headers,
             })
@@ -197,23 +206,25 @@ export const JobEditForm = () => {
                             <option value='' disabled>
                                 Select category
                             </option>
-                            <option value='it'>IT</option>
-                            <option value='business_management'>
-                                Business Management
+                            <option value='Information and Technology'>
+                                Information and Technology
                             </option>
-                            <option value='healthcare'>Healthcare</option>
-                            <option value='education'>Education</option>
-                            <option value='engineering'>Engineering</option>
-                            <option value='sales_customer_service'>
+                            <option value='Business and Management'>
+                                Business and Management
+                            </option>
+                            <option value='Healthcare'>Healthcare</option>
+                            <option value='Education'>Education</option>
+                            <option value='Engineering'>Engineering</option>
+                            <option value='Sales and Customer Service'>
                                 Sales and Customer Service
                             </option>
-                            <option value='creative_arts_design'>
+                            <option value='Creative Arts and Design'>
                                 Creative Arts and Design
                             </option>
-                            <option value='science_research'>
+                            <option value='Science and Research'>
                                 Science and Research
                             </option>
-                            <option value='hospitality_tourism'>
+                            <option value='Hospitality and Tourism'>
                                 Hospitality and Tourism
                             </option>
                         </select>
@@ -257,6 +268,57 @@ export const JobEditForm = () => {
                         />
                         <span className='text-danger'>
                             {errors && errors.position ? errors.position : ''}
+                        </span>
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor='size'>Arrangement</label>
+                        <select
+                            className={`form-select ${
+                                errors && errors.arrangement
+                                    ? 'border-danger'
+                                    : ''
+                            }`}
+                            id='arrangement'
+                            name='arrangement'
+                            onChange={onChange}
+                            value={formData.arrangement}
+                            defaultValue={formData.arrangement}
+                            aria-label='Select arrangement'
+                        >
+                            <option value='' disabled>
+                                Select arrangement
+                            </option>
+                            <option value='On-site'>On-site</option>
+                            <option value='Remote'>Remote</option>
+                            <option value='Hybrid'>Hybrid</option>
+                        </select>
+                        <span className='text-danger'>
+                            {errors && errors.arrangement
+                                ? errors.arrangement
+                                : ''}
+                        </span>
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor='size'>Type</label>
+                        <select
+                            className={`form-select ${
+                                errors && errors.type ? 'border-danger' : ''
+                            }`}
+                            id='type'
+                            name='type'
+                            onChange={onChange}
+                            value={formData.type}
+                            defaultValue={formData.type}
+                            aria-label='Select type'
+                        >
+                            <option value='' disabled>
+                                Select type
+                            </option>
+                            <option value='Full-time'>Full-time</option>
+                            <option value='Part-time'>Part-time</option>
+                        </select>
+                        <span className='text-danger'>
+                            {errors && errors.type ? errors.type : ''}
                         </span>
                     </div>
                     <div className='mb-3'>
