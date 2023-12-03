@@ -97,7 +97,7 @@ export const JobEditForm = () => {
             const response = await axios.put(`${jobsAPI}/${_id}`, job, {
                 headers,
             })
-            const message = response.data
+            const message = response.data.message
             dispatch({
                 type: 'EDIT_JOB',
                 payload: {
@@ -107,7 +107,7 @@ export const JobEditForm = () => {
                     },
                 },
             })
-            navigate('/')
+            navigate(`/jobs/view/${_id}`)
         } catch (error) {
             const errors = error.response.data
 

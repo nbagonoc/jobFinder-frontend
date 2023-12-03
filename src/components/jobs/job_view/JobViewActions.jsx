@@ -3,30 +3,31 @@ import { Link, useNavigate } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
 
 import { jobsAPI } from '../../../API'
-import { useGlobalContext } from '../../../hooks/useGlobalContext'
+// import { useGlobalContext } from '../../../hooks/useGlobalContext'
+import { useJobContext } from '../../../hooks/useJobContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const JobViewActions = ({ ids }) => {
-    const { dispatch } = useGlobalContext()
+    // const { dispatch } = useGlobalContext()
+    const { dispatch } = useJobContext()
     const { user, token } = useAuthContext()
     const navigate = useNavigate()
 
     const handleDelete = async (e, _id) => {
         e.preventDefault()
+        const headers = {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+
         try {
-            const headers = {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            }
-            const response = await axios.delete(`${jobsAPI}/${_id}`, {
-                headers,
-            })
+            const response = await axios.delete(`${jobsAPI}/${_id}`, { headers })
             const message = response.data.message
 
             dispatch({
                 type: 'DELETE_JOB',
                 payload: {
-                    _id,
+                    // _id, //why do we need this?
                     alert: {
                         message,
                         success: true,
@@ -34,8 +35,9 @@ const JobViewActions = ({ ids }) => {
                 },
             })
             navigate('/jobs/owned')
-        } catch (err) {
-            const message = err.response.data
+        } catch (error) {
+            const message = error.response.data.message
+
             dispatch({
                 type: 'DELETE_JOB',
                 payload: {
@@ -45,7 +47,7 @@ const JobViewActions = ({ ids }) => {
                     },
                 },
             })
-            navigate('/jobs/owned')
+            // navigate('/jobs/owned')
         }
     }
 

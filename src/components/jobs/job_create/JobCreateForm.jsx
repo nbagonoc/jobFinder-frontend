@@ -56,7 +56,7 @@ export const JobCreateForm = () => {
 
         try {
             const response = await axios.post(jobsAPI, job, { headers })
-            const message = response.data
+            const message = response.data.message
 
             dispatch({
                 type: 'CREATE_JOB',
@@ -67,7 +67,7 @@ export const JobCreateForm = () => {
                     },
                 },
             })
-            navigate('/')
+            navigate('/jobs/owned')
         } catch (error) {
             const errors = error.response.data
             const message = error.response.data.message
@@ -166,7 +166,6 @@ export const JobCreateForm = () => {
                     name='category'
                     onChange={onChange}
                     value={formData.category}
-                    defaultValue={formData.category}
                     aria-label='Select category'
                 >
                     <option value='' disabled>
@@ -225,7 +224,6 @@ export const JobCreateForm = () => {
                     name='arrangement'
                     onChange={onChange}
                     value={formData.arrangement}
-                    defaultValue={formData.arrangement}
                     aria-label='Select arrangement'
                 >
                     <option value='' disabled>
@@ -249,7 +247,6 @@ export const JobCreateForm = () => {
                     name='type'
                     onChange={onChange}
                     value={formData.type}
-                    defaultValue={formData.type}
                     aria-label='Select type'
                 >
                     <option value='' disabled>
