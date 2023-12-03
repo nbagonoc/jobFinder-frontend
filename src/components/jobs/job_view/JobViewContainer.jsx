@@ -7,6 +7,7 @@ import AlertMessage from '../../partials/AlertMessage'
 import { useJobContext } from '../../../hooks/useJobContext'
 import ViewJobDetails from './JobViewDetails'
 import JobViewSubDetails from './JobViewSubDetails'
+import CompanyAboutDetails from '../../company/company_about/CompanyAboutDetails'
 
 const JobViewContainer = () => {
     const { _id } = useParams()
@@ -46,12 +47,19 @@ const JobViewContainer = () => {
     return (
         <div className='container-lg'>
             <div className='row'>
-                <div className='col-md-5 mb-3'>
+                <div className='col-md-5 col-lg-4 col-xl-3 mb-3'>
                     {job && <JobViewSubDetails job={job} />}
                 </div>
-                <div className='col-md-7'>
-                    <AlertMessage />
-                    {job && <ViewJobDetails job={job} />}
+                <div className='col-md-7 col-lg-8 col-xl-9 mb-3'>
+                    <div className='row'>
+                        <div className='col-xl-8 mb-3'>
+                            <AlertMessage />
+                            {job && <ViewJobDetails job={job} />}
+                        </div>
+                        <div className='col-xl-4 mb-3'>
+                            <CompanyAboutDetails />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
