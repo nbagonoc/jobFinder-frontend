@@ -1,9 +1,14 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+
 import './App.css'
 
 import Login from './pages/auth/Login'
 import RegisterSelect from './pages/auth/RegisterSelect'
 import Register from './pages/auth/Register'
 
+import UserProfile from './pages/users/UserProfile'
+
+import JobListRecruiter from './pages/jobs/JobListRecruiter'
 import JobList from './pages/jobs/JobList'
 import JobView from './pages/jobs/JobView'
 import JobCreate from './pages/jobs/JobCreate'
@@ -12,10 +17,8 @@ import JobEdit from './pages/jobs/JobEdit'
 import Home from './pages/Home'
 import Navigation from './components/partials/Navigation'
 
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-
 import { useAuthContext } from './hooks/useAuthContext'
-import JobListRecruiter from './pages/jobs/JobListRecruiter'
+
 
 const App = () => {
     const { user } = useAuthContext()
@@ -49,6 +52,10 @@ const App = () => {
                                 user ? <Navigate to='/' /> : <Register />
                             }
                         />
+
+                        {/*  */}
+                        <Route path='/profile' element={<UserProfile />} />
+
                         {/* Jobs */}
                         <Route path='/jobs' element={<JobList />} />
                         <Route

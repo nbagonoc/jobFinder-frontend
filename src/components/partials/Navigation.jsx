@@ -81,16 +81,23 @@ const Navigation = () => {
                                         Welcome {user.name}
                                     </a>
                                     <ul className='dropdown-menu'>
-                                        <li>
+                                        {user && user.role === 'recruiter' && (
+                                            <li className='border-bottom'>
+                                                <a
+                                                    className='dropdown-item'
+                                                    href='#'
+                                                >
+                                                    Dashboard (soon)
+                                                </a>
+                                            </li>
+                                        )}
+                                        <li className='border-bottom'>
                                             <a
                                                 className='dropdown-item'
-                                                href='#'
+                                                href='/profile'
                                             >
-                                                Dashboard (soon)
+                                                Profile
                                             </a>
-                                        </li>
-                                        <li>
-                                            <hr className='dropdown-divider' />
                                         </li>
                                         <li>
                                             <a
