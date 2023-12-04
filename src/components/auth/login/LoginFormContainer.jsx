@@ -7,7 +7,7 @@ import LoginForm from './LoginForm'
 const LoginFormContainer = () => {
     return (
         <FullVerticalFluid>
-            <div className='col-sm-8 col-lg-4 col-xl-4'>
+            <div className='col-sm-6 col-lg-4 col-xxl-2'>
                 <AlertMessage />
                 <div className='card'>
                     <div className='card-header'>
