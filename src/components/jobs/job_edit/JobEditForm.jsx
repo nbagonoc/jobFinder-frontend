@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 
 import { jobsAPI } from '../../../API'
-import AlertMessage from '../../partials/AlertMessage'
+import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 import { useJobContext } from '../../../hooks/useJobContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 

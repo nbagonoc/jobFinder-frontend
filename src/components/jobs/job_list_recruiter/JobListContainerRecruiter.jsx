@@ -6,7 +6,7 @@ import { useJobContext } from '../../../hooks/useJobContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import JobListDetails from '../job_list/JobListDetails'
 import JobListFilter from '../job_list/JobListFilter'
-import AlertMessage from '../../partials/AlertMessage'
+import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 
 const JobListContainerRecruiter = () => {
     const { jobsOwned, dispatch } = useJobContext()

@@ -5,7 +5,7 @@ import { jobsAPI } from '../../../API'
 import { useJobContext } from '../../../hooks/useJobContext'
 import JobListDetails from './JobListDetails'
 import JobListFilter from './JobListFilter'
-import AlertMessage from '../../partials/AlertMessage'
+import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 
 const JobListContainer = () => {
     const { jobs, dispatch } = useJobContext()
