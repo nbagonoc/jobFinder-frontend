@@ -3,12 +3,14 @@ import UserEducation from "./UserEducation"
 import UserExperience from "./UserExperience"
 import UserSkills from "./UserSkills"
 import UserProfile from "./UserProfile"
+import AlertMessage from '../partials/AlertMessage/AlertMessage'
 
 const UserProfileContainer = () => {
     return (
         <div className='container-lg'>
             <div className='row'>
                 <div className='col-md-5 col-lg-4 col-xl-3 mb-3'>
+                    <AlertMessage />
                     <UserProfile />
                 </div>
                 <div className='col-md-7 col-lg-8 col-xl-9 mb-3'>

@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 
 import FullVerticalFluid from '../../partials/FullVerticalFluid'
+import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 import RegisterForm from './RegisterForm'
 
 const RegisterFormContainer = () => {
     return (
         <FullVerticalFluid>
-            <div className='col-sm-6 col-lg-4 col-xl-3'>
+            <div className='col-sm-8 col-lg-4 col-xl-4'>
+                <AlertMessage />
                 <div className='card'>
                     <div className='card-header'>
                         <h1 className='mb-0 fs-3 text-center'>Sign-up</h1>
@@ -16,13 +18,13 @@ const RegisterFormContainer = () => {
                     </div>
                 </div>
                 <div className='mt-3'>
-                    <p className='text-center text-secondary fw-light'>
+                    <p className='text-center text-secondary fw-light mb-0'>
                         Already signed-up?&nbsp;
-                        <Link className='btn btn-sm btn-success' to='/login'>
+                        <Link className='' to='/login'>
                             Log-in
                         </Link>
                     </p>
-                    <p className='text-center text-muted fw-lighter'>
+                    <p className='text-center text-secondary fw-light'>
                         Not sure?&nbsp;
                         <Link
                             className=''

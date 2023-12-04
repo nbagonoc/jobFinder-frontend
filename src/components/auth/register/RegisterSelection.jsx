@@ -77,13 +77,13 @@ const RegisterSelection = () => {
                 </div>
             </div>
             <div className='mt-3'>
-                <p className='text-center text-secondary fw-light'>
+                <p className='text-center text-secondary fw-light mb-0'>
                     Already signed-up?&nbsp;
-                    <Link className='btn btn-sm btn-success' to='/login'>
+                    <Link className='' to='/login'>
                         Log-in
                     </Link>
                 </p>
-                <p className='text-center text-muted fw-lighter'>
+                <p className='text-center text-secondary fw-light'>
                     Not sure?&nbsp;
                     <Link
                         className=''
