@@ -43,7 +43,7 @@ const LoginForm = () => {
                 type: 'LOGIN',
                 payload: { token, user },
             })
-            navigate('/')
+            navigate('/profile')
         } catch (error) {
             const errors = error.response.data.errors
             const message = error.response.data.message

@@ -1,11 +1,9 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import FullVerticalFluid from '../../partials/FullVerticalFluid'
 import RegisterForm from './RegisterForm'
-import RegisterRecruiterForm from './RegisterRecruiterForm'
 
 const RegisterFormContainer = () => {
-    const location = useLocation()
     return (
         <FullVerticalFluid>
             <div className='col-sm-6 col-lg-4 col-xl-3'>
@@ -14,11 +12,7 @@ const RegisterFormContainer = () => {
                         <h1 className='mb-0 fs-3 text-center'>Sign-up</h1>
                     </div>
                     <div className='card-body'>
-                        {location.pathname === '/register-applicant' ? (
-                            <RegisterForm />
-                        ) : (
-                            <RegisterRecruiterForm />
-                        )}
+                        <RegisterForm />
                     </div>
                 </div>
                 <div className='mt-3'>

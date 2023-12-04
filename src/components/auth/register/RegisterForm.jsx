@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 import { authAPI } from '../../../API'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const RegisterForm = () => {
+    const location = useLocation()
     const { errors, dispatch } = useAuthContext()
     const [formData, setFormData] = useState({
         firstName: '',
@@ -34,6 +35,7 @@ const RegisterForm = () => {
             firstName: formData.firstName,
             lastName: formData.lastName,
             email: formData.email,
+            role: location.pathname === '/register-recruiter' ? 'recruiter' : 'applicant',
             password: formData.password,
             password2: formData.password2,
         }
@@ -50,7 +52,7 @@ const RegisterForm = () => {
                     },
                 },
             })
-            navigate('/')
+            navigate('/login')
         } catch (error) {
             const errors = error.response.data
             const message = error.response.data.message
