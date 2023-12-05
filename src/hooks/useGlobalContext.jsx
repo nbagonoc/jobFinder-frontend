@@ -1,12 +1,14 @@
-import { GlobalContext } from '../context/GlobalContext'
+import { AuthContext } from '../context/AuthContext'
+import { JobContext } from '../context/JobContext'
 import { useContext } from 'react'
 
 export const useGlobalContext = () => {
-    const context = useContext(GlobalContext)
+    const auth = useContext(AuthContext)
+    const job = useContext(JobContext)
 
-    if (!context) {
-        throw new Error('useGlobalContext must be used within a GlobalProvider')
+    if (!auth || !job) {
+        throw new Error('useGlobalContext must be used within a component wrapped with AuthContext and JobContext')
     }
 
-    return context
+    return { auth, job }
 }
