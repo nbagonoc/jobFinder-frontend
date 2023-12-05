@@ -3,12 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
 
 import { jobsAPI } from '../../../API'
-// import { useGlobalContext } from '../../../hooks/useGlobalContext'
 import { useJobContext } from '../../../hooks/useJobContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const JobViewActions = ({ ids }) => {
-    // const { dispatch } = useGlobalContext()
     const { dispatch } = useJobContext()
     const { user, token } = useAuthContext()
     const navigate = useNavigate()
