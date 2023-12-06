@@ -15,7 +15,13 @@ const JobViewContainer = () => {
 
     // reset states when component unmounts
     const resetState = useCallback(() => {
-        dispatch({ type: 'SET_JOB', payload: { job: {}, alert: {} } })
+        dispatch({
+            type: 'SET_JOB',
+            payload: {
+                job: {},
+                alert: {},
+            },
+        })
     }, [dispatch])
 
     useEffect(() => {

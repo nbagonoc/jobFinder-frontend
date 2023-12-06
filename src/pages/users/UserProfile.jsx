@@ -1,4 +1,4 @@
-import UserProfileContainer from '../../components/users/UserProfileContainer'
+import UserProfileContainer from '../../components/users/profile/UserProfileContainer'
 
 const UserProfile = () => {
   return (
