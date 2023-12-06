@@ -19,10 +19,17 @@ export const AuthContextProvider = ({ children }) => {
         if (token) {
             const decodedToken = jwtDecode(token)
             const user = { _id: decodedToken._id, name: decodedToken.firstName, role: decodedToken.role }
-            dispatch({
-                type: 'LOGIN',
-                payload: { user, token },
-            })
+            const currentTime = Date.now() / 1000
+
+            if (decodedToken.exp && decodedToken.exp < currentTime) { // Check if the token is expired
+                localStorage.removeItem('token')
+                dispatch({ type: 'LOGOUT' })
+            } else {
+                dispatch({
+                    type: 'LOGIN',
+                    payload: { user, token },
+                });
+            }
         }
     }, [])
 
