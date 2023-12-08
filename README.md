@@ -19,14 +19,14 @@ npm run test
     - Applicant:
         - Manage(view/edit) profile:
             - personal details  (PRIORITY)
-                - contact info
-                - first name, last name
+                - contact info (DONE)
+                - first name, last name (DONE)
                 - address/location
             - about
             - education
             - experience
             - skills
-        - Should be able to apply job (PRIORITY)
+        - Should be able to apply job (PRIORITY) (DONE)
         - Should be able to withdraw job application
     - Recruiter:
         - Manage(view/edit) company profile:
