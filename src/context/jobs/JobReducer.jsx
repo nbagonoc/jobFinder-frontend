@@ -6,6 +6,12 @@ const AuthReducer = (state, action) => {
                 alert: action.payload.alert,
                 errors: action.payload.errors,
             }
+        case 'APPLY_JOB':
+            return {
+                ...state,
+                job: action.payload.job,
+                alert: action.payload.alert,
+            }
         case 'EDIT_JOB':
             return {
                 ...state,
@@ -32,11 +38,11 @@ const AuthReducer = (state, action) => {
                 ...state,
                 jobsOwned: action.payload.jobs,
             }
-        case 'SET_JOBS_APPLIED':
-            return {
-                jobsApplied: action.payload.jobs,
-                alert: action.payload.alert,
-            }
+        // case 'SET_JOB_APPLICANTS':
+        //     return {
+        //         jobApplicants: action.payload.jobs,
+        //         alert: action.payload.alert,
+        //     }
         case 'CLEANER':
             return {
                 ...state,

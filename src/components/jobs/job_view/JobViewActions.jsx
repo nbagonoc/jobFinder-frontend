@@ -6,7 +6,7 @@ import { jobsAPI } from '../../../API'
 import { useJobContext } from '../../../hooks/useJobContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
-const JobViewActions = ({ ids }) => {
+const JobViewActions = ({ ids, job }) => {
     const { dispatch } = useJobContext()
     const { user, token } = useAuthContext()
     const navigate = useNavigate()
@@ -25,7 +25,6 @@ const JobViewActions = ({ ids }) => {
             dispatch({
                 type: 'DELETE_JOB',
                 payload: {
-                    // _id, //why do we need this?
                     alert: {
                         message,
                         success: true,
@@ -49,12 +48,48 @@ const JobViewActions = ({ ids }) => {
         }
     }
 
+    const handleApply = async (e, _id) => {
+        e.preventDefault()
+        const headers = {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        }
+
+        try {
+            const response = await axios.post(`${jobsAPI}/${_id}/apply`, {}, { headers })
+            const message = response.data.message
+            job.applicants.push(user._id)
+            const updatedJob = job
+            dispatch({
+                type: 'APPLY_JOB',
+                payload: {
+                    job: updatedJob,
+                    alert: {
+                        message,
+                        success: true,
+                    },
+                },
+            })
+
+        } catch (error) {
+            const message = error.response.data.message
+            dispatch({
+                type: 'APPLY_JOB',
+                payload: {
+                    alert: {
+                        message,
+                        success: false,
+                    },
+                },
+            })
+        }
+    }
+
     return (
         <div>
             <hr />
             {user && user.role === 'recruiter' && user._id === ids.recruiter ? (
                 <div className='action-buttons'>
-                    {console.log(user)}
                     <Link
                         to={`/jobs/edit/${ids._id}`}
                         className='btn btn-secondary btn-sm me-1'
@@ -62,7 +97,6 @@ const JobViewActions = ({ ids }) => {
                         Edit
                     </Link>
                     <button
-                        // onClick={(e) => handleDelete(e, ids._id)}
                         className='btn btn-warning btn-sm me-1'
                     >
                         Close
@@ -76,12 +110,21 @@ const JobViewActions = ({ ids }) => {
                 </div>
             ) : (
                 <div className='action-buttons'>
-                    <button
-                        // onClick={(e) => handleDelete(e, ids._id)}
-                        className='btn btn-success me-1'
-                    >
-                        Apply
-                    </button>
+                    {Array.isArray(job.applicants) && job.applicants.includes(user._id) ? (
+                        <button
+                            className='btn btn-secondary'
+                            disabled
+                        >
+                            Already applied
+                        </button>
+                    ) : (
+                        <button
+                            onClick={(e) => handleApply(e, ids._id)}
+                            className='btn btn-success'
+                        >
+                            Apply
+                        </button>
+                    )}
                 </div>
             )}
         </div>
@@ -90,6 +133,7 @@ const JobViewActions = ({ ids }) => {
 
 JobViewActions.propTypes = {
     ids: PropTypes.object.isRequired,
+    job: PropTypes.object.isRequired,
 }
 
 export default JobViewActions

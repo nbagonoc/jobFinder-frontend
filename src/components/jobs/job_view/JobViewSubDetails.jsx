@@ -30,6 +30,7 @@ const JobViewSubDetails = ({ job }) => {
                 </h6>
                 <JobViewActions
                     ids={{ _id: job._id, recruiter: job.recruiter }}
+                    job={job}
                 />
             </div>
         </div>
