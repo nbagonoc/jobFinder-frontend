@@ -29,7 +29,7 @@ const UserApplicantListDetails = ({ jobApplicant }) => {
                         <div className='col-lg-4 mt-1 mt-lg-0'>
                             <hr className='d-block d-lg-none'/>
                             <Link
-                                to={`/`}
+                                to={`/applicant/${jobApplicant._id}`}
                                 className='btn btn-secondary btn-sm me-1'
                             >
                                 View

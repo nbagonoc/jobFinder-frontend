@@ -5,6 +5,11 @@ const UserReducer = (state, action) => {
                 ...state,
                 profile: action.payload.profile,
             }
+        case 'SET_APPLICANT':
+            return {
+                ...state,
+                applicant: action.payload.applicant,
+            }
         case 'CLEANER':
             return {
                 ...state,

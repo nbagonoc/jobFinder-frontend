@@ -6,9 +6,8 @@ export const UserContext = createContext()
 
 export const UserContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(UserReducer, {
-        applicant: null,
-        applicants: null,
-        profile: null,
+        applicant: {},
+        profile: {},
         alert: {},
         errors: [],
     })
