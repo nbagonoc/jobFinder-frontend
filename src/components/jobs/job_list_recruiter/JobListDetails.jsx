@@ -36,12 +36,14 @@ const JobListDetails = ({ job }) => {
                             >
                                 view job
                             </Link>
-                            <Link
-                                to={`/jobs/${job._id}/applicants`}
-                                className='btn btn-secondary btn-sm me-1'
-                            >
-                                view applicants
-                            </Link>
+                            {job.applicants.length > 0 && (
+                                <Link
+                                    to={`/jobs/${job._id}/applicants`}
+                                    className='btn btn-secondary btn-sm me-1'
+                                >
+                                    view applicants
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>

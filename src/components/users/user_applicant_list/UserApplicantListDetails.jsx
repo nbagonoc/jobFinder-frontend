@@ -1,0 +1,66 @@
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+
+const UserApplicantListDetails = ({ jobApplicant }) => {
+    return (
+        <div className='col-sm-6 col-lg-12'>
+            <div className='card mb-3'>
+                <div className='card-body'>
+                    <div className='row'>
+                        <div className='col-lg-3'>
+                            <h3 className='card-title fw-bold text-primary fs-5'>
+                                {jobApplicant.firstName} {jobApplicant.lastName}
+                            </h3>
+                        </div>
+                        <div className='col-lg-3'>
+                            <h6 className='fw-bold'>
+                                <span className='text-muted fw-light'>
+                                    {jobApplicant.email}
+                                </span>
+                            </h6>
+                        </div>
+                        <div className='col-lg-2'>
+                            <h6 className='fw-bold'>
+                                <span className='text-muted fw-light'>
+                                    Denied
+                                </span>
+                            </h6>
+                        </div>
+                        <div className='col-lg-4 mt-1 mt-lg-0'>
+                            <Link
+                                to={`/`}
+                                className='btn btn-secondary btn-sm me-1'
+                            >
+                                View
+                            </Link>
+                            <Link
+                                to={`/`}
+                                className='btn btn-secondary btn-sm me-1'
+                            >
+                                Deny
+                            </Link>
+                            <Link
+                                to={`/`}
+                                className='btn btn-secondary btn-sm me-1'
+                            >
+                                Whitelist
+                            </Link>
+                            <Link
+                                to={`/`}
+                                className='btn btn-success btn-sm me-1'
+                            >
+                                Approve
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+UserApplicantListDetails.propTypes = {
+    jobApplicant: PropTypes.object.isRequired,
+}
+
+export default UserApplicantListDetails
