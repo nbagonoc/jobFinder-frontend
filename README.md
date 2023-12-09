@@ -33,7 +33,7 @@ npm run test
             - contact info
         - Manage job applicant:
             - view job applicants list (DONE)
-            - view job applicant profile (PRIORITY)
+            - view job applicant (DONE)
             - reject job applicant (dont/wont notify applicant)
             - approve job applicant (dont/wont notify applicant)
         - Manage job posting:
@@ -41,3 +41,6 @@ npm run test
                 - already found applicant
                 - job posting widthrawn
                 - others
+    - Others:
+        - Might want to move the profile in auth state
+    
