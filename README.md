@@ -1,6 +1,6 @@
 ## React + Vite
 
-The front-end for JoBoard
+The front-end for JobFinder
 
 ## How to run locally:
 
