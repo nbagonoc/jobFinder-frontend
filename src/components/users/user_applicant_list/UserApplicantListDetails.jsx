@@ -27,6 +27,7 @@ const UserApplicantListDetails = ({ jobApplicant }) => {
                             </h6>
                         </div>
                         <div className='col-lg-4 mt-1 mt-lg-0'>
+                            <hr className='d-block d-lg-none'/>
                             <Link
                                 to={`/`}
                                 className='btn btn-secondary btn-sm me-1'

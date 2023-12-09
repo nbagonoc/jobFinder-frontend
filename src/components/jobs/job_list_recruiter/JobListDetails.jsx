@@ -30,6 +30,7 @@ const JobListDetails = ({ job }) => {
                             </span>
                         </div>
                         <div className='col-lg-3 mt-1 mt-lg-0'>
+                            <hr className='d-block d-lg-none'/>
                             <Link
                                 to={`/jobs/view/${job._id}`}
                                 className='btn btn-secondary btn-sm me-1'
