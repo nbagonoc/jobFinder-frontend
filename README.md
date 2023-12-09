@@ -18,22 +18,21 @@ npm run test
 - Front-end Backlog:
     - Applicant:
         - Manage(view/edit) profile:
-            - personal details  (PRIORITY)
+            - personal details  VIEW (DONE)
                 - contact info (DONE)
                 - first name, last name (DONE)
-                - address/location
             - about
             - education
             - experience
             - skills
-        - Should be able to apply job (PRIORITY) (DONE)
+        - Should be able to apply job (DONE)
         - Should be able to withdraw job application
     - Recruiter:
         - Manage(view/edit) company profile:
             - about (PRIORITY)
             - contact info
         - Manage job applicant:
-            - view job applicants list (PRIORITY)
+            - view job applicants list (DONE)
             - view job applicant profile (PRIORITY)
             - reject job applicant (dont/wont notify applicant)
             - approve job applicant (dont/wont notify applicant)
