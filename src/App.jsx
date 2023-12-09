@@ -7,6 +7,7 @@ import RegisterSelect from './pages/auth/RegisterSelect'
 import Register from './pages/auth/Register'
 
 import UserProfile from './pages/users/UserProfile'
+import UserApplicantList from './pages/users/UserApplicantList'
 
 import JobListRecruiter from './pages/jobs/JobListRecruiter'
 import JobList from './pages/jobs/JobList'
@@ -47,13 +48,6 @@ const App = () => {
                             element={user ? <Navigate to='/' /> : <Register />}
                         />
 
-
-                        <Route
-                            path='/profile'
-                            // element={user ?  <UserProfile /> : <Navigate to='/login'/>} //for some reason, the user state is resetting to null when navigating to /profile?
-                            element={<UserProfile />}
-                        />
-
                         {/* Jobs */}
                         <Route path='/jobs' element={<JobList />} />
                         <Route
@@ -89,6 +83,17 @@ const App = () => {
                                     <Navigate to='/' />
                                 )
                             }
+                        />
+
+                        {/* Users */}
+                        <Route
+                            path='/profile'
+                            // element={user ?  <UserProfile /> : <Navigate to='/login'/>} //for some reason, the user state is resetting to null when navigating to /profile?
+                            element={<UserProfile />}
+                        />
+                        <Route
+                            path='/jobs/:_id/applicants'
+                            element={<UserApplicantList />}
                         />
                 </Routes>
         </BrowserRouter>
