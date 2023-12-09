@@ -36,25 +36,22 @@ const App = () => {
                         />
                         <Route
                             path='/register'
-                            element={
-                                user ? <Navigate to='/' /> : <RegisterSelect />
-                            }
+                            element={user ? <Navigate to='/' /> : <RegisterSelect />}
                         />
                         <Route
                             path='/register-applicant'
-                            element={
-                                user ? <Navigate to='/' /> : <Register />
-                            }
+                            element={user ? <Navigate to='/' /> : <Register />}
                         />
                         <Route
                             path='/register-recruiter'
-                            element={
-                                user ? <Navigate to='/' /> : <Register />
-                            }
+                            element={user ? <Navigate to='/' /> : <Register />}
                         />
 
                         {/*  */}
-                        <Route path='/profile' element={<UserProfile />} />
+                        <Route
+                            path='/profile'
+                            element={!user ? <Navigate to='/login'/> : <UserProfile />}
+                        />
 
                         {/* Jobs */}
                         <Route path='/jobs' element={<JobList />} />

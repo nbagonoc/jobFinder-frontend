@@ -10,7 +10,6 @@ import UserSkills from './UserSkills'
 import UserProfile from './UserProfile'
 import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 
 const UserProfileContainer = () => {
     const { profile, dispatch } = useUserContext()
