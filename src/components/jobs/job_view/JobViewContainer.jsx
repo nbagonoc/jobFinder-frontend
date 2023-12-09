@@ -51,7 +51,7 @@ const JobViewContainer = () => {
     }, [_id, dispatch, resetState])
 
     return (
-        <div className='container-lg'>
+        <div className='container-xxl'>
             <div className='row'>
                 <div className='col-md-5 col-lg-4 col-xl-3 mb-3'>
                     {job && <JobViewSubDetails job={job} />}

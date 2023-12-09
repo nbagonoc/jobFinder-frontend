@@ -33,7 +33,7 @@ const JobListContainerRecruiter = () => {
     }, [dispatch, token])
 
     return (
-        <div className='container-lg'>
+        <div className='container-xxl'>
             <AlertMessage />
             <JobListFilter />
             <div className='row'>

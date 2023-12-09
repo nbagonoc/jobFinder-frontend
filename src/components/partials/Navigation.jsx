@@ -22,7 +22,7 @@ const Navigation = () => {
             location.pathname === '/login'
         ) && (
             <nav className='navbar navbar-expand-sm bg-white shadow-sm mb-3'>
-                <div className='container-lg'>
+                <div className='container-xxl'>
                     <Link to='/' className='navbar-brand fw-bold text-primary'>
                         JobFinder
                     </Link>

@@ -24,7 +24,7 @@ const JobListContainer = () => {
     }, [dispatch])
 
     return (
-        <div className='container-lg'>
+        <div className='container-xxl'>
             <AlertMessage />
             <div className='row'>
                 <div className='col-md-5 mb-3'>

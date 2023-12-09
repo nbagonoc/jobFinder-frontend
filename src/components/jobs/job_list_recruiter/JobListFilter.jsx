@@ -50,12 +50,11 @@ const JobListFilter = () => {
                         </div>
 
                         <div className='col-sm-6 col-lg-3 mb-3 mb-sm-0'>
-                            <Link
-                                to='/jobs/create'
+                            <button
                                 className='btn btn-secondary w-100'
                             >
                                 Reset filter
-                            </Link>
+                            </button>
                         </div>
 
                         <div className='col-sm-6 col-lg-3'>
@@ -63,7 +62,7 @@ const JobListFilter = () => {
                                 to='/jobs/create'
                                 className='btn btn-success w-100'
                             >
-                                Post a job
+                                Post a new job
                             </Link>
                         </div>
                     </div>
@@ -74,7 +73,7 @@ const JobListFilter = () => {
                 <div className='card mb-3'>
                     <div className='card-body'>
                         <div className='row'>
-                            <div className='col-lg-4'>
+                            <div className='col-lg-3'>
                                 <h6 className='text-secondary mb-0'>Title</h6>
                             </div>
                             <div className='col-lg-3'>
@@ -82,14 +81,19 @@ const JobListFilter = () => {
                                     Position
                                 </h6>
                             </div>
-                            <div className='col-lg-3'>
+                            <div className='col-lg-2'>
                                 <h6 className='text-secondary mb-0'>
                                     Category
                                 </h6>
                             </div>
-                            <div className='col-lg-2'>
+                            <div className='col-lg-1'>
                                 <h6 className='text-secondary mb-0'>
                                     Applicants
+                                </h6>
+                            </div>
+                            <div className='col-lg-3'>
+                                <h6 className='text-secondary mb-0'>
+                                    Actions
                                 </h6>
                             </div>
                         </div>

@@ -47,10 +47,11 @@ const App = () => {
                             element={user ? <Navigate to='/' /> : <Register />}
                         />
 
-                        {/*  */}
+
                         <Route
                             path='/profile'
-                            element={!user ? <Navigate to='/login'/> : <UserProfile />}
+                            // element={user ?  <UserProfile /> : <Navigate to='/login'/>} //for some reason, the user state is resetting to null when navigating to /profile?
+                            element={<UserProfile />}
                         />
 
                         {/* Jobs */}

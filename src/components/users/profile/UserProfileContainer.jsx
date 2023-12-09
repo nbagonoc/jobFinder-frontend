@@ -51,7 +51,7 @@ const UserProfileContainer = () => {
     }, [dispatch, token])
 
     return (
-        <div className='container-lg'>
+        <div className='container-xxl'>
             {profile ? (
                 <div className='row'>
                     <div className='col-md-5 col-lg-4 col-xl-3 mb-3'>

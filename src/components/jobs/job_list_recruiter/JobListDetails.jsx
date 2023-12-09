@@ -11,7 +11,7 @@ const JobListDetails = ({ job }) => {
                 <div className='card mb-3'>
                     <div className='card-body'>
                         <div className='row'>
-                            <div className='col-lg-4'>
+                            <div className='col-lg-3'>
                                 <h3 className='card-title fw-bold text-primary fs-5'>
                                     {job.title}
                                 </h3>
@@ -23,15 +23,23 @@ const JobListDetails = ({ job }) => {
                                     </span>
                                 </h6>
                             </div>
-                            <div className='col-lg-3'>
+                            <div className='col-lg-2'>
                                 <span className='badge bg-primary me-1'>
                                     {job.category}
                                 </span>
                             </div>
-                            <div className='col-lg-2'>
+                            <div className='col-lg-1'>
                                 <span className='badge bg-primary me-1'>
                                     {job.applicants.length}
                                 </span>
+                            </div>
+                            <div className='col-lg-3 mt-1 mt-lg-0'>
+                                <button className='btn btn-secondary btn-sm me-1'>
+                                    view job
+                                </button>
+                                <button className='btn btn-secondary btn-sm'>
+                                    view applicants
+                                </button>
                             </div>
                         </div>
                     </div>
