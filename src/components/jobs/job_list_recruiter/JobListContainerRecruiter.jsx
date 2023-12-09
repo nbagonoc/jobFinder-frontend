@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import { jobsAPI } from '../../../API'
 import { useJobContext } from '../../../hooks/useJobContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
+
+import JobListColumnTitle from './JobListColumnTitle'
 import JobListDetails from './JobListDetails'
 import JobListFilter from './JobListFilter'
 import AlertMessage from '../../partials/AlertMessage/AlertMessage'
@@ -36,6 +38,7 @@ const JobListContainerRecruiter = () => {
         <div className='container-xxl'>
             <AlertMessage />
             <JobListFilter />
+            <JobListColumnTitle/>
             <div className='row'>
                 {jobsOwned && jobsOwned.length >= 1 ? (
                     jobsOwned.map((job) => (

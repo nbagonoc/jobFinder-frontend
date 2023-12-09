@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const UserApplicantListDetails = ({ jobApplicant }) => {
     return (
         <div className='col-sm-6 col-lg-12'>
-            <div className='card mb-3'>
+            <div className='card mb-3 mb-lg-1'>
                 <div className='card-body'>
                     <div className='row'>
                         <div className='col-lg-3'>

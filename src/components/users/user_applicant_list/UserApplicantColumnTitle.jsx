@@ -1,7 +1,7 @@
 const UserApplicantColumnTitle = () => {
     return (
         <div className='d-none d-lg-block'>
-            <div className='card mb-3'>
+            <div className='card mb-3 mb-lg-1'>
                 <div className='card-body'>
                     <div className='row'>
                         <div className='col-lg-3'>
