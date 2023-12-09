@@ -43,24 +43,15 @@ const Navigation = () => {
                     >
                         <ul className='navbar-nav mr-auto'>
                             {user && user.role === 'recruiter' && (
-                                <>
-                                    <li className='nav-item'>
-                                        <Link
-                                            to='/jobs/create'
-                                            className='nav-link'
-                                        >
-                                            Create
-                                        </Link>
-                                    </li>
-                                    <li className='nav-item'>
-                                        <Link
-                                            to='/jobs/owned'
-                                            className='nav-link'
-                                        >
-                                            My Jobs
-                                        </Link>
-                                    </li>
-                                </>
+                                <li className='nav-item'>
+                                    <Link
+                                        to='/jobs/owned'
+                                        className='nav-link'
+                                    >
+                                        My Jobs
+                                    </Link>
+                                </li>
+
                             )}
                             <li className='nav-item'>
                                 <Link to='/jobs' className='nav-link'>

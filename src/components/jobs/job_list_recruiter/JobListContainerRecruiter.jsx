@@ -4,8 +4,8 @@ import { useEffect } from 'react'
 import { jobsAPI } from '../../../API'
 import { useJobContext } from '../../../hooks/useJobContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
-import JobListDetails from '../job_list/JobListDetails'
-import JobListFilter from '../job_list/JobListFilter'
+import JobListDetails from './JobListDetails'
+import JobListFilter from './JobListFilter'
 import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 
 const JobListContainerRecruiter = () => {
@@ -35,19 +35,17 @@ const JobListContainerRecruiter = () => {
     return (
         <div className='container-lg'>
             <AlertMessage />
+            <JobListFilter />
             <div className='row'>
-                <div className='col-md-5 mb-3'>
-                    <JobListFilter />
-                </div>
-                <div className='col-md-7'>
                 {jobsOwned && jobsOwned.length >= 1 ? (
-                    jobsOwned.map(job => <JobListDetails job={job} key={job._id}/>)
-                    ) : (
-                        <div colSpan='4' className='text-center'>
-                            No jobs found...
-                        </div>
-                    )}
-                </div>
+                    jobsOwned.map((job) => (
+                        <JobListDetails job={job} key={job._id} />
+                    ))
+                ) : (
+                    <div colSpan='4' className='text-center'>
+                        No jobs found...
+                    </div>
+                )}
             </div>
         </div>
     )
