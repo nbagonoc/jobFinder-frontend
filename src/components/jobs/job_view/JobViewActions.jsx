@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { PropTypes } from 'prop-types'
@@ -10,6 +12,7 @@ const JobViewActions = ({ ids, job }) => {
     const { dispatch } = useJobContext()
     const { user, token } = useAuthContext()
     const navigate = useNavigate()
+    const [isDisabled, setIsDisabled] = useState(false);
 
     const handleDelete = async (e, _id) => {
         e.preventDefault()
@@ -50,6 +53,8 @@ const JobViewActions = ({ ids, job }) => {
 
     const handleApply = async (e, _id) => {
         e.preventDefault()
+        setIsDisabled(true)
+
         const headers = {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
@@ -60,6 +65,7 @@ const JobViewActions = ({ ids, job }) => {
             const message = response.data.message
             job.applicants.push(user._id)
             const updatedJob = job
+
             dispatch({
                 type: 'APPLY_JOB',
                 payload: {
@@ -110,7 +116,7 @@ const JobViewActions = ({ ids, job }) => {
                 </div>
             ) : (
                 <div className='action-buttons'>
-                    {Array.isArray(job.applicants) && job.applicants.includes(user._id) ? (
+                    {(Array.isArray(job.applications) && job.applications.some(app => app.user?._id === user._id)) || isDisabled ? (
                         <button
                             className='btn btn-secondary'
                             disabled

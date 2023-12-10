@@ -8,6 +8,7 @@ export const UserContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(UserReducer, {
         applicant: {},
         profile: {},
+        // applications: [], to-do. for applicants to view their applied jobs
         alert: {},
         errors: [],
     })
