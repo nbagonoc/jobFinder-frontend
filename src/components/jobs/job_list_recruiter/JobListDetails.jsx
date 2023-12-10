@@ -26,7 +26,7 @@ const JobListDetails = ({ job }) => {
                         </div>
                         <div className='col-lg-1'>
                             <span className='badge bg-primary me-1'>
-                                {job.applicants.length}
+                                {job.applications.length}
                             </span>
                         </div>
                         <div className='col-lg-3 mt-1 mt-lg-0'>
@@ -37,7 +37,7 @@ const JobListDetails = ({ job }) => {
                             >
                                 view job
                             </Link>
-                            {job.applicants.length > 0 && (
+                            {job.applications.length > 0 && (
                                 <Link
                                     to={`/jobs/${job._id}/applicants`}
                                     className='btn btn-secondary btn-sm me-1'

@@ -41,8 +41,8 @@ const UserApplicantListContainer = () => {
             <UserApplicantColumnTitle />
             <div className='row'>
                 {jobApplicants && jobApplicants.length >= 1 ? (
-                    jobApplicants.map((jobApplicant) => (
-                        <UserApplicantListDetails jobApplicant={jobApplicant} key={jobApplicant._id} />
+                    jobApplicants.map((jobApplicant, index) => (
+                        <UserApplicantListDetails jobApplicant={jobApplicant} key={index} />
                     ))
                 ) : (
                     <div colSpan='4' className='text-center'>

@@ -22,7 +22,7 @@ const UserApplicantListDetails = ({ jobApplicant }) => {
                         <div className='col-lg-2'>
                             <h6 className='fw-bold'>
                                 <span className='text-muted fw-light'>
-                                    Denied
+                                    {jobApplicant.status}
                                 </span>
                             </h6>
                         </div>
