@@ -9,13 +9,13 @@ const UserApplicantListDetails = ({ jobApplicant }) => {
                     <div className='row'>
                         <div className='col-lg-3'>
                             <h3 className='card-title fw-bold text-primary fs-5'>
-                                {jobApplicant.firstName} {jobApplicant.lastName}
+                                {jobApplicant.user.firstName} {jobApplicant.user.lastName}
                             </h3>
                         </div>
                         <div className='col-lg-3'>
                             <h6 className='fw-bold'>
                                 <span className='text-muted fw-light'>
-                                    {jobApplicant.email}
+                                    {jobApplicant.user.email}
                                 </span>
                             </h6>
                         </div>
@@ -29,7 +29,7 @@ const UserApplicantListDetails = ({ jobApplicant }) => {
                         <div className='col-lg-4 mt-1 mt-lg-0'>
                             <hr className='d-block d-lg-none'/>
                             <Link
-                                to={`/applicant/${jobApplicant._id}`}
+                                to={`/applicant/${jobApplicant.user._id}`}
                                 className='btn btn-secondary btn-sm me-1'
                             >
                                 View
