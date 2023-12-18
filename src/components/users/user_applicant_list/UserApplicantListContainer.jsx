@@ -23,9 +23,7 @@ const UserApplicantListContainer = () => {
 
         const getjobs = async () => {
             try {
-                const response = await axios.get(`${jobsAPI}/${_id}/applicants`, {
-                    headers,
-                })
+                const response = await axios.get(`${jobsAPI}/${_id}/applicants`, { headers })
                 const jobApplicants = response.data
                 dispatch({ type: 'SET_JOB_APPLICANTS', payload: { jobApplicants } })
             } catch (err) {

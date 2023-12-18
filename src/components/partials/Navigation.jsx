@@ -58,6 +58,17 @@ const Navigation = () => {
                                     Jobs
                                 </Link>
                             </li>
+                            {user && user.role === 'applicant' && (
+                                <li className='nav-item'>
+                                    <Link
+                                        to='/applications'
+                                        className='nav-link'
+                                    >
+                                        Applications
+                                    </Link>
+                                </li>
+
+                            )}
                         </ul>
                         <ul className='navbar-nav'>
                             {user && (

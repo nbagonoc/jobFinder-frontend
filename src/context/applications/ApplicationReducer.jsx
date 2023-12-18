@@ -3,7 +3,7 @@ const ApplicationReducer = (state, action) => {
         case 'SET_APPLICATIONS':
             return {
                 ...state,
-                applications: action.payload.alert,
+                applications: action.payload.applications,
             }
         case 'SET_APPLICANTS':
             return {

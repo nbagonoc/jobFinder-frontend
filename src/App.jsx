@@ -16,6 +16,8 @@ import JobView from './pages/jobs/JobView'
 import JobCreate from './pages/jobs/JobCreate'
 import JobEdit from './pages/jobs/JobEdit'
 
+import ApplicationListApplicant from './pages/applications/ApplicationListApplicant'
+
 import Home from './pages/Home'
 import Navigation from './components/partials/Navigation'
 
@@ -80,6 +82,18 @@ const App = () => {
                             element={
                                 user && user.role === 'recruiter' ? (
                                     <JobEdit />
+                                ) : (
+                                    <Navigate to='/' />
+                                )
+                            }
+                        />
+
+                        {/* Applications */}
+                        <Route
+                            path='/applications'
+                            element={
+                                user && user.role === 'applicant' ? (
+                                    <ApplicationListApplicant />
                                 ) : (
                                     <Navigate to='/' />
                                 )
