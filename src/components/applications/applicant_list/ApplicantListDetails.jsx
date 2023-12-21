@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import ApplicantListActions from './ApplicantListActions'
 
-const ApplicationListDetails = ({ jobApplicant }) => {
+const ApplicationListDetails = ({ applicant }) => {
     return (
         <div className='col-sm-6 col-lg-12'>
             <div className='card mb-3 mb-lg-1'>
@@ -10,19 +10,19 @@ const ApplicationListDetails = ({ jobApplicant }) => {
                     <div className='row'>
                         <div className='col-lg-3'>
                             <Link
-                                to={`/applicant/${jobApplicant.user._id}`}
+                                to={`/applicant/${applicant.user._id}`}
                                 className='text-decoration-none'
                             >
                                 <h6 className='card-title fw-bold text-primary fs-6'>
-                                    {jobApplicant.user.firstName}{' '}
-                                    {jobApplicant.user.lastName}
+                                    {applicant.user.firstName}{' '}
+                                    {applicant.user.lastName}
                                 </h6>
                             </Link>
                         </div>
                         <div className='col-lg-3'>
                             <h6 className='fw-bold'>
                                 <span className='text-muted fw-light'>
-                                    {jobApplicant.user.email}
+                                    {applicant.user.email}
                                 </span>
                             </h6>
                         </div>
@@ -30,16 +30,16 @@ const ApplicationListDetails = ({ jobApplicant }) => {
                             <h6 className='fw-bold'>
                                 <span
                                     className={`fw-light ${
-                                                    jobApplicant.status == 'Denied' ? 'text-danger' :
-                                                    jobApplicant.status == 'Approved' ? 'text-success' : 
-                                                    jobApplicant.status == 'Whitelisted' ? 'text-warning' :
+                                                    applicant.status == 'Denied' ? 'text-danger' :
+                                                    applicant.status == 'Approved' ? 'text-success' : 
+                                                    applicant.status == 'Whitelisted' ? 'text-warning' :
                                                 'text-muted' }`}
                                 >
-                                    {jobApplicant.status}
+                                    {applicant.status}
                                 </span>
                             </h6>
                         </div>
-                        <ApplicantListActions applicationId={jobApplicant._id}/>
+                        <ApplicantListActions applicationId={applicant._id}/>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@ const ApplicationListDetails = ({ jobApplicant }) => {
 }
 
 ApplicationListDetails.propTypes = {
-    jobApplicant: PropTypes.object.isRequired,
+    applicant: PropTypes.object.isRequired,
 }
 
 export default ApplicationListDetails

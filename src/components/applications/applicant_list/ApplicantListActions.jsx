@@ -6,7 +6,7 @@ import { useApplicationContext } from '../../../hooks/useApplicationContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const ApplicantListActions = ({applicationId}) => {
-    const { dispatch } = useApplicationContext()
+    const { dispatch, applicants } = useApplicationContext()
     const { token } = useAuthContext()
 
 
@@ -21,6 +21,14 @@ const ApplicantListActions = ({applicationId}) => {
             { headers })
 
             const message = response.data.message
+
+            // update the applicant state with the new status
+            applicants.map((applicant) => {
+                if (applicant._id === applicationId) {
+                    applicant.status = status
+                }
+                return applicant;
+            })
 
             dispatch({
                 type: 'UPDATE_APPLICATION_STATUS',
