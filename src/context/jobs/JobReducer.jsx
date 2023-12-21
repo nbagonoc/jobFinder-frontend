@@ -43,11 +43,6 @@ const AuthReducer = (state, action) => {
                 ...state,
                 jobsOwned: action.payload.jobs,
             }
-        // case 'SET_JOB_APPLICANTS':
-        //     return {
-        //         jobApplicants: action.payload.jobs,
-        //         alert: action.payload.alert,
-        //     }
         case 'CLEANER':
             return {
                 ...state,

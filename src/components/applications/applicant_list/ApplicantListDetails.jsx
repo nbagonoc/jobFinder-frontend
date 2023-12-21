@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import ApplicantListActions from './ApplicantListActions'
 
 const ApplicationListDetails = ({ jobApplicant }) => {
     return (
@@ -8,9 +9,15 @@ const ApplicationListDetails = ({ jobApplicant }) => {
                 <div className='card-body'>
                     <div className='row'>
                         <div className='col-lg-3'>
-                            <h3 className='card-title fw-bold text-primary fs-5'>
-                                {jobApplicant.user.firstName} {jobApplicant.user.lastName}
-                            </h3>
+                            <Link
+                                to={`/applicant/${jobApplicant.user._id}`}
+                                className='text-decoration-none'
+                            >
+                                <h3 className='card-title fw-bold text-primary fs-5'>
+                                    {jobApplicant.user.firstName}{' '}
+                                    {jobApplicant.user.lastName}
+                                </h3>
+                            </Link>
                         </div>
                         <div className='col-lg-3'>
                             <h6 className='fw-bold'>
@@ -21,38 +28,18 @@ const ApplicationListDetails = ({ jobApplicant }) => {
                         </div>
                         <div className='col-lg-2'>
                             <h6 className='fw-bold'>
-                                <span className='text-muted fw-light'>
+                                <span
+                                    className={`fw-light ${
+                                                    jobApplicant.status == 'Denied' ? 'text-danger' :
+                                                    jobApplicant.status == 'Approved' ? 'text-success' : 
+                                                    jobApplicant.status == 'Whitelisted' ? 'text-warning' :
+                                                'text-muted' }`}
+                                >
                                     {jobApplicant.status}
                                 </span>
                             </h6>
                         </div>
-                        <div className='col-lg-4 mt-1 mt-lg-0'>
-                            <hr className='d-block d-lg-none'/>
-                            <Link
-                                to={`/applicant/${jobApplicant.user._id}`}
-                                className='btn btn-secondary btn-sm me-1'
-                            >
-                                View
-                            </Link>
-                            <Link
-                                to={`/`}
-                                className='btn btn-secondary btn-sm me-1'
-                            >
-                                Deny
-                            </Link>
-                            <Link
-                                to={`/`}
-                                className='btn btn-secondary btn-sm me-1'
-                            >
-                                Whitelist
-                            </Link>
-                            <Link
-                                to={`/`}
-                                className='btn btn-success btn-sm me-1'
-                            >
-                                Approve
-                            </Link>
-                        </div>
+                        <ApplicantListActions applicationId={jobApplicant._id}/>
                     </div>
                 </div>
             </div>

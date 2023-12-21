@@ -10,6 +10,16 @@ const ApplicationReducer = (state, action) => {
                 ...state,
                 applicants: action.payload.applicants,
             }
+        case 'UPDATE_APPLICATION_STATUS':
+            return {
+                ...state,
+                alert: action.payload.alert,
+            }
+        case 'CLEANER':
+            return {
+                ...state,
+                alert: {}
+            }
         default:
             return state
     }
