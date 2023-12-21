@@ -7,7 +7,6 @@ import RegisterSelect from './pages/auth/RegisterSelect'
 import Register from './pages/auth/Register'
 
 import UserProfile from './pages/users/UserProfile'
-import UserApplicantList from './pages/users/UserApplicantList'
 import UserView from './pages/users/UserView'
 
 import JobListRecruiter from './pages/jobs/JobListRecruiter'
@@ -17,6 +16,7 @@ import JobCreate from './pages/jobs/JobCreate'
 import JobEdit from './pages/jobs/JobEdit'
 
 import ApplicationListApplicant from './pages/applications/ApplicationListApplicant'
+import ApplicantList from './pages/applications/ApplicantList'
 
 import Home from './pages/Home'
 import Navigation from './components/partials/Navigation'
@@ -108,7 +108,7 @@ const App = () => {
                         />
                         <Route
                             path='/jobs/:_id/applicants'
-                            element={<UserApplicantList />}
+                            element={<ApplicantList />}
                         />
                         <Route
                             path='/applicant/:_id'
