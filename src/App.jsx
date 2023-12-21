@@ -15,7 +15,7 @@ import JobView from './pages/jobs/JobView'
 import JobCreate from './pages/jobs/JobCreate'
 import JobEdit from './pages/jobs/JobEdit'
 
-import ApplicationListApplicant from './pages/applications/ApplicationListApplicant'
+import ApplicationList from './pages/applications/ApplicationList'
 import ApplicantList from './pages/applications/ApplicantList'
 
 import Home from './pages/Home'
@@ -90,10 +90,14 @@ const App = () => {
 
                         {/* Applications */}
                         <Route
+                            path='/jobs/:_id/applicants'
+                            element={<ApplicantList />}
+                        />
+                        <Route
                             path='/applications'
                             element={
                                 user && user.role === 'applicant' ? (
-                                    <ApplicationListApplicant />
+                                    <ApplicationList />
                                 ) : (
                                     <Navigate to='/' />
                                 )
@@ -105,10 +109,6 @@ const App = () => {
                             path='/profile'
                             // element={user ?  <UserProfile /> : <Navigate to='/login'/>} //for some reason, the user state is resetting to null when navigating to /profile?
                             element={<UserProfile />}
-                        />
-                        <Route
-                            path='/jobs/:_id/applicants'
-                            element={<ApplicantList />}
                         />
                         <Route
                             path='/applicant/:_id'
