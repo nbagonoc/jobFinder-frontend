@@ -8,9 +8,9 @@ const JobListDetails = ({ job }) => {
                 <div className='card-body'>
                     <div className='row'>
                         <div className='col-lg-3'>
-                            <h3 className='card-title fw-bold text-primary fs-5'>
+                            <h6 className='card-title fw-bold text-primary fs-6'>
                                 {job.title}
-                            </h3>
+                            </h6>
                         </div>
                         <div className='col-lg-3'>
                             <h6 className='fw-bold'>

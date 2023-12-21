@@ -13,10 +13,10 @@ const ApplicationListDetails = ({ jobApplicant }) => {
                                 to={`/applicant/${jobApplicant.user._id}`}
                                 className='text-decoration-none'
                             >
-                                <h3 className='card-title fw-bold text-primary fs-5'>
+                                <h6 className='card-title fw-bold text-primary fs-6'>
                                     {jobApplicant.user.firstName}{' '}
                                     {jobApplicant.user.lastName}
-                                </h3>
+                                </h6>
                             </Link>
                         </div>
                         <div className='col-lg-3'>
