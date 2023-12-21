@@ -32,7 +32,7 @@ const ApplicationListDetails = ({ applicant }) => {
                                     className={`fw-light ${
                                                     applicant.status == 'Denied' ? 'text-danger' :
                                                     applicant.status == 'Approved' ? 'text-success' : 
-                                                    applicant.status == 'Whitelisted' ? 'text-warning' :
+                                                    applicant.status == 'Whitelisted' ? 'text-primary' :
                                                 'text-muted' }`}
                                 >
                                     {applicant.status}
