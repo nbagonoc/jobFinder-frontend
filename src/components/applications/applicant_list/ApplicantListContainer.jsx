@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import { applicationsAPI } from '../../../API'
 import { useApplicationContext } from '../../../hooks/useApplicationContext'
@@ -14,6 +14,17 @@ const ApplicantListContainer = () => {
     const { _id } = useParams()
     const { applicants, dispatch } = useApplicationContext()
     const { token } = useAuthContext()
+
+    //reset states when component unmounts
+    const resetState = useCallback(() => {
+        dispatch({
+            type: 'SET_APPLICANTS',
+            payload: {
+                applicants: [],
+                alert: {},
+            },
+        })
+    }, [dispatch])
 
     useEffect(() => {
         const headers = {
@@ -31,7 +42,8 @@ const ApplicantListContainer = () => {
             }
         }
         getApplicants()
-    }, [dispatch, token, _id])
+        return resetState // reset states when component unmounts
+    }, [dispatch, token, _id, resetState])
 
     return (
         <div className='container-xxl'>
