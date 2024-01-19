@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const UserProfile = ({ profile }) => {
     return (
@@ -24,6 +25,9 @@ const UserProfile = ({ profile }) => {
                     Location:{' '}
                     <span className='text-muted fw-light'>Location</span>
                 </h6>
+                <Link to={`/profile/edit`} className='btn btn-primary btn-sm'>
+                    Edit Profile
+                </Link>
             </div>
         </div>
     )

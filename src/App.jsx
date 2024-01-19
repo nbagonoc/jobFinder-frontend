@@ -7,6 +7,7 @@ import RegisterSelect from './pages/auth/RegisterSelect'
 import Register from './pages/auth/Register'
 
 import UserProfile from './pages/users/UserProfile'
+import UserProfileEdit from './pages/users/UserProfileEdit'
 import UserView from './pages/users/UserView'
 
 import JobListRecruiter from './pages/jobs/JobListRecruiter'
@@ -109,6 +110,10 @@ const App = () => {
                             path='/profile'
                             // element={user ?  <UserProfile /> : <Navigate to='/login'/>} //for some reason, the user state is resetting to null when navigating to /profile?
                             element={<UserProfile />}
+                        />
+                        <Route
+                            path='/profile/edit'
+                            element={<UserProfileEdit />}
                         />
                         <Route
                             path='/applicant/:_id'

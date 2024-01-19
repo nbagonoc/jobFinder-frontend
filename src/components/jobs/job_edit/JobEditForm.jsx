@@ -7,6 +7,7 @@ import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 import { useJobContext } from '../../../hooks/useJobContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
+//need to refactor this with lesser code. Checkout react-hook-form
 export const JobEditForm = () => {
     const { _id } = useParams()
     const { alert, errors, dispatch } = useJobContext()
@@ -94,9 +95,7 @@ export const JobEditForm = () => {
         }
 
         try {
-            const response = await axios.put(`${jobsAPI}/${_id}`, job, {
-                headers,
-            })
+            const response = await axios.put(`${jobsAPI}/${_id}`, job, { headers })
             const message = response.data.message
             dispatch({
                 type: 'EDIT_JOB',
