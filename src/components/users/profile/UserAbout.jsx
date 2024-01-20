@@ -1,4 +1,7 @@
-const UserAbout = () => {
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+
+const UserAbout = ({ profile }) => {
     return (
         <div className='card'>
             <div className='card-header'>
@@ -6,18 +9,18 @@ const UserAbout = () => {
             </div>
             <div className='card-body'>
                 <p className='text-muted fw-light'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec vel sapien lectus. Sed non mi vitae massa volutpat
-                    dictum. Phasellus eget semper nisi. Nulla facilisi. Nullam
-                    euismod, nisl nec aliquam luctus, augue odio ultricies
-                    metus, ut luctus nisl nisl ac velit. Sed euismod, velit eget
-                    aliquam porta, velit quam aliquam quam, quis aliquet risus
-                    orci quis nisi. Nullam nec diam non nunc ultricies
-                    tincidunt.
+                    {profile.about.about}
                 </p>
+                <Link to={`/profile/edit`} className='btn btn-primary btn-sm'>
+                    Edit About
+                </Link>
             </div>
         </div>
     )
+}
+
+UserAbout.propTypes = {
+    profile: PropTypes.object.isRequired,
 }
 
 export default UserAbout

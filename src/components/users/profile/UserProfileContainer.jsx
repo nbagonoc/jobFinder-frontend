@@ -72,7 +72,7 @@ const UserProfileContainer = () => {
                                     </div>
                                 </div>
                                 <div className='col-xl-4 mb-3'>
-                                    <UserAbout />
+                                    <UserAbout profile={profile} />
                                 </div>
                             </div>
                         )}
