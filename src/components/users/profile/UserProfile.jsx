@@ -6,7 +6,7 @@ const UserProfile = ({ profile }) => {
         <div className='card'>
             <div className='card-body'>
                 <img
-                    src={profile.photo} //need to refactor multer to crop image to square
+                    src={profile.photo}
                     alt='profile'
                     className='rounded-circle mx-auto d-block img-fluid'
                     style={{ width: '150px', height: '150px' }}
