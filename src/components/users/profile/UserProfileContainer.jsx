@@ -27,6 +27,7 @@ const UserProfileContainer = () => {
                     headers,
                 })
                 const profile = response.data
+                console.log(profile)
                 dispatch({
                     type: 'SET_PROFILE',
                     payload: { profile },

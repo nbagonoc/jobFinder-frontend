@@ -13,6 +13,7 @@ const UserProfileEditForm = () => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
+        phone: '',
         photo: '',
     })
     const navigate = useNavigate()
@@ -31,7 +32,8 @@ const UserProfileEditForm = () => {
                 setFormData({
                     firstName: profile.firstName,
                     lastName: profile.lastName,
-                    photo: profile.photo,
+                    phone: profile.phone,
+                    photo: null
                 })
             } catch (error) {
                 let message = 'Something went wrong!'
@@ -50,16 +52,18 @@ const UserProfileEditForm = () => {
                 })
             }
         }
+
         getProfile()
     }, [dispatch, token])
 
     const onChange = (e) => {
-        const { name, value } = e.target
-        setFormData({
-            ...formData,
-            [name]: value,
-        })
-    }
+        const { name, value, files } = e.target;
+
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: name === 'photo' ? files[0] : value,
+        }));
+    };
 
     const onSubmit = async (e) => {
         e.preventDefault()
@@ -67,22 +71,22 @@ const UserProfileEditForm = () => {
         const profile = {
             firstName: formData.firstName,
             lastName: formData.lastName,
+            phone: formData.phone,
             photo: formData.photo,
         }
 
         const headers = {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             Authorization: `Bearer ${token}`,
         }
 
         try {
             const response = await axios.put(`${usersAPI}`, profile, { headers })
             const message = response.data.message
-
             dispatch({
                 type: 'SET_PROFILE',
                 payload: {
-                    // profile,
+                    profile,
                     alert: {
                         message,
                         success: true,
@@ -91,14 +95,14 @@ const UserProfileEditForm = () => {
             })
             navigate('/profile')
         } catch (error) {
-            let message = 'Something went wrong!'
-            if (error && error.response) {
-                message = error.response.data.errors.message
-            }
+            const errors = error.response.data
+            const message = error.response.data.message
 
+            // console.log(errors)
             dispatch({
                 type: 'SET_PROFILE',
                 payload: {
+                    errors,
                     alert: {
                         message,
                         success: false,
@@ -110,9 +114,7 @@ const UserProfileEditForm = () => {
 
     return (
         <div>
-            {alert !== null ||
-            typeof alert === 'object' ||
-            Object.keys(alert).length !== 0 ? (
+            { alert !== null || typeof alert === 'object' || Object.keys(alert).length !== 0 ? (
                 <form onSubmit={onSubmit}>
                     <div className='mb-3'>
                         <label htmlFor='firstName' className='form-label'>
@@ -146,7 +148,22 @@ const UserProfileEditForm = () => {
                             {errors && errors.lastName ? errors.lastName : ''}
                         </span>
                     </div>
-                    {/* file upload */}
+                    <div className='mb-3'>
+                        <label htmlFor='email' className='form-label'>
+                            Phone
+                        </label>
+                        <input
+                            type='text'
+                            className='form-control'
+                            id='phone'
+                            name='phone'
+                            value={formData.phone}
+                            onChange={onChange}
+                        />
+                        <span className='text-danger'>
+                            {errors && errors.phone ? errors.phone : ''}
+                        </span>
+                    </div>
                     <div className='mb-3'>
                         <label htmlFor='photo' className='form-label'>
                             Photo

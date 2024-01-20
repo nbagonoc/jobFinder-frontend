@@ -15,7 +15,7 @@ const UserProfile = ({ profile }) => {
                     {`${profile.firstName} ${profile.lastName}`}
                 </h1>
                 <h6 className='fw-bold'>
-                    Phone: <span className='text-muted fw-light'>Phone</span>
+                    Phone: <span className='text-muted fw-light'>{profile.phone}</span>
                 </h6>
                 <h6 className='fw-bold'>
                     Email:{' '}
