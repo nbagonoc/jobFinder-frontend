@@ -5,6 +5,12 @@ const UserReducer = (state, action) => {
                 ...state,
                 profile: action.payload.profile,
             }
+        case 'UPDATE_PROFILE':
+            return {
+                ...state,
+                alert: action.payload.alert,
+                errors: action.payload.errors,
+            }
         case 'SET_APPLICANT':
             return {
                 ...state,

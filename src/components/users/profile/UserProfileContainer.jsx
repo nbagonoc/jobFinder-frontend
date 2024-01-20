@@ -13,7 +13,7 @@ import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const UserProfileContainer = () => {
     const { profile, dispatch } = useUserContext()
-    const { token } = useAuthContext()
+    const { user, token } = useAuthContext()
 
     useEffect(() => {
         const headers = {
@@ -58,22 +58,31 @@ const UserProfileContainer = () => {
                         <UserProfile profile={profile} />
                     </div>
                     <div className='col-md-7 col-lg-8 col-xl-9 mb-3'>
-                        <div className='row'>
-                            <div className='col-xl-8'>
-                                <div className='mb-3'>
-                                    <UserEducation />
+                        {user && user.role === 'applicant' && (
+                            <div className='row'>
+                                <div className='col-xl-8'>
+                                    <div className='mb-3'>
+                                        <UserEducation />
+                                    </div>
+                                    <div className='mb-3'>
+                                        <UserExperience />
+                                    </div>
+                                    <div className='mb-3'>
+                                        <UserSkills />
+                                    </div>
                                 </div>
-                                <div className='mb-3'>
-                                    <UserExperience />
-                                </div>
-                                <div className='mb-3'>
-                                    <UserSkills />
+                                <div className='col-xl-4 mb-3'>
+                                    <UserAbout />
                                 </div>
                             </div>
-                            <div className='col-xl-4 mb-3'>
-                                <UserAbout />
+                        )}
+                        {user && user.role === 'recruiter' && (
+                            <div className='row'>
+                                <div className='col-xl-12'>
+                                    <UserAbout />
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             ) : (

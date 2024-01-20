@@ -84,9 +84,8 @@ const UserProfileEditForm = () => {
             const response = await axios.put(`${usersAPI}`, profile, { headers })
             const message = response.data.message
             dispatch({
-                type: 'SET_PROFILE',
+                type: 'UPDATE_PROFILE',
                 payload: {
-                    profile,
                     alert: {
                         message,
                         success: true,
@@ -97,9 +96,8 @@ const UserProfileEditForm = () => {
         } catch (error) {
             const errors = error.response.data
             const message = error.response.data.message
-
             dispatch({
-                type: 'SET_PROFILE',
+                type: 'UPDATE_PROFILE',
                 payload: {
                     errors,
                     alert: {
