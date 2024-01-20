@@ -98,7 +98,6 @@ const UserProfileEditForm = () => {
             const errors = error.response.data
             const message = error.response.data.message
 
-            // console.log(errors)
             dispatch({
                 type: 'SET_PROFILE',
                 payload: {
