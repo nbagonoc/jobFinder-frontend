@@ -40,4 +40,11 @@ npm run test
         - Need to simplify forms since its a the code is too many
         - Need to improve photo upload design style
         - When deleting, there needs to be a confirmation
+    - Next:
+        - Udpate About
+        - Read(dynamic)/Update Education
+        - Read(dynamic)/Update Experience
+        - Close a posting
+        - Confirmation on close and delete
+
     

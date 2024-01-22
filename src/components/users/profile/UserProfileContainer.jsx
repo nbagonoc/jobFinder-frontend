@@ -49,7 +49,6 @@ const UserProfileContainer = () => {
         }
         getProfile()
     }, [dispatch, token])
-
     return (
         <div className='container-xxl'>
             {profile ? (
@@ -79,7 +78,7 @@ const UserProfileContainer = () => {
                         {user && user.role === 'recruiter' && (
                             <div className='row'>
                                 <div className='col-xl-12'>
-                                    <UserAbout />
+                                    <UserAbout profile={profile} />
                                 </div>
                             </div>
                         )}

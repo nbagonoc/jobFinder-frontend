@@ -11,10 +11,15 @@ const UserProfile = ({ profile }) => {
                     className='rounded-circle mx-auto d-block img-fluid'
                     style={{ width: '150px', height: '150px' }}
                 />
-                <h1 className='card-title fw-bold text-primary text-center fs-4'>
+                <h1 className='card-title fw-bold text-primary text-center fs-4 mb-0'>
                     {`${profile.firstName} ${profile.lastName}`}
                 </h1>
-                <h6 className='fw-bold'>
+                {profile && profile.company && (
+                <h6 className='card-title text-primary text-center'>
+                    {`${profile.company}`}
+                </h6>
+                )}
+                <h6 className='fw-bold mt-3'>
                     Phone: <span className='text-muted fw-light'>{profile.phone}</span>
                 </h6>
                 <h6 className='fw-bold'>
@@ -26,7 +31,7 @@ const UserProfile = ({ profile }) => {
                     <span className='text-muted fw-light'>Location</span>
                 </h6>
                 <Link to={`/profile/edit`} className='btn btn-primary btn-sm'>
-                    Edit Profile
+                    Edit
                 </Link>
             </div>
         </div>

@@ -22,6 +22,7 @@ export const JobEditForm = () => {
         arrangement: '',
         type: '',
         description: '',
+        status: '',
     })
     const navigate = useNavigate()
 
@@ -42,6 +43,7 @@ export const JobEditForm = () => {
                     arrangement: job.arrangement,
                     type: job.type,
                     description: job.description,
+                    status: job.status,
                 })
             } catch (error) {
                 let message = 'Something went wrong!'
@@ -87,7 +89,10 @@ export const JobEditForm = () => {
             arrangement: formData.arrangement,
             type: formData.type,
             description: formData.description,
+            status: formData.status,
         }
+
+        console.log(job)
 
         const headers = {
             'Content-Type': 'application/json',
@@ -127,7 +132,7 @@ export const JobEditForm = () => {
             Object.keys(alert).length !== 0 ? (
                 <form onSubmit={onSubmit}>
                     <div className='mb-3'>
-                        <label htmlFor='title'>Title</label>
+                        <label htmlFor='title'>Title:</label>
                         <input
                             id='title'
                             name='title'
@@ -147,7 +152,7 @@ export const JobEditForm = () => {
                         </span>
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor='company'>Company name</label>
+                        <label htmlFor='company'>Company name:</label>
                         <input
                             id='company'
                             name='company'
@@ -168,7 +173,7 @@ export const JobEditForm = () => {
                         </span>
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor='location'>Location</label>
+                        <label htmlFor='location'>Location:</label>
                         <input
                             id='location'
                             name='location'
@@ -189,7 +194,7 @@ export const JobEditForm = () => {
                         </span>
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor='size'>Category</label>
+                        <label htmlFor='size'>Category:</label>
                         <select
                             className={`form-select ${
                                 errors && errors.category ? 'border-danger' : ''
@@ -230,7 +235,7 @@ export const JobEditForm = () => {
                         </span>
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor='size'>Salary</label>
+                        <label htmlFor='size'>Salary:</label>
                         <input
                             id='salary'
                             name='salary'
@@ -247,7 +252,7 @@ export const JobEditForm = () => {
                         </span>
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor='size'>Position</label>
+                        <label htmlFor='size'>Position:</label>
                         <input
                             id='position'
                             name='position'
@@ -268,7 +273,7 @@ export const JobEditForm = () => {
                         </span>
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor='size'>Arrangement</label>
+                        <label htmlFor='size'>Arrangement:</label>
                         <select
                             className={`form-select ${
                                 errors && errors.arrangement
@@ -295,7 +300,7 @@ export const JobEditForm = () => {
                         </span>
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor='size'>Type</label>
+                        <label htmlFor='size'>Type:</label>
                         <select
                             className={`form-select ${
                                 errors && errors.type ? 'border-danger' : ''
@@ -317,7 +322,7 @@ export const JobEditForm = () => {
                         </span>
                     </div>
                     <div className='mb-3'>
-                        <label htmlFor='size'>Description</label>
+                        <label htmlFor='size'>Description:</label>
                         <textarea
                             id='description'
                             name='description'
@@ -339,6 +344,29 @@ export const JobEditForm = () => {
                         <span className='text-danger'>
                             {errors && errors.description
                                 ? errors.description
+                                : ''}
+                        </span>
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor='size'>Status:</label>
+                        <select
+                            className={`form-select ${
+                                errors && errors.status
+                                    ? 'border-danger'
+                                    : ''
+                            }`}
+                            id='status'
+                            name='status'
+                            onChange={onChange}
+                            value={formData.status}
+                            aria-label='Select status'
+                        >
+                            <option value='Active'>Active</option>
+                            <option value='Closed'>Closed</option>
+                        </select>
+                        <span className='text-danger'>
+                            {errors && errors.status
+                                ? errors.status
                                 : ''}
                         </span>
                     </div>

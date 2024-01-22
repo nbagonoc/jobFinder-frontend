@@ -11,6 +11,7 @@ const RegisterForm = () => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
+        company: '',
         email: '',
         password: '',
         password2: '',
@@ -34,6 +35,7 @@ const RegisterForm = () => {
         const user = {
             firstName: formData.firstName,
             lastName: formData.lastName,
+            company: formData.company,
             email: formData.email,
             role: location.pathname === '/register-recruiter' ? 'recruiter' : 'applicant',
             password: formData.password,
@@ -72,7 +74,7 @@ const RegisterForm = () => {
     return (
         <form onSubmit={onSubmit}>
             <div className='mb-3'>
-                <label htmlFor='firstName'>First name</label>
+                <label htmlFor='firstName'>First name:</label>
                 <input
                     id='firstName'
                     name='firstName'
@@ -90,7 +92,7 @@ const RegisterForm = () => {
                 </span>
             </div>
             <div className='mb-3'>
-                <label htmlFor='lastName'>Last name</label>
+                <label htmlFor='lastName'>Last name:</label>
                 <input
                     id='lastName'
                     name='lastName'
@@ -107,8 +109,28 @@ const RegisterForm = () => {
                     {errors && errors.lastName ? errors.lastName : ''}
                 </span>
             </div>
+            {location.pathname === '/register-recruiter' && (
+                <div className='mb-3'>
+                    <label htmlFor='company'>Company:</label>
+                    <input
+                        id='company'
+                        name='company'
+                        autoComplete='organization'
+                        type='text'
+                        placeholder='Enter company'
+                        className={`form-control ${
+                            errors && errors.company ? 'border-danger' : ''
+                        }`}
+                        onChange={onChange}
+                        value={formData.company}
+                    />
+                    <span className='text-danger'>
+                        {errors && errors.company ? errors.company : ''}
+                    </span>
+                </div>
+            )}
             <div className='mb-3'>
-                <label htmlFor='email'>email</label>
+                <label htmlFor='email'>email:</label>
                 <input
                     id='email'
                     name='email'
@@ -126,7 +148,7 @@ const RegisterForm = () => {
                 </span>
             </div>
             <div className='mb-3'>
-                <label htmlFor='password'>Password</label>
+                <label htmlFor='password'>Password:</label>
                 <input
                     id='password'
                     name='password'
@@ -144,7 +166,7 @@ const RegisterForm = () => {
                 </span>
             </div>
             <div className='mb-3'>
-                <label htmlFor='password2'>Confirm Password</label>
+                <label htmlFor='password2'>Confirm Password:</label>
                 <input
                     id='password2'
                     name='password2'

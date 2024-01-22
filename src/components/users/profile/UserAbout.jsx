@@ -13,8 +13,8 @@ const UserAbout = ({ profile = {} }) => {
                 ) : (
                     <p className='text-muted fw-light'>No about information available.</p>
                 )}
-                <Link to={`/profile/edit`} className='btn btn-primary btn-sm'>
-                    Edit About
+                <Link to={`/about/edit`} className='btn btn-primary btn-sm'>
+                    Edit
                 </Link>
             </div>
         </div>

@@ -103,11 +103,6 @@ const JobViewActions = ({ ids, job }) => {
                         Edit
                     </Link>
                     <button
-                        className='btn btn-warning btn-sm me-1'
-                    >
-                        Close
-                    </button>
-                    <button
                         onClick={(e) => handleDelete(e, ids._id)}
                         className='btn btn-danger btn-sm'
                     >
