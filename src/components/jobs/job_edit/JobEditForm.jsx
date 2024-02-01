@@ -365,9 +365,7 @@ export const JobEditForm = () => {
                             <option value='Closed'>Closed</option>
                         </select>
                         <span className='text-danger'>
-                            {errors && errors.status
-                                ? errors.status
-                                : ''}
+                            {errors && errors.status ? errors.status : ''}
                         </span>
                     </div>
                     <div className='mb-3'>

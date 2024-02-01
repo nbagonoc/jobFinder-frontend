@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
 import { aboutsAPI } from '../../../API'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
@@ -71,9 +70,6 @@ const UserProfileAboutEditForm = () => {
             about: formData.about,
         }
 
-        console.log(data)
-        // console.log(`Bearer ${data.about}`)
-
         const headers = {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
@@ -81,7 +77,6 @@ const UserProfileAboutEditForm = () => {
 
         try {
             const response = await axios.put(`${aboutsAPI}`, data, { headers })
-            // console.log(response.data)
             const message = response.data.message
             dispatch({
                 type: 'UPDATE_PROFILE',
@@ -94,8 +89,6 @@ const UserProfileAboutEditForm = () => {
             })
             navigate('/profile')
         } catch (error) {
-            // console.log(error.response.data)
-            // console.log(error.response.data.message)
             const errors = error.response.data
             const message = error.response.data.message
             dispatch({
@@ -113,7 +106,6 @@ const UserProfileAboutEditForm = () => {
 
     return (
         <form onSubmit={onSubmit}>
-            <label htmlFor='about'>About:</label>
             <textarea
                 id='about'
                 name='about'
@@ -129,10 +121,16 @@ const UserProfileAboutEditForm = () => {
             <span className='text-danger'>
                 {errors && errors.about ? errors.about : ''}
             </span>
-            <div className='d-grid'>
-                <button className='btn btn-primary' type='submit'>
-                    Submit
+            <div className='mt-3'>
+                <button type='submit' className='btn btn-success btn-sm me-1'>
+                    Save
                 </button>
+                <Link
+                    to='/profile'
+                    className='btn btn-secondary btn-sm'
+                >
+                    Cancel
+                </Link>
             </div>
         </form>
     )

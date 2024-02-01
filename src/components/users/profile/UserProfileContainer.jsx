@@ -8,6 +8,8 @@ import UserEducation from './UserEducation'
 import UserExperience from './UserExperience'
 import UserSkills from './UserSkills'
 import UserProfile from './UserProfile'
+import AlertMessage from '../../partials/AlertMessage/AlertMessage'
+
 import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
@@ -51,6 +53,7 @@ const UserProfileContainer = () => {
     }, [dispatch, token])
     return (
         <div className='container-xxl'>
+            <AlertMessage />
             {profile ? (
                 <div className='row'>
                     <div className='col-md-5 col-lg-4 col-xl-3 mb-3'>
