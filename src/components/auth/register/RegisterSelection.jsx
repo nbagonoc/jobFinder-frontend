@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import FullVertical from '../../partials/FullVertical'
+import FullVertical from '../../partials/layouts/FullVertical'
 
 const RegisterSelection = () => {
     return (

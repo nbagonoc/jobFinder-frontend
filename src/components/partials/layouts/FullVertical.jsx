@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import AlertMessage from './AlertMessage/AlertMessage'
+import AlertMessage from '../AlertMessage/AlertMessage'
 
 const FullVertical = ({ children }) => {
     return (

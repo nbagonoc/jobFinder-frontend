@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import FullVerticalFluid from '../../partials/FullVerticalFluid'
+import FullVerticalFluid from '../../partials/layouts/FullVerticalFluid'
 import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 import RegisterForm from './RegisterForm'
 
