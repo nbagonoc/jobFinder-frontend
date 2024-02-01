@@ -2,7 +2,7 @@ import UserProfileContainer from '../../components/users/profile/UserProfileCont
 
 const UserProfile = () => {
   return (
-    <UserProfileContainer/>
+        <UserProfileContainer/>
   )
 }
 

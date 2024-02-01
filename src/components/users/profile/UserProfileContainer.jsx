@@ -8,7 +8,7 @@ import UserEducation from './UserEducation'
 import UserExperience from './UserExperience'
 import UserSkills from './UserSkills'
 import UserProfile from './UserProfile'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
+import Default from '../../partials/layouts/Default'
 
 import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
@@ -52,8 +52,7 @@ const UserProfileContainer = () => {
         getProfile()
     }, [dispatch, token])
     return (
-        <div className='container-xxl'>
-            <AlertMessage />
+        <Default>
             {profile ? (
                 <div className='row'>
                     <div className='col-md-5 col-lg-4 col-xl-3 mb-3'>
@@ -90,7 +89,7 @@ const UserProfileContainer = () => {
             ) : (
                 <h3>Loading...</h3> //iterate to spinner
             )}
-        </div>
+        </Default>
     )
 }
 

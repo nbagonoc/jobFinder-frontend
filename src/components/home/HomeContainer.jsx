@@ -1,4 +1,4 @@
-import FullVerticalWithNav from '../partials/FullVerticalWithNav'
+import FullVerticalWithNav from '../partials/layouts/FullVerticalWithNav'
 
 const HomeContainer = () => {
   return (
