@@ -3,14 +3,13 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useParams, Link } from 'react-router-dom'
 
 import { jobsAPI } from '../../../API'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 import { useJobContext } from '../../../hooks/useJobContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 //need to refactor this with lesser code. Checkout react-hook-form
 export const JobEditForm = () => {
     const { _id } = useParams()
-    const { alert, errors, dispatch } = useJobContext()
+    const { errors, dispatch } = useJobContext()
     const { token } = useAuthContext()
     const [formData, setFormData] = useState({
         title: '',
@@ -127,9 +126,6 @@ export const JobEditForm = () => {
 
     return (
         <div>
-            {alert !== null ||
-            typeof alert === 'object' ||
-            Object.keys(alert).length !== 0 ? (
                 <form onSubmit={onSubmit}>
                     <div className='mb-3'>
                         <label htmlFor='title'>Title:</label>
@@ -380,9 +376,6 @@ export const JobEditForm = () => {
                         </Link>
                     </div>
                 </form>
-            ) : (
-                <AlertMessage />
-            )}
         </div>
     )
 }

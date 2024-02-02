@@ -8,7 +8,6 @@ import { useAuthContext } from '../../../hooks/useAuthContext'
 import JobListColumnTitle from './JobListColumnTitle'
 import JobListDetails from './JobListDetails'
 import JobListFilter from './JobListFilter'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 import Default from '../../partials/layouts/Default'
 
 const JobListContainerRecruiter = () => {

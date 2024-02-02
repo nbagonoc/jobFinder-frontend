@@ -3,12 +3,11 @@ import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
 import { usersAPI } from '../../../API'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const UserProfileEditForm = () => {
-    const { alert, errors,  dispatch } = useUserContext()
+    const { errors,  dispatch } = useUserContext()
     const { token } = useAuthContext()
     const [formData, setFormData] = useState({
         firstName: '',
@@ -111,83 +110,79 @@ const UserProfileEditForm = () => {
 
     return (
         <div>
-            { alert !== null || typeof alert === 'object' || Object.keys(alert).length !== 0 ? (
-                <form onSubmit={onSubmit}>
-                    <div className='mb-3'>
-                        <label htmlFor='firstName' className='form-label'>
-                            First Name
-                        </label>
-                        <input
-                            type='text'
-                            className='form-control'
-                            id='firstName'
-                            name='firstName'
-                            value={formData.firstName}
-                            onChange={onChange}
-                        />
-                        <span className='text-danger'>
-                            {errors && errors.firstName ? errors.firstName : ''}
-                        </span>
-                    </div>
-                    <div className='mb-3'>
-                        <label htmlFor='lastName' className='form-label'>
-                            Last Name
-                        </label>
-                        <input
-                            type='text'
-                            className='form-control'
-                            id='lastName'
-                            name='lastName'
-                            value={formData.lastName}
-                            onChange={onChange}
-                        />
-                        <span className='text-danger'>
-                            {errors && errors.lastName ? errors.lastName : ''}
-                        </span>
-                    </div>
-                    <div className='mb-3'>
-                        <label htmlFor='email' className='form-label'>
-                            Phone
-                        </label>
-                        <input
-                            type='text'
-                            className='form-control'
-                            id='phone'
-                            name='phone'
-                            value={formData.phone}
-                            onChange={onChange}
-                        />
-                        <span className='text-danger'>
-                            {errors && errors.phone ? errors.phone : ''}
-                        </span>
-                    </div>
-                    <div className='mb-3'>
-                        <label htmlFor='photo' className='form-label'>
-                            Photo
-                        </label>
-                        <input
-                            type='file'
-                            className='form-control'
-                            id='photo'
-                            name='photo'
-                            onChange={onChange}
-                        />
-                    </div>
-                    <div className='mb-3'>
-                        <button type='submit' className='btn btn-success btn-sm me-1'>
-                            Update
-                        </button>
-                        <Link
-                            to={`/profile`}
-                            className='btn btn-secondary btn-sm'
-                        >
-                            Cancel
-                        </Link>
-                    </div>
-                </form>
-            ) : (
-                <AlertMessage />
-            )}
+            <form onSubmit={onSubmit}>
+                <div className='mb-3'>
+                    <label htmlFor='firstName' className='form-label'>
+                        First Name
+                    </label>
+                    <input
+                        type='text'
+                        className='form-control'
+                        id='firstName'
+                        name='firstName'
+                        value={formData.firstName}
+                        onChange={onChange}
+                    />
+                    <span className='text-danger'>
+                        {errors && errors.firstName ? errors.firstName : ''}
+                    </span>
+                </div>
+                <div className='mb-3'>
+                    <label htmlFor='lastName' className='form-label'>
+                        Last Name
+                    </label>
+                    <input
+                        type='text'
+                        className='form-control'
+                        id='lastName'
+                        name='lastName'
+                        value={formData.lastName}
+                        onChange={onChange}
+                    />
+                    <span className='text-danger'>
+                        {errors && errors.lastName ? errors.lastName : ''}
+                    </span>
+                </div>
+                <div className='mb-3'>
+                    <label htmlFor='email' className='form-label'>
+                        Phone
+                    </label>
+                    <input
+                        type='text'
+                        className='form-control'
+                        id='phone'
+                        name='phone'
+                        value={formData.phone}
+                        onChange={onChange}
+                    />
+                    <span className='text-danger'>
+                        {errors && errors.phone ? errors.phone : ''}
+                    </span>
+                </div>
+                <div className='mb-3'>
+                    <label htmlFor='photo' className='form-label'>
+                        Photo
+                    </label>
+                    <input
+                        type='file'
+                        className='form-control'
+                        id='photo'
+                        name='photo'
+                        onChange={onChange}
+                    />
+                </div>
+                <div className='mb-3'>
+                    <button type='submit' className='btn btn-success btn-sm me-1'>
+                        Update
+                    </button>
+                    <Link
+                        to={`/profile`}
+                        className='btn btn-secondary btn-sm'
+                    >
+                        Cancel
+                    </Link>
+                </div>
+            </form>
         </div>
     )
 }

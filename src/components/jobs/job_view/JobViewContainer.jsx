@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useCallback } from 'react'
 
 import { jobsAPI } from '../../../API'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
 import { useJobContext } from '../../../hooks/useJobContext'
 import ViewJobDetails from './JobViewDetails'
 import JobViewSubDetails from './JobViewSubDetails'
@@ -60,7 +59,6 @@ const JobViewContainer = () => {
                 <div className='col-md-7 col-lg-8 col-xl-9 mb-3'>
                     <div className='row'>
                         <div className='col-xl-8 mb-3'>
-                            <AlertMessage />
                             {job && <ViewJobDetails job={job} />}
                         </div>
                         <div className='col-xl-4 mb-3'>
