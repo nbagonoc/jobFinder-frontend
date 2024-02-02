@@ -1,8 +1,9 @@
+import Default from '../../partials/layouts/Default'
 import JobEditForm from './JobEditForm'
 
 const JobEditFormContainer = () => {
     return (
-        <div className='container'>
+        <Default>
             <div className='col-md-8 col-lg-6 mx-auto'>
                 <div className='card'>
                     <div className='card-header'>
@@ -13,7 +14,7 @@ const JobEditFormContainer = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Default>
     )
 }
 

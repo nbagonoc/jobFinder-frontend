@@ -9,6 +9,7 @@ import JobListColumnTitle from './JobListColumnTitle'
 import JobListDetails from './JobListDetails'
 import JobListFilter from './JobListFilter'
 import AlertMessage from '../../partials/AlertMessage/AlertMessage'
+import Default from '../../partials/layouts/Default'
 
 const JobListContainerRecruiter = () => {
     const { jobsOwned, dispatch } = useJobContext()
@@ -35,8 +36,7 @@ const JobListContainerRecruiter = () => {
     }, [dispatch, token])
 
     return (
-        <div className='container-xxl'>
-            <AlertMessage />
+        <Default>
             <JobListFilter />
             <JobListColumnTitle/>
             <div className='row'>
@@ -50,7 +50,7 @@ const JobListContainerRecruiter = () => {
                     </div>
                 )}
             </div>
-        </div>
+        </Default>
     )
 }
 

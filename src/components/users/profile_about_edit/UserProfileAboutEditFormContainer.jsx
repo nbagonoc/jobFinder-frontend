@@ -1,8 +1,9 @@
-import UserProfileAboutEditForm from "./UserProfileAboutEditForm"
+import UserProfileAboutEditForm from './UserProfileAboutEditForm'
+import Default from '../../partials/layouts/Default'
 
 const UserProfileAboutEditFormContainer = () => {
     return (
-        <div className='container'>
+        <Default>
             <div className='col-md-8 col-lg-6 mx-auto'>
                 <div className='card'>
                     <div className='card-header'>
@@ -15,7 +16,7 @@ const UserProfileAboutEditFormContainer = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Default>
     )
 }
 

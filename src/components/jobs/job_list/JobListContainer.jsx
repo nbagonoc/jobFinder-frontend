@@ -5,7 +5,7 @@ import { jobsAPI } from '../../../API'
 import { useJobContext } from '../../../hooks/useJobContext'
 import JobListDetails from './JobListDetails'
 import JobListFilter from './JobListFilter'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
+import Default from '../../partials/layouts/Default'
 
 const JobListContainer = () => {
     const { jobs, dispatch } = useJobContext()
@@ -24,8 +24,7 @@ const JobListContainer = () => {
     }, [dispatch])
 
     return (
-        <div className='container-xxl'>
-            <AlertMessage />
+        <Default>
             <div className='row'>
                 <div className='col-md-5 mb-3'>
                     <JobListFilter />
@@ -40,7 +39,7 @@ const JobListContainer = () => {
                     )}
                 </div>
             </div>
-        </div>
+        </Default>
     )
 }
 

@@ -8,7 +8,7 @@ import { useAuthContext } from '../../../hooks/useAuthContext'
 
 import ApplicantListColumnTitle from './ApplicantListColumnTitle'
 import ApplicantListDetails from './ApplicantListDetails'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
+import Default from '../../partials/layouts/Default'
 
 const ApplicantListContainer = () => {
     const { _id } = useParams()
@@ -46,8 +46,7 @@ const ApplicantListContainer = () => {
     }, [dispatch, token, _id, resetState])
 
     return (
-        <div className='container-xxl'>
-            <AlertMessage />
+        <Default>
             <ApplicantListColumnTitle />
             <div className='row'>
                 {applicants && applicants.length >= 1 ? (
@@ -60,7 +59,7 @@ const ApplicantListContainer = () => {
                     </div>
                 )}
             </div>
-        </div>
+        </Default>
     )
 }
 

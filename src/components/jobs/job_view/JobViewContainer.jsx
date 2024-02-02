@@ -8,6 +8,7 @@ import { useJobContext } from '../../../hooks/useJobContext'
 import ViewJobDetails from './JobViewDetails'
 import JobViewSubDetails from './JobViewSubDetails'
 import CompanyAboutDetails from '../../company/company_about/CompanyAboutDetails'
+import Default from '../../partials/layouts/Default'
 
 const JobViewContainer = () => {
     const { _id } = useParams()
@@ -51,7 +52,7 @@ const JobViewContainer = () => {
     }, [_id, dispatch, resetState])
 
     return (
-        <div className='container-xxl'>
+        <Default>
             <div className='row'>
                 <div className='col-md-5 col-lg-4 col-xl-3 mb-3'>
                     {job && <JobViewSubDetails job={job} />}
@@ -68,7 +69,7 @@ const JobViewContainer = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Default>
     )
 }
 

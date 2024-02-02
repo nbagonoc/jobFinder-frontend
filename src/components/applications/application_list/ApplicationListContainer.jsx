@@ -7,7 +7,7 @@ import { useAuthContext } from '../../../hooks/useAuthContext'
 
 import ApplicationListDetails from './ApplicationListDetails'
 import ApplicationListColumnTitle from './ApplicationListColumnTitle'
-import AlertMessage from '../../partials/AlertMessage/AlertMessage'
+import Default from '../../partials/layouts/Default'
 
 const ApplicationListContainer = () => {
     const { applications, dispatch } = useApplicationContext()
@@ -32,8 +32,7 @@ const ApplicationListContainer = () => {
     }, [dispatch, token])
 
     return (
-        <div className='container-xxl'>
-            <AlertMessage />
+        <Default>
             <ApplicationListColumnTitle />
             <div className='row'>
                 {applications && applications.length >= 1 ? (
@@ -47,7 +46,7 @@ const ApplicationListContainer = () => {
                 </div>
                 )}
             </div>
-        </div>
+        </Default>
     )
 }
 

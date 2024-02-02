@@ -11,6 +11,7 @@ import UserEducation from '../profile/UserEducation'
 import UserExperience from '../profile/UserExperience'
 import UserSkills from '../profile/UserSkills'
 import UserApplicant from './UserApplicant'
+import Default from '../../partials/layouts/Default'
 
 const UserApplicantContainer = () => {
     const { _id } = useParams()
@@ -54,7 +55,7 @@ const UserApplicantContainer = () => {
     }, [dispatch, token, _id])
 
     return (
-        <div className='container-xxl'>
+        <Default>
             {applicant ? (
                 <div className='row'>
                     <div className='col-md-5 col-lg-4 col-xl-3 mb-3'>
@@ -82,7 +83,7 @@ const UserApplicantContainer = () => {
             ) : (
                 <h3>Loading...</h3> //iterate to spinner
             )}
-        </div>
+        </Default>
     )
 }
 
