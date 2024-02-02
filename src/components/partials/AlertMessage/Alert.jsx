@@ -22,10 +22,10 @@ const Alert = ({ alert, handleClose }) => {
 
 Alert.propTypes = {
     alert: PropTypes.shape({
-        message: PropTypes.string.isRequired,
-        success: PropTypes.bool.isRequired
+        message: PropTypes.string,
+        success: PropTypes.bool
     }),
-    handleClose: PropTypes.func.isRequired
+    handleClose: PropTypes.func
 }
 
 export default Alert
