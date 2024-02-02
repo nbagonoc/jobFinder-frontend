@@ -94,7 +94,7 @@ const JobViewActions = ({ ids, job }) => {
     return (
         <div>
             <hr />
-            {user && user.role === 'recruiter' && user._id === ids.recruiter ? (
+            {user?.role === 'recruiter' && user?._id === ids.recruiter && (
                 <div className='action-buttons'>
                     <Link
                         to={`/jobs/edit/${ids._id}`}
@@ -109,24 +109,25 @@ const JobViewActions = ({ ids, job }) => {
                         Delete
                     </button>
                 </div>
-            ) : (
-                <div className='action-buttons'>
-                    {(Array.isArray(job.applications) && job.applications.some(app => app.user?._id === user._id)) || isDisabled ? (
-                        <button
-                            className='btn btn-secondary'
-                            disabled
-                        >
-                            Already applied
-                        </button>
-                    ) : (
-                        <button
-                            onClick={(e) => handleApply(e, ids._id)}
-                            className='btn btn-success'
-                        >
-                            Apply
-                        </button>
-                    )}
-                </div>
+            )}
+            {user?.role === 'applicant' && (
+            <div className='action-buttons'>
+                {(Array.isArray(job.applications) && job.applications.some(app => app.user?._id === user._id)) || isDisabled ? (
+                    <button
+                        className='btn btn-secondary'
+                        disabled
+                    >
+                        Already applied
+                    </button>
+                ) : (
+                    <button
+                        onClick={(e) => handleApply(e, ids._id)}
+                        className='btn btn-success'
+                    >
+                        Apply
+                    </button>
+                )}
+            </div>
             )}
         </div>
     )

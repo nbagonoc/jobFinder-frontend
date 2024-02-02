@@ -11,7 +11,6 @@ export const JobCreateForm = () => {
     const { token } = useAuthContext()
     const [formData, setFormData] = useState({
         title: '',
-        company: '',
         location: '',
         category: '',
         salary: '',
@@ -40,7 +39,6 @@ export const JobCreateForm = () => {
         e.preventDefault()
         const job = {
             title: formData.title,
-            company: formData.company,
             location: formData.location,
             category: formData.category,
             salary: formData.salary,
@@ -103,23 +101,6 @@ export const JobCreateForm = () => {
                 />
                 <span className='text-danger'>
                     {errors && errors.title ? errors.title : ''}
-                </span>
-            </div>
-            <div className='mb-3'>
-                <label htmlFor='company'>Company name</label>
-                <input
-                    id='company'
-                    name='company'
-                    type='text'
-                    placeholder='Enter company name'
-                    className={`form-control ${
-                        errors && errors.company ? 'border-danger' : ''
-                    }`}
-                    onChange={onChange}
-                    value={formData.company}
-                />
-                <span className='text-danger'>
-                    {errors && errors.company ? errors.company : ''}
                 </span>
             </div>
             <div className='mb-3'>
