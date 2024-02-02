@@ -17,12 +17,13 @@ npm run test
 
 - Front-end Backlog:
     - Applicant:
-        - Manage(view/edit) profile: (need to improve the photo upload)
+        - Manage(view/edit) profile:
             - education
             - experience
             - skills // might remove this from MVP
     - Recruiter:
-        - Manage(view/edit) company profile: (need to improve the photo upload)
+        - Editable company details
+            - number of employees, industry, location, website, email....
         - Manage job posting:
             - close job posting with reason:
                 - already found applicant
@@ -36,6 +37,7 @@ npm run test
         - Need to improve photo upload design style
         - When deleting, there needs to be a confirmation
     - Next:
+        - Editable company details
         - Read(dynamic)/Update Education
         - Read(dynamic)/Update Experience
         - Close a posting
