@@ -25,19 +25,14 @@ const UserProfileContainer = () => {
 
         const getProfile = async () => {
             try {
-                const response = await axios.get(`${usersAPI}/profile`, {
-                    headers,
-                })
+                const response = await axios.get(`${usersAPI}/profile`, { headers })
                 const profile = response.data
                 dispatch({
                     type: 'SET_PROFILE',
                     payload: { profile },
                 })
             } catch (error) {
-                let message = 'Something went wrong!'
-                if (error && error.response) {
-                    message = error.response.data.errors.message
-                }
+                let message = error.response.data.message
                 dispatch({
                     type: 'SET_PROFILE',
                     payload: {

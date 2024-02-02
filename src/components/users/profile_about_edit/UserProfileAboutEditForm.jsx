@@ -7,7 +7,7 @@ import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 const UserProfileAboutEditForm = () => {
-    const { alert, errors, dispatch } = useUserContext()
+    const { errors, dispatch } = useUserContext()
     const { token } = useAuthContext()
     const [formData, setFormData] = useState({
         about: '',
@@ -108,6 +108,7 @@ const UserProfileAboutEditForm = () => {
         <form onSubmit={onSubmit}>
             <textarea
                 id='about'
+                required
                 name='about'
                 type='text'
                 placeholder='About'
