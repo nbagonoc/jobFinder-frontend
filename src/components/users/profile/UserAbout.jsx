@@ -5,7 +5,7 @@ const UserAbout = ({ profile = {} }) => {
     return (
         <div className='card'>
             <div className='card-header'>
-                <h3 className='fw-bold fs-5 mt-2'>About</h3>
+                <h3 className='fw-bold fs-5 mt-2'>About {profile.company}</h3>
             </div>
             <div className='card-body'>
                 {profile.about && profile.about.about ? (
