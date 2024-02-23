@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { usersAPI } from '../../../API'
 
 import UserAbout from './UserAbout'
-import UserEducation from './UserEducation'
+import EducationList from '../education/List'
 import UserExperience from './UserExperience'
 import UserSkills from './UserSkills'
 import UserProfile from './UserProfile'
@@ -58,7 +58,7 @@ const UserProfileContainer = () => {
                             <div className='row'>
                                 <div className='col-xl-8'>
                                     <div className='mb-3'>
-                                        <UserEducation />
+                                        <EducationList />
                                     </div>
                                     <div className='mb-3'>
                                         <UserExperience />
