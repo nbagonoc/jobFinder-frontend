@@ -117,7 +117,7 @@ const Form = () => {
                         From
                     </label>
                     <input
-                        type='text'
+                        type='date'
                         className='form-control'
                         id='from'
                         name='from'
@@ -133,7 +133,7 @@ const Form = () => {
                         To
                     </label>
                     <input
-                        type='text'
+                        type='date'
                         className='form-control'
                         id='to'
                         name='to'
