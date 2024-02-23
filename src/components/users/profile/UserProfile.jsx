@@ -30,7 +30,7 @@ const UserProfile = ({ profile }) => {
                     Location:{' '}
                     <span className='text-muted fw-light'>Location</span>
                 </h6>
-                <Link to={`/profile/edit`} className='btn btn-primary btn-sm'>
+                <Link to={`/profile/edit`} className='btn btn-secondary btn-sm'>
                     Edit
                 </Link>
             </div>

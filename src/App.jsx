@@ -9,6 +9,7 @@ import Register from './pages/auth/Register'
 import UserProfile from './pages/users/UserProfile'
 import UserProfileEdit from './pages/users/UserProfileEdit'
 import UserAboutEdit from './pages/users/UserAboutEdit'
+import UserEducationCreate from './pages/users/UserEducationCreate'
 import UserView from './pages/users/UserView'
 
 import JobListRecruiter from './pages/jobs/JobListRecruiter'
@@ -119,6 +120,10 @@ const App = () => {
                         <Route
                             path='/about/edit'
                             element={<UserAboutEdit />}
+                        />
+                        <Route
+                            path='/education/create'
+                            element={<UserEducationCreate />}
                         />
                         <Route
                             path='/applicant/:_id'
