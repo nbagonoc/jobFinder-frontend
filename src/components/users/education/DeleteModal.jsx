@@ -61,7 +61,7 @@ const DeleteModal = ({ showModal, onHide, title, submitText, id, children }) => 
                     Cancel
                 </Button>
                 <Button
-                    variant="primary"
+                    variant="success"
                     onClick={(e) => {
                         onSubmit(e)
                         onHide()
