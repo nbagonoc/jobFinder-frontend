@@ -1,7 +1,12 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types'
+import { Button, } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
+import Modal from './DeleteModal'
+
 const View = ({ education }) => {
+    const [showModal, setShowModal] = useState(false);
     const fromDate = new Date(education.from).toLocaleDateString();
     const toDate = new Date(education.to).toLocaleDateString();
 
@@ -16,12 +21,28 @@ const View = ({ education }) => {
                 year:{' '}
                 <span className='text-muted fw-light'>{fromDate} - {toDate}</span>
             </h6>
-            <Link to={`/profile/edit`} className='btn btn-secondary btn-sm'>
+            <Link
+                to={`/profile/edit`}
+                className='btn btn-secondary btn-sm'
+            >
                 Edit
             </Link>
-            <Link to={`/profile/edit`} className='btn btn-danger btn-sm ms-1'>
+            <Button
+                variant='secondary'
+                className='btn btn-secondary btn-sm ms-1'
+                onClick={() => setShowModal(true)}
+            >
                 Delete
-            </Link>
+            </Button>
+            <Modal
+                showModal={showModal}
+                onHide={() => setShowModal(false)}
+                title='Please confirm'
+                submitText='Yes, delete it'
+                id={`${education._id}`}
+            >
+                <p>Are you sure you want to delete this education?</p>
+            </Modal>
         </div>
     )
 }

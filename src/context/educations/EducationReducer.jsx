@@ -23,11 +23,14 @@ const EducationReducer = (state, action) => {
                 ...state,
                 education: action.payload.education,
             }
-        case 'DELETE_EDUCATION':
+        case 'DELETE_EDUCATION': {
+            const updatedEducations = state.educations.filter(edu => edu._id !== action.payload.deletedEducationId);
             return {
                 ...state,
                 alert: action.payload.alert,
+                educations: updatedEducations,
             }
+        }
         case 'CLEANER':
             return {
                 ...state,
