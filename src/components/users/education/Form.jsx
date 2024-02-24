@@ -62,7 +62,6 @@ const Form = () => {
         } catch (error) {
             const errors = error.response.data
             const message = error.response.data.message
-            console.log(error)
 
             dispatch({
                 type: 'CREATE_EDUCATION',
