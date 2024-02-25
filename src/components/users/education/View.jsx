@@ -1,16 +1,15 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Button, } from 'react-bootstrap';
-// import { Link } from 'react-router-dom'
+import { Button, } from 'react-bootstrap'
 
 import DeleteModal from './DeleteModal'
 import EditModal from './EditModal'
 
 const View = ({ education }) => {
-    const [showModal, setShowModal] = useState(false);
-    const [showEditModal, setShowEditModal] = useState(false);
-    const fromDate = new Date(education.from).toLocaleDateString();
-    const toDate = new Date(education.to).toLocaleDateString();
+    const [showModal, setShowModal] = useState(false)
+    const [showEditModal, setShowEditModal] = useState(false)
+    const fromDate = new Date(education.from).toLocaleDateString()
+    const toDate = new Date(education.to).toLocaleDateString()
 
     return (
         <div>
@@ -23,12 +22,6 @@ const View = ({ education }) => {
                 year:{' '}
                 <span className='text-muted fw-light'>{fromDate} - {toDate}</span>
             </h6>
-            {/* <Link
-                to={`/profile/edit`}
-                className='btn btn-secondary btn-sm'
-            >
-                Edit
-            </Link> */}
             <Button
                 variant='secondary'
                 className='btn btn-secondary btn-sm me-1'

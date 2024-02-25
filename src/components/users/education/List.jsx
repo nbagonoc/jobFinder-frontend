@@ -1,14 +1,17 @@
+import { useEffect, useState } from 'react'
+
 import axios from 'axios'
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 import { educationsAPI } from '../../../API'
 import { useEducationContext } from '../../../hooks/useEducationContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 import View from './View'
+import CreateModal from './CreateModal'
 
 const List = () => {
+    const [showCreateModal, setShowCreateModal] = useState(false)
     const { educations, dispatch } = useEducationContext()
     const { token } = useAuthContext()
 
@@ -20,7 +23,9 @@ const List = () => {
 
         const getEducations = async () => {
             try {
-                const response = await axios.get(`${educationsAPI}`, { headers })
+                const response = await axios.get(`${educationsAPI}`, {
+                    headers,
+                })
                 const educations = response.data
                 dispatch({
                     type: 'SET_EDUCATIONS',
@@ -59,9 +64,18 @@ const List = () => {
                         <hr />
                     </div>
                 ))}
-                <Link to={`/education/create`} className='btn btn-secondary btn-sm'>
-                    Add
-                </Link>
+                <Button
+                    variant='secondary'
+                    className='btn btn-secondary btn-sm me-1'
+                    onClick={() => setShowCreateModal(true)}
+                >
+                    Create
+                </Button>
+                <CreateModal
+                    showCreateModal={showCreateModal}
+                    onHide={() => setShowCreateModal(false)}
+                    title='Create education'
+                />
             </div>
         </div>
     )

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 import axios from 'axios'
 import { Modal, Button } from 'react-bootstrap'
@@ -9,7 +9,7 @@ import { useEducationContext } from '../../../hooks/useEducationContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import Form from './Form'
 
-const EditModal = ({ showEditModal, onHide, title, education }) => {
+const CreateModal = ({ showCreateModal, onHide, title }) => {
     const { errors,  dispatch } = useEducationContext()
     const { token } = useAuthContext()
     const [formData, setFormData] = useState({
@@ -18,16 +18,13 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
         from: '',
         to: '',
     })
-
+    const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+    }
     useEffect(() => {
         dispatch({ type: 'CLEANER' })
-        setFormData({
-            school: education.school,
-            degree: education.degree,
-            from: education.from,
-            to: education.to,
-        })
-    }, [dispatch, education])
+    }, [dispatch])
 
     const onChange = (e) => {
         const { name, value } = e.target
@@ -37,44 +34,63 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
             [name]: value,
         })
     }
+    const getEducations = async () => {
+        try {
+            const response = await axios.get(`${educationsAPI}`, {
+                headers,
+            })
+            const educations = response.data
+            dispatch({
+                type: 'SET_EDUCATIONS',
+                payload: { educations },
+            })
+        } catch (error) {
+            let message = error.response.data.message
+            dispatch({
+                type: 'SET_EDUCATIONS',
+                payload: {
+                    alert: {
+                        message,
+                        success: false,
+                    },
+                },
+            })
+        }
+    }
 
     // Refactor this in the future to be a more reusable component
     const onSubmit = async (e) => {
         e.preventDefault()
-        const educationFormData = {
-            _id: education._id,
+
+        const education = {
             school: formData.school,
             degree: formData.degree,
             from: formData.from,
             to: formData.to,
         }
 
-        const headers = {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-        }
-
         try {
-            const response = await axios.put(`${educationsAPI}/${education._id}`, educationFormData, { headers })
+            const response = await axios.post(`${educationsAPI}`, education, { headers })
             const message = response.data.message
 
             dispatch({
-                type: 'UPDATE_EDUCATION',
+                type: 'CREATE_EDUCATION',
                 payload: {
                     alert: {
                         message,
                         success: true,
                     },
-                    updatedEducation: educationFormData
                 },
             })
             onHide()
+            getEducations()
+
         } catch (error) {
             const errors = error.response.data
             const message = error.response.data.message
 
             dispatch({
-                type: 'UPDATE_EDUCATION',
+                type: 'CREATE_EDUCATION',
                 payload: {
                     errors,
                     alert: {
@@ -87,7 +103,7 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
     }
 
     return (
-        <Modal show={showEditModal} onHide={onHide} centered>
+        <Modal show={showCreateModal} onHide={onHide} centered>
             <Modal.Header closeButton>
                 <Modal.Title>{title}</Modal.Title>
             </Modal.Header>
@@ -97,7 +113,7 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
                     errors={errors}
                     onChange={onChange}
                     onSubmit={onSubmit}
-                />    
+                />
             </Modal.Body>
             <Modal.Footer>
                 <Button
@@ -119,11 +135,10 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
     )
 }
 
-EditModal.propTypes = {
-    showEditModal: PropTypes.bool.isRequired,
+CreateModal.propTypes = {
+    showCreateModal: PropTypes.bool.isRequired,
     onHide: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
-    education: PropTypes.object.isRequired,
 }
 
-export default EditModal
+export default CreateModal
