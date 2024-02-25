@@ -157,27 +157,24 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
                             {errors && errors.to ? errors.to : ''}
                         </span>
                     </div>
-                    <div className='mb-3'>
-                        {/* <button type='submit' className='btn btn-success btn-sm me-1'>
-                            Save
-                        </button> */}
-                        <Button
-                            type='submit'
-                            variant="success"
-                            className='me-1'
-                        >
-                            Save
-                        </Button>
-                        <Button
-                            variant="secondary"
-                            onClick={onHide}
-                        >
-                            Cancel
-                        </Button>
-                    </div>
                 </form>
-
             </Modal.Body>
+            <Modal.Footer>
+                <Button
+                    variant="success"
+                    onClick={(e) => {
+                        onSubmit(e)
+                    }}
+                >
+                    Save
+                </Button>
+                <Button
+                    variant="secondary"
+                    onClick={onHide}
+                >
+                    Cancel
+                </Button>
+            </Modal.Footer>
         </Modal>
     )
 }

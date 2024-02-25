@@ -57,9 +57,6 @@ const DeleteModal = ({ showModal, onHide, title, submitText, id, children }) => 
                 {children}
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={onHide}>
-                    Cancel
-                </Button>
                 <Button
                     variant="success"
                     onClick={(e) => {
@@ -68,6 +65,9 @@ const DeleteModal = ({ showModal, onHide, title, submitText, id, children }) => 
                     }}
                 >
                     {submitText}
+                </Button>
+                <Button variant="secondary" onClick={onHide}>
+                    Cancel
                 </Button>
             </Modal.Footer>
         </Modal>
