@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types'
 import { Button, } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
-import Modal from './DeleteModal'
+import DeleteModal from './DeleteModal'
+import EditModal from './EditModal'
 
 const View = ({ education }) => {
     const [showModal, setShowModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const fromDate = new Date(education.from).toLocaleDateString();
     const toDate = new Date(education.to).toLocaleDateString();
 
@@ -21,20 +23,33 @@ const View = ({ education }) => {
                 year:{' '}
                 <span className='text-muted fw-light'>{fromDate} - {toDate}</span>
             </h6>
-            <Link
+            {/* <Link
                 to={`/profile/edit`}
                 className='btn btn-secondary btn-sm'
             >
                 Edit
-            </Link>
+            </Link> */}
             <Button
                 variant='secondary'
-                className='btn btn-secondary btn-sm ms-1'
+                className='btn btn-secondary btn-sm me-1'
+                onClick={() => setShowEditModal(true)}
+            >
+                Edit
+            </Button>
+            <Button
+                variant='secondary'
+                className='btn btn-secondary btn-sm'
                 onClick={() => setShowModal(true)}
             >
                 Delete
             </Button>
-            <Modal
+            <EditModal
+                showEditModal={showEditModal}
+                onHide={() => setShowEditModal(false)}
+                title='Edit education'
+                education={education}
+            />
+            <DeleteModal
                 showModal={showModal}
                 onHide={() => setShowModal(false)}
                 title='Please confirm'
@@ -42,7 +57,7 @@ const View = ({ education }) => {
                 id={`${education._id}`}
             >
                 <p>Are you sure you want to delete this education?</p>
-            </Modal>
+            </DeleteModal>
         </div>
     )
 }

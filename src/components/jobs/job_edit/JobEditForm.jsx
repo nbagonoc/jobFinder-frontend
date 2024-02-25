@@ -91,8 +91,6 @@ export const JobEditForm = () => {
             status: formData.status,
         }
 
-        console.log(job)
-
         const headers = {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
