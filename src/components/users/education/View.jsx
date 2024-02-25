@@ -20,7 +20,9 @@ const View = ({ education }) => {
             </h6>
             <h6 className='fw-bold'>
                 year:{' '}
-                <span className='text-muted fw-light'>{fromDate} - {toDate}</span>
+                <span className='text-muted fw-light'>
+                    {fromDate} - {education.current ? 'Current' : toDate}
+                </span>
             </h6>
             <Button
                 variant='secondary'

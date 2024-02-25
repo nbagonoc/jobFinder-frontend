@@ -17,6 +17,7 @@ const CreateModal = ({ showCreateModal, onHide, title }) => {
         degree: '',
         from: '',
         to: '',
+        current: false,
     })
     const headers = {
         'Content-Type': 'application/json',
@@ -28,11 +29,19 @@ const CreateModal = ({ showCreateModal, onHide, title }) => {
 
     const onChange = (e) => {
         const { name, value } = e.target
+        // const { name, type, checked, value } = e.target;
+        // Handle checkboxes separately
+        // const newValue = type === 'checkbox' ? checked : value;
 
         setFormData({
             ...formData,
             [name]: value,
         })
+
+        // setFormData((prevFormData) => ({
+        //     ...prevFormData,
+        //     [name]: newValue,
+        // }));
     }
     const getEducations = async () => {
         try {
@@ -67,8 +76,9 @@ const CreateModal = ({ showCreateModal, onHide, title }) => {
             degree: formData.degree,
             from: formData.from,
             to: formData.to,
+            current: formData.current,
         }
-
+        console.log(education)
         try {
             const response = await axios.post(`${educationsAPI}`, education, { headers })
             const message = response.data.message

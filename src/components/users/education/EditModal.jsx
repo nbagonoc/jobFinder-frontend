@@ -31,11 +31,21 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
 
     const onChange = (e) => {
         const { name, value } = e.target
+        // const { name, type, checked, value } = e.target;
+        // Handle checkboxes separately
+        // const newValue = type === 'checkbox' ? checked : value;
+
+        // console.log(name, checked); // Add this line
 
         setFormData({
             ...formData,
             [name]: value,
         })
+
+        // setFormData((prevFormData) => ({
+        //     ...prevFormData,
+        //     [name]: newValue,
+        // }));
     }
 
     // Refactor this in the future to be a more reusable component
