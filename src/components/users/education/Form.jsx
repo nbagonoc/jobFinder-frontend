@@ -52,7 +52,6 @@ const Form = ({ formData, errors, onChange, onSubmit }) => {
                             className='form-control'
                             id='from'
                             name='from'
-                            // value={formData && formData.from ? formData.from : ''}
                             value={formData && formData.from ? formatDate(new Date(formData.from)) : ''}
                             onChange={onChange}
                         />
@@ -69,7 +68,6 @@ const Form = ({ formData, errors, onChange, onSubmit }) => {
                             className='form-control'
                             id='to'
                             name='to'
-                            // value={formData && formData.to ? formData.to : ''}
                             value={formData && formData.to ? formatDate(new Date(formData.to)) : ''}
                             onChange={onChange}
                             disabled={formData && formData.current ? true : false}
@@ -78,7 +76,7 @@ const Form = ({ formData, errors, onChange, onSubmit }) => {
                             {errors && errors.to ? errors.to : ''}
                         </span>
                     </div>
-                    {/* <div className='mb-3 '>
+                    <div className='mb-3 '>
                         <label htmlFor='current' className='form-label me-2'>
                             Current
                         </label>
@@ -90,7 +88,7 @@ const Form = ({ formData, errors, onChange, onSubmit }) => {
                             checked={formData && formData.current}
                             onChange={onChange}
                         />
-                    </div> */}
+                    </div>
                 </form>
     )
 }

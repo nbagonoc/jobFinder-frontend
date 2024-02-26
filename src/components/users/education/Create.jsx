@@ -1,3 +1,5 @@
+// DEPRECATED. Not being used anymore.
+
 import Default from "../../partials/layouts/Default"
 import Form from "./Form"
 

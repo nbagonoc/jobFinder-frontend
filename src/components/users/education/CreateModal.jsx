@@ -23,25 +23,29 @@ const CreateModal = ({ showCreateModal, onHide, title }) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
     }
+    const resetFormData = () => {
+        setFormData({
+            school: '',
+            degree: '',
+            from: '',
+            to: '',
+            current: false,
+        })
+    }
+
     useEffect(() => {
-        dispatch({ type: 'CLEANER' })
-    }, [dispatch])
+        resetFormData()
+    }, [showCreateModal])
 
     const onChange = (e) => {
-        const { name, value } = e.target
-        // const { name, type, checked, value } = e.target;
+        const { name, type, checked, value } = e.target;
         // Handle checkboxes separately
-        // const newValue = type === 'checkbox' ? checked : value;
+        const newValue = type === 'checkbox' ? checked : value;
 
-        setFormData({
-            ...formData,
-            [name]: value,
-        })
-
-        // setFormData((prevFormData) => ({
-        //     ...prevFormData,
-        //     [name]: newValue,
-        // }));
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: newValue,
+        }));
     }
     const getEducations = async () => {
         try {

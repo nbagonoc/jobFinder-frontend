@@ -17,35 +17,28 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
         degree: '',
         from: '',
         to: '',
+        current: false,
     })
 
     useEffect(() => {
-        dispatch({ type: 'CLEANER' })
         setFormData({
             school: education.school,
             degree: education.degree,
             from: education.from,
             to: education.to,
+            current: education.current,
         })
-    }, [dispatch, education])
+    }, [education])
 
     const onChange = (e) => {
-        const { name, value } = e.target
-        // const { name, type, checked, value } = e.target;
+        const { name, type, checked, value } = e.target;
         // Handle checkboxes separately
-        // const newValue = type === 'checkbox' ? checked : value;
+        const newValue = type === 'checkbox' ? checked : value;
 
-        // console.log(name, checked); // Add this line
-
-        setFormData({
-            ...formData,
-            [name]: value,
-        })
-
-        // setFormData((prevFormData) => ({
-        //     ...prevFormData,
-        //     [name]: newValue,
-        // }));
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: newValue,
+        }));
     }
 
     // Refactor this in the future to be a more reusable component
@@ -57,6 +50,7 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
             degree: formData.degree,
             from: formData.from,
             to: formData.to,
+            current: formData.current,
         }
 
         const headers = {
