@@ -1,4 +1,4 @@
-import { ExperienceContext } from '../context/educations/ExperienceContext'
+import { ExperienceContext } from '../context/experiences/ExperienceContext'
 import { useContext } from 'react'
 
 export const useExperienceContext = () => {

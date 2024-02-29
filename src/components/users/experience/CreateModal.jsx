@@ -5,12 +5,12 @@ import axios from 'axios'
 import { Modal, Button } from 'react-bootstrap'
 
 import { experiencesAPI } from '../../../API'
-import { useExperiencesContext } from '../../../hooks/useExperiencesContext'
+import { useExperienceContext } from '../../../hooks/useExperienceContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import Form from './Form'
 
 const CreateModal = ({ showCreateModal, onHide, title }) => {
-    const { errors,  dispatch } = useExperiencesContext()
+    const { errors,  dispatch } = useExperienceContext()
     const { token } = useAuthContext()
     const [formData, setFormData] = useState({
         title: '',

@@ -72,7 +72,7 @@ const EditModal = ({ showEditModal, onHide, title, experience }) => {
                         message,
                         success: true,
                     },
-                    updatedEducation: experienceFormData
+                    updatedExperience: experienceFormData
                 },
             })
             onHide()

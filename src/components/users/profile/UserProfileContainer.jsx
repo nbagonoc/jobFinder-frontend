@@ -5,7 +5,7 @@ import { usersAPI } from '../../../API'
 
 import UserAbout from './UserAbout'
 import EducationList from '../education/List'
-import UserExperience from './UserExperience'
+import ExperienceList from '../experience/List'
 import UserSkills from './UserSkills'
 import UserProfile from './UserProfile'
 import Default from '../../partials/layouts/Default'
@@ -61,7 +61,7 @@ const UserProfileContainer = () => {
                                         <EducationList />
                                     </div>
                                     <div className='mb-3'>
-                                        <UserExperience />
+                                        <ExperienceList />
                                     </div>
                                     <div className='mb-3'>
                                         <UserSkills />
