@@ -5,6 +5,7 @@ import { JobContextProvider } from './context/jobs/JobContext'
 import { UserContextProvider } from './context/users/UserContext'
 import { EducationContextProvider } from './context/educations/EducationContext'
 import { ExperienceContextProvider } from './context/experiences/ExperienceContext'
+import { SkillContextProvider } from './context/skills/SkillContext'
 import { ApplicationContextProvider } from './context/applications/ApplicationContext'
 
 
@@ -13,11 +14,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <UserContextProvider>
             <EducationContextProvider>
                 <ExperienceContextProvider>
-                    <JobContextProvider>
-                        <ApplicationContextProvider>
-                            <App />
-                        </ApplicationContextProvider>
-                    </JobContextProvider>
+                    <SkillContextProvider>
+                        <JobContextProvider>
+                            <ApplicationContextProvider>
+                                <App />
+                            </ApplicationContextProvider>
+                        </JobContextProvider>
+                    </SkillContextProvider>
                 </ExperienceContextProvider>
             </EducationContextProvider>
         </UserContextProvider>

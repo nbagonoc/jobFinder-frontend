@@ -49,6 +49,9 @@ const CreateModal = ({ showCreateModal, onHide, title }) => {
             [name]: newValue,
         }));
     }
+    // We needed to get the experiences everyafter submit
+    // why? Well, we just can't add the newly created experience in the state
+    // because we need the ID just in case the user edits that newly created experience
     const getExperiences = async () => {
         try {
             const response = await axios.get(`${experiencesAPI}`, {
