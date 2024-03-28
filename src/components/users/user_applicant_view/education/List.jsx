@@ -63,10 +63,10 @@ const List = ({id}) => {
                         No education found
                     </div>
                 )}
-                {educations.map((education) => (
+                {educations.map((education, index) => (
                     <div key={education._id}>
                         <View education={education} />
-                        <hr /> {/* find a way to hide MR if last item */}
+                        {index !== educations.length - 1 && <hr />}
                     </div>
                 ))}
             </div>
