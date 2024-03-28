@@ -9,7 +9,7 @@ import { useAuthContext } from '../../../../hooks/useAuthContext'
 
 import View from './View'
 
-const List = ({id}) => {
+const List = ({ id }) => {
     const { dispatch } = useEducationContext()
     const { token } = useAuthContext()
     const [educations, setEducations] = useState(null)
@@ -22,9 +22,7 @@ const List = ({id}) => {
 
         const getEducations = async () => {
             try {
-                const response = await axios.get(`${educationsAPI}/${id}/user`, {
-                    headers,
-                })
+                const response = await axios.get(`${educationsAPI}/${id}/user`, { headers })
                 const educationsData = response.data
                 dispatch({
                     type: 'SET_EDUCATIONS',
