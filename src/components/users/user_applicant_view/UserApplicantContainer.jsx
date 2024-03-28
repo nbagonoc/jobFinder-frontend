@@ -7,7 +7,7 @@ import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
 import UserAbout from '../profile/UserAbout'
-import UserEducation from '../profile/UserEducation'
+import EducationList from './education/List'
 import UserExperience from '../profile/UserExperience'
 import UserSkills from '../profile/UserSkills'
 import UserApplicant from './UserApplicant'
@@ -52,7 +52,7 @@ const UserApplicantContainer = () => {
             }
         }
         getApplicant()
-    }, [dispatch, token, _id])
+    }, [dispatch, token, _id, applicant])
 
     return (
         <Default>
@@ -65,7 +65,7 @@ const UserApplicantContainer = () => {
                         <div className='row'>
                             <div className='col-xl-8'>
                                 <div className='mb-3'>
-                                    <UserEducation />
+                                    <EducationList id={applicant._id}/>
                                 </div>
                                 <div className='mb-3'>
                                     <UserExperience />
