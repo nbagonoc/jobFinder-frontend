@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 
 const View = ({ skill }) => {
-
     return (
         <div>
             <h6 className='text-muted fw-light'>

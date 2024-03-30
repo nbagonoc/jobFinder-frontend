@@ -1,50 +1,8 @@
-import { useEffect, useState } from 'react'
-
-import axios from 'axios'
 import PropTypes from 'prop-types'
-
-import { experiencesAPI } from '../../../../API'
-import { useExperienceContext } from '../../../../hooks/useExperienceContext'
-import { useAuthContext } from '../../../../hooks/useAuthContext'
 
 import View from './View'
 
-const List = ({ id }) => {
-    const { dispatch } = useExperienceContext()
-    const { token } = useAuthContext()
-    const [experiences, setExperiences] = useState(null)
-
-    useEffect(() => {
-        const headers = {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-        }
-
-        const getExperiences = async () => {
-            try {
-                const response = await axios.get(`${experiencesAPI}/${id}/user`, { headers })
-                const experiencesData = response.data
-                dispatch({
-                    type: 'SET_EXPERIENCES',
-                    payload: { experiencesData },
-                })
-                setExperiences(experiencesData)
-            } catch (error) {
-                let message = error.response.data.message
-                dispatch({
-                    type: 'SET_EXPERIENCES',
-                    payload: {
-                        alert: {
-                            message,
-                            success: false,
-                        },
-                    }
-                })
-                setExperiences([])
-            }
-        }
-        getExperiences()
-    }, [experiences, dispatch, token, id, setExperiences])
+const List = ({ experiences }) => {
 
     if (experiences === null) {
         return <div>Loading...</div>
@@ -73,7 +31,7 @@ const List = ({ id }) => {
 }
 
 List.propTypes = {
-    id: PropTypes.string.isRequired,
+    experiences: PropTypes.array.isRequired,
 }
 
 export default List

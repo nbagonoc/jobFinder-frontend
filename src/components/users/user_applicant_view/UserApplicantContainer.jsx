@@ -1,38 +1,39 @@
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { usersAPI } from '../../../API'
 import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
-import UserAbout from '../profile/UserAbout'
+import About from './about/About'
 import EducationList from './education/List'
 import ExperienceList from './experience/List'
-import SkillsList from './skill/List'
+import SkillList from './skill/List'
 import UserApplicant from './UserApplicant'
 import Default from '../../partials/layouts/Default'
 
 const UserApplicantContainer = () => {
     const { _id } = useParams()
-    const { applicant, dispatch } = useUserContext()
+    const { dispatch } = useUserContext()
     const { token } = useAuthContext()
+    const [applicant, setApplicant] = useState(null)
     
 
     useEffect(() => {
-        const headers = {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-        }
-
         const getApplicant = async () => {
             try {
+                const headers = {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                }
                 const response = await axios.get(`${usersAPI}/view/${_id}`, { headers })
-                const applicant = response.data
+                const applicantData = response.data
                 dispatch({
                     type: 'SET_APPLICANT',
-                    payload: { applicant },
+                    payload: { applicant: applicantData },
                 })
+                setApplicant(applicantData)
             } catch (error) {
                 let message = 'Something went wrong!'
                 if (error && error.response) {
@@ -47,9 +48,10 @@ const UserApplicantContainer = () => {
                         },
                     },
                 })
+                setApplicant({})
             }
         }
-        getApplicant()
+        applicant === null ? getApplicant() : null
     }, [dispatch, token, _id, applicant])
 
     return (
@@ -63,17 +65,17 @@ const UserApplicantContainer = () => {
                         <div className='row'>
                             <div className='col-xl-8'>
                                 <div className='mb-3'>
-                                    {applicant._id && <EducationList id={applicant._id}/>}
+                                    {applicant.education && <EducationList educations={applicant.education}/>}
                                 </div>
                                 <div className='mb-3'>
-                                    {applicant._id && <ExperienceList id={applicant._id}/>}
+                                    {applicant.experience && <ExperienceList experiences={applicant.experience}/>}
                                 </div>
                                 <div className='mb-3'>
-                                {applicant._id && <SkillsList id={applicant._id}/>}
+                                    {applicant.skill && <SkillList skills={applicant.skill}/>}
                                 </div>
                             </div>
                             <div className='col-xl-4 mb-3'>
-                                <UserAbout />
+                                {applicant.about && <About about={applicant.about}/>}
                             </div>
                         </div>
                     </div>

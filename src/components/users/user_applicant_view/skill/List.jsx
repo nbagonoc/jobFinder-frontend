@@ -1,50 +1,8 @@
-import { useEffect, useState } from 'react'
-
-import axios from 'axios'
 import PropTypes from 'prop-types'
-
-import { skillsAPI } from '../../../../API'
-import { useSkillContext } from '../../../../hooks/useSkillContext'
-import { useAuthContext } from '../../../../hooks/useAuthContext'
 
 import View from './View'
 
-const List = ({ id }) => {
-    const { dispatch } = useSkillContext()
-    const { token } = useAuthContext()
-    const [skills, setSkills] = useState(null)
-
-    useEffect(() => {
-        const headers = {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-        }
-
-        const getSkills = async () => {
-            try {
-                const response = await axios.get(`${skillsAPI}/${id}/user`, { headers })
-                const skillsData= response.data
-                dispatch({
-                    type: 'SET_SKILLS',
-                    payload: { skillsData},
-                })
-                setSkills(skillsData)
-            } catch (error) {
-                let message = error.response.data.message
-                dispatch({
-                    type: 'SET_SKILLS',
-                    payload: {
-                        alert: {
-                            message,
-                            success: false,
-                        },
-                    },
-                })
-                setSkills([])
-            }
-        }
-        getSkills()
-    }, [skills, dispatch, token, id, setSkills])
+const List = ({ skills }) => {
 
     if (skills === null) {
         return <div>Loading...</div>
@@ -73,7 +31,7 @@ const List = ({ id }) => {
 }
 
 List.propTypes = {
-    id: PropTypes.string.isRequired,
+    skills: PropTypes.array.isRequired,
 }
 
 export default List
