@@ -27,9 +27,7 @@ const UserApplicantContainer = () => {
 
         const getApplicant = async () => {
             try {
-                const response = await axios.get(`${usersAPI}/view/${_id}`, {
-                    headers,
-                })
+                const response = await axios.get(`${usersAPI}/view/${_id}`, { headers })
                 const applicant = response.data
                 dispatch({
                     type: 'SET_APPLICANT',
@@ -65,10 +63,10 @@ const UserApplicantContainer = () => {
                         <div className='row'>
                             <div className='col-xl-8'>
                                 <div className='mb-3'>
-                                    <EducationList id={applicant._id}/>
+                                    {applicant._id && <EducationList id={applicant._id}/>}
                                 </div>
                                 <div className='mb-3'>
-                                    <ExperienceList id={applicant._id}/>
+                                    {applicant._id && <ExperienceList id={applicant._id}/>}
                                 </div>
                                 <div className='mb-3'>
                                     <UserSkills />
