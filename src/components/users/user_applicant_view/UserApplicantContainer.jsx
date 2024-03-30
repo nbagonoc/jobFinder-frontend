@@ -10,7 +10,7 @@ import About from './about/About'
 import EducationList from './education/List'
 import ExperienceList from './experience/List'
 import SkillList from './skill/List'
-import UserApplicant from './UserApplicant'
+import Profile from './profile/Profile'
 import Default from '../../partials/layouts/Default'
 
 const UserApplicantContainer = () => {
@@ -59,7 +59,7 @@ const UserApplicantContainer = () => {
             {applicant ? (
                 <div className='row'>
                     <div className='col-md-5 col-lg-4 col-xl-3 mb-3'>
-                        <UserApplicant applicant={applicant} />
+                        <Profile applicant={applicant} />
                     </div>
                     <div className='col-md-7 col-lg-8 col-xl-9 mb-3'>
                         <div className='row'>

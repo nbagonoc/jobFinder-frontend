@@ -1,9 +1,15 @@
 import PropTypes from 'prop-types'
 
-const UserApplicant = ({ applicant }) => {
+const Profile = ({ applicant }) => {
     return (
         <div className='card'>
             <div className='card-body'>
+                <img
+                    src={applicant.photo}
+                    alt='profile'
+                    className='rounded-circle mx-auto d-block img-fluid'
+                    style={{ width: '150px', height: '150px' }}
+                />
                 <h1 className='card-title fw-bold text-primary fs-4'>
                     {`${applicant.firstName} ${applicant.lastName}`}
                 </h1>
@@ -22,8 +28,8 @@ const UserApplicant = ({ applicant }) => {
     )
 }
 
-UserApplicant.propTypes = {
+Profile.propTypes = {
     applicant: PropTypes.object.isRequired,
 }
 
-export default UserApplicant
+export default Profile
