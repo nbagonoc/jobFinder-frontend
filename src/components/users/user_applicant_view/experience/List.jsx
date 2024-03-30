@@ -3,16 +3,16 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import PropTypes from 'prop-types'
 
-import { educationsAPI } from '../../../../API'
-import { useEducationContext } from '../../../../hooks/useEducationContext'
+import { experiencesAPI } from '../../../../API'
+import { useExperienceContext } from '../../../../hooks/useExperienceContext'
 import { useAuthContext } from '../../../../hooks/useAuthContext'
 
 import View from './View'
 
 const List = ({ id }) => {
-    const { dispatch } = useEducationContext()
+    const { dispatch } = useExperienceContext()
     const { token } = useAuthContext()
-    const [educations, setEducations] = useState(null)
+    const [experiences, setExperiences] = useState(null)
 
     useEffect(() => {
         const headers = {
@@ -20,51 +20,51 @@ const List = ({ id }) => {
             Authorization: `Bearer ${token}`,
         }
 
-        const getEducations = async () => {
+        const getExperiences = async () => {
             try {
-                const response = await axios.get(`${educationsAPI}/${id}/user`, { headers })
-                const educationsData = response.data
+                const response = await axios.get(`${experiencesAPI}/${id}/user`, { headers })
+                const experiencesData = response.data
                 dispatch({
-                    type: 'SET_EDUCATIONS',
-                    payload: { educationsData },
+                    type: 'SET_EXPERIENCES',
+                    payload: { experiencesData },
                 })
-                setEducations(educationsData)
+                setExperiences(experiencesData)
             } catch (error) {
                 let message = error.response.data.message
                 dispatch({
-                    type: 'SET_EDUCATIONS',
+                    type: 'SET_EXPERIENCES',
                     payload: {
                         alert: {
                             message,
                             success: false,
                         },
-                    },
+                    }
                 })
-                setEducations([])
+                setExperiences([])
             }
         }
-        getEducations()
-    }, [educations, dispatch, token, id])
+        getExperiences()
+    }, [experiences, dispatch, token, id, setExperiences])
 
-    if (educations === null) {
+    if (experiences === null) {
         return <div>Loading...</div>
     }
 
     return (
         <div className='card'>
             <div className='card-header'>
-                <h3 className='fw-bold fs-5 mt-2'>Education</h3>
+                <h3 className='fw-bold fs-5 mt-2'>Experience</h3>
             </div>
             <div className='card-body'>
-                {educations.length === 0 && (
+                {experiences.length === 0 && (
                     <div className='alert alert-info' role='alert'>
-                        No education found
+                        No experience found
                     </div>
                 )}
-                {educations.map((education, index) => (
-                    <div key={education._id}>
-                        <View education={education} />
-                        {index !== educations.length - 1 && <hr />}
+                {experiences.map((experience, index) => (
+                    <div key={experience._id}>
+                        <View experience={experience} />
+                        {index !== experiences.length - 1 && <hr />}
                     </div>
                 ))}
             </div>

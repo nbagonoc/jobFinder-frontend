@@ -8,7 +8,7 @@ import { useAuthContext } from '../../../hooks/useAuthContext'
 
 import UserAbout from '../profile/UserAbout'
 import EducationList from './education/List'
-import UserExperience from '../profile/UserExperience'
+import ExperienceList from './experience/List'
 import UserSkills from '../profile/UserSkills'
 import UserApplicant from './UserApplicant'
 import Default from '../../partials/layouts/Default'
@@ -68,7 +68,7 @@ const UserApplicantContainer = () => {
                                     <EducationList id={applicant._id}/>
                                 </div>
                                 <div className='mb-3'>
-                                    <UserExperience />
+                                    <ExperienceList id={applicant._id}/>
                                 </div>
                                 <div className='mb-3'>
                                     <UserSkills />

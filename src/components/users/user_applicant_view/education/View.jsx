@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 
-
 const View = ({ education }) => {
     const fromDate = new Date(education.from).toLocaleDateString()
     const toDate = new Date(education.to).toLocaleDateString()
