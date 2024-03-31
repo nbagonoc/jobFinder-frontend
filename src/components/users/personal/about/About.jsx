@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-const UserAbout = ({ profile = {} }) => {
+const About = ({ profile = {} }) => {
     return (
         <div className='card'>
             <div className='card-header'>
@@ -24,8 +24,8 @@ const UserAbout = ({ profile = {} }) => {
     )
 }
 
-UserAbout.propTypes = {
+About.propTypes = {
     profile: PropTypes.object,
 }
 
-export default UserAbout
+export default About

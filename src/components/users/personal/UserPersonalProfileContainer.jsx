@@ -5,7 +5,7 @@ import { usersAPI } from '../../../API'
 import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
-import UserAbout from './profile/UserAbout'
+import About from './about/About'
 import EducationList from './education/List'
 import ExperienceList from './experience/List'
 import SkillList from './skill/List'
@@ -67,14 +67,14 @@ const UserPersonalProfileContainer = () => {
                                     </div>
                                 </div>
                                 <div className='col-xl-4 mb-3'>
-                                    <UserAbout profile={profile} />
+                                    <About profile={profile} />
                                 </div>
                             </div>
                         )}
                         {user && user.role === 'recruiter' && (
                             <div className='row'>
                                 <div className='col-xl-12'>
-                                    <UserAbout profile={profile} />
+                                    <About profile={profile} />
                                 </div>
                             </div>
                         )}
