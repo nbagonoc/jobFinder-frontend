@@ -2,9 +2,9 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-import { usersAPI } from '../../../API'
-import { useUserContext } from '../../../hooks/useUserContext'
-import { useAuthContext } from '../../../hooks/useAuthContext'
+import { usersAPI } from '../../../../API'
+import { useUserContext } from '../../../../hooks/useUserContext'
+import { useAuthContext } from '../../../../hooks/useAuthContext'
 
 const UserProfileEditForm = () => {
     const { errors,  dispatch } = useUserContext()

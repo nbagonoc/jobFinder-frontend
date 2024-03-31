@@ -13,7 +13,7 @@ import SkillList from './skill/List'
 import Profile from './profile/Profile'
 import Default from '../../partials/layouts/Default'
 
-const UserApplicantContainer = () => {
+const UserPublicProfileContainer = () => {
     const { _id } = useParams()
     const { dispatch } = useUserContext()
     const { token } = useAuthContext()
@@ -87,4 +87,4 @@ const UserApplicantContainer = () => {
     )
 }
 
-export default UserApplicantContainer
+export default UserPublicProfileContainer

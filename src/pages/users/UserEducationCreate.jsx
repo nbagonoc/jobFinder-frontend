@@ -1,4 +1,4 @@
-import Create from "../../components/users/education/Create"
+import Create from "../../components/users/personal/education/Create"
 
 const UserEducationCreate = () => {
   return (

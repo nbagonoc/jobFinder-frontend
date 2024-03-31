@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Modal, Button } from 'react-bootstrap'
 
-import { experiencesAPI } from '../../../API'
-import { useExperienceContext } from '../../../hooks/useExperienceContext'
-import { useAuthContext } from '../../../hooks/useAuthContext'
+import { experiencesAPI } from '../../../../API'
+import { useExperienceContext } from '../../../../hooks/useExperienceContext'
+import { useAuthContext } from '../../../../hooks/useAuthContext'
 import Form from './Form'
 
 const CreateModal = ({ showCreateModal, onHide, title }) => {

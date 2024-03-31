@@ -3,16 +3,16 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Button } from 'react-bootstrap'
 
-import { skillsAPI } from '../../../API'
-import { useSkillContext } from '../../../hooks/useSkillContext'
-import { useAuthContext } from '../../../hooks/useAuthContext'
+import { educationsAPI } from '../../../../API'
+import { useEducationContext } from '../../../../hooks/useEducationContext'
+import { useAuthContext } from '../../../../hooks/useAuthContext'
 
 import View from './View'
 import CreateModal from './CreateModal'
 
 const List = () => {
     const [showCreateModal, setShowCreateModal] = useState(false)
-    const { skills, dispatch } = useSkillContext()
+    const { educations, dispatch } = useEducationContext()
     const { token } = useAuthContext()
 
     useEffect(() => {
@@ -21,20 +21,20 @@ const List = () => {
             Authorization: `Bearer ${token}`,
         }
 
-        const getSkills = async () => {
+        const getEducations = async () => {
             try {
-                const response = await axios.get(`${skillsAPI}`, {
+                const response = await axios.get(`${educationsAPI}`, {
                     headers,
                 })
-                const skills = response.data
+                const educations = response.data
                 dispatch({
-                    type: 'SET_SKILLS',
-                    payload: { skills },
+                    type: 'SET_EDUCATIONS',
+                    payload: { educations },
                 })
             } catch (error) {
                 let message = error.response.data.message
                 dispatch({
-                    type: 'SET_SKILLS',
+                    type: 'SET_EDUCATIONS',
                     payload: {
                         alert: {
                             message,
@@ -44,23 +44,23 @@ const List = () => {
                 })
             }
         }
-        getSkills()
+        getEducations()
     }, [dispatch, token])
 
     return (
         <div className='card'>
             <div className='card-header'>
-                <h3 className='fw-bold fs-5 mt-2'>Skill</h3>
+                <h3 className='fw-bold fs-5 mt-2'>Education</h3>
             </div>
             <div className='card-body'>
-                {skills.length === 0 && (
+                {educations.length === 0 && (
                     <div className='alert alert-info' role='alert'>
-                        No skill found
+                        No education found
                     </div>
                 )}
-                {skills.map((skill) => (
-                    <div key={skill._id}>
-                        <View skill={skill} />
+                {educations.map((education) => (
+                    <div key={education._id}>
+                        <View education={education} />
                         <hr />
                     </div>
                 ))}
@@ -74,7 +74,7 @@ const List = () => {
                 <CreateModal
                     showCreateModal={showCreateModal}
                     onHide={() => setShowCreateModal(false)}
-                    title='Create skill'
+                    title='Create education'
                 />
             </div>
         </div>

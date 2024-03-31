@@ -4,53 +4,39 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Modal, Button } from 'react-bootstrap'
 
-import { educationsAPI } from '../../../API'
-import { useEducationContext } from '../../../hooks/useEducationContext'
-import { useAuthContext } from '../../../hooks/useAuthContext'
+import { skillsAPI } from '../../../../API'
+import { useSkillContext } from '../../../../hooks/useSkillContext'
+import { useAuthContext } from '../../../../hooks/useAuthContext'
 import Form from './Form'
 
-const EditModal = ({ showEditModal, onHide, title, education }) => {
-    const { errors,  dispatch } = useEducationContext()
+const EditModal = ({ showEditModal, onHide, title, skill }) => {
+    const { errors,  dispatch } = useSkillContext()
     const { token } = useAuthContext()
     const [formData, setFormData] = useState({
-        school: '',
-        degree: '',
-        from: '',
-        to: '',
-        current: false,
+        skill: '',
     })
 
     useEffect(() => {
         setFormData({
-            school: education.school,
-            degree: education.degree,
-            from: education.from,
-            to: education.to,
-            current: education.current,
+            skill: skill.skill,
         })
-    }, [education])
+    }, [skill])
 
     const onChange = (e) => {
-        const { name, type, checked, value } = e.target;
-        // Handle checkboxes separately
-        const newValue = type === 'checkbox' ? checked : value;
+        const { name, value } = e.target;
 
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: newValue,
+        setFormData((formData) => ({
+            ...formData,
+            [name]: value,
         }));
     }
 
     // Refactor this in the future to be a more reusable component
     const onSubmit = async (e) => {
         e.preventDefault()
-        const educationFormData = {
-            _id: education._id,
-            school: formData.school,
-            degree: formData.degree,
-            from: formData.from,
-            to: formData.to,
-            current: formData.current,
+        const skillFormData = {
+            _id: skill._id,
+            skill: formData.skill,
         }
 
         const headers = {
@@ -59,17 +45,17 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
         }
 
         try {
-            const response = await axios.put(`${educationsAPI}/${education._id}`, educationFormData, { headers })
+            const response = await axios.put(`${skillsAPI}/${skill._id}`, skillFormData, { headers })
             const message = response.data.message
 
             dispatch({
-                type: 'UPDATE_EDUCATION',
+                type: 'UPDATE_SKILL',
                 payload: {
                     alert: {
                         message,
                         success: true,
                     },
-                    updatedEducation: educationFormData
+                    updatedSkill: skillFormData
                 },
             })
             onHide()
@@ -78,7 +64,7 @@ const EditModal = ({ showEditModal, onHide, title, education }) => {
             const message = error.response.data.message
 
             dispatch({
-                type: 'UPDATE_EDUCATION',
+                type: 'UPDATE_SKILL',
                 payload: {
                     errors,
                     alert: {
@@ -127,7 +113,7 @@ EditModal.propTypes = {
     showEditModal: PropTypes.bool.isRequired,
     onHide: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired,
-    education: PropTypes.object.isRequired,
+    skill: PropTypes.object.isRequired,
 }
 
 export default EditModal

@@ -1,4 +1,4 @@
-import UserProfileAboutEditFormContainer from "../../components/users/profile_about_edit/UserProfileAboutEditFormContainer"
+import UserProfileAboutEditFormContainer from "../../components/users/personal/profile_about_edit/UserProfileAboutEditFormContainer"
 
 const UserAboutEdit = () => {
   return (

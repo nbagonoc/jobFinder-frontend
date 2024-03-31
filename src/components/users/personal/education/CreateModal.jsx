@@ -4,16 +4,20 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Modal, Button } from 'react-bootstrap'
 
-import { skillsAPI } from '../../../API'
-import { useSkillContext } from '../../../hooks/useSkillContext'
-import { useAuthContext } from '../../../hooks/useAuthContext'
+import { educationsAPI } from '../../../../API'
+import { useEducationContext } from '../../../../hooks/useEducationContext'
+import { useAuthContext } from '../../../../hooks/useAuthContext'
 import Form from './Form'
 
 const CreateModal = ({ showCreateModal, onHide, title }) => {
-    const { errors,  dispatch } = useSkillContext()
+    const { errors,  dispatch } = useEducationContext()
     const { token } = useAuthContext()
     const [formData, setFormData] = useState({
-        skill: '',
+        school: '',
+        degree: '',
+        from: '',
+        to: '',
+        current: false,
     })
     const headers = {
         'Content-Type': 'application/json',
@@ -21,7 +25,11 @@ const CreateModal = ({ showCreateModal, onHide, title }) => {
     }
     const resetFormData = () => {
         setFormData({
-            skill: '',
+            school: '',
+            degree: '',
+            from: '',
+            to: '',
+            current: false,
         })
     }
 
@@ -30,30 +38,32 @@ const CreateModal = ({ showCreateModal, onHide, title }) => {
     }, [showCreateModal])
 
     const onChange = (e) => {
-        const { name, value } = e.target;
+        const { name, type, checked, value } = e.target;
+        // Handle checkboxes separately
+        const newValue = type === 'checkbox' ? checked : value;
 
-        setFormData((formData) => ({
-            ...formData,
-            [name]: value,
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: newValue,
         }));
     }
-    // We needed to get the skills everyafter submit
-    // why? Well, we just can't add the newly created skill in the state
-    // because we need the ID just in case the user edits that newly created skills
-    const getSkills = async () => {
+    // We needed to get the educations everyafter submit
+    // why? Well, we just can't add the newly created education in the state
+    // because we need the ID just in case the user edits that newly created educations
+    const getEducations = async () => {
         try {
-            const response = await axios.get(`${skillsAPI}`, {
+            const response = await axios.get(`${educationsAPI}`, {
                 headers,
             })
-            const skills = response.data
+            const educations = response.data
             dispatch({
-                type: 'SET_SKILLS',
-                payload: { skills },
+                type: 'SET_EDUCATIONS',
+                payload: { educations },
             })
         } catch (error) {
             let message = error.response.data.message
             dispatch({
-                type: 'SET_SKILLS',
+                type: 'SET_EDUCATIONS',
                 payload: {
                     alert: {
                         message,
@@ -68,15 +78,20 @@ const CreateModal = ({ showCreateModal, onHide, title }) => {
     const onSubmit = async (e) => {
         e.preventDefault()
 
-        const skill = {
-            skill: formData.skill,
+        const education = {
+            school: formData.school,
+            degree: formData.degree,
+            from: formData.from,
+            to: formData.to,
+            current: formData.current,
         }
+        console.log(education)
         try {
-            const response = await axios.post(`${skillsAPI}`, skill, { headers })
+            const response = await axios.post(`${educationsAPI}`, education, { headers })
             const message = response.data.message
 
             dispatch({
-                type: 'CREATE_SKILL',
+                type: 'CREATE_EDUCATION',
                 payload: {
                     alert: {
                         message,
@@ -85,14 +100,14 @@ const CreateModal = ({ showCreateModal, onHide, title }) => {
                 },
             })
             onHide()
-            getSkills()
+            getEducations()
 
         } catch (error) {
             const errors = error.response.data
             const message = error.response.data.message
 
             dispatch({
-                type: 'CREATE_SKILL',
+                type: 'CREATE_EDUCATION',
                 payload: {
                     errors,
                     alert: {

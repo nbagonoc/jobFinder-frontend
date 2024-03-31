@@ -1,8 +1,8 @@
-import UserApplicantContainer from '../../components/users/public/UserApplicantContainer'
+import UserPublicProfileContainer from '../../components/users/public/UserPublicProfileContainer'
 
 const UserView = () => {
   return (
-    <UserApplicantContainer/>
+    <UserPublicProfileContainer/>
   )
 }
 

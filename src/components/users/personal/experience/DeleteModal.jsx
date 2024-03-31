@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types';
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap';
 
-import { educationsAPI } from '../../../API';
-import { useEducationContext } from '../../../hooks/useEducationContext'
-import { useAuthContext } from '../../../hooks/useAuthContext'
+import { experiencesAPI } from '../../../../API';
+import { useExperienceContext } from '../../../../hooks/useExperienceContext'
+import { useAuthContext } from '../../../../hooks/useAuthContext'
 
 const DeleteModal = ({ showModal, onHide, title, submitText, id, children }) => {
-    const { dispatch } = useEducationContext()
+    const { dispatch } = useExperienceContext()
     const { token } = useAuthContext()
-    // const navigate = useNavigate()
 
     // Refactor this in the future to be a more reusable component
     const onSubmit = async (e) => {
@@ -21,23 +19,23 @@ const DeleteModal = ({ showModal, onHide, title, submitText, id, children }) => 
         }
 
         try {
-            const response = await axios.delete(`${educationsAPI}/${id}`, { headers })
+            const response = await axios.delete(`${experiencesAPI}/${id}`, { headers })
             const message = response.data.message
 
             dispatch({
-                type: 'DELETE_EDUCATION',
+                type: 'DELETE_EXPERIENCE',
                 payload: {
                     alert: {
                         message,
                         success: true,
                     },
-                    deletedEducationId: id,
+                    deletedExperienceId: id,
                 },
             })
         } catch (error) {
             const message = error.response.data.message
             dispatch({
-                type: 'DELETE_EDUCATION',
+                type: 'DELETE_EXPERIENCE',
                 payload: {
                     alert: {
                         message,

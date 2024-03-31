@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 
-import { skillsAPI } from '../../../API';
-import { useSkillContext } from '../../../hooks/useSkillContext'
-import { useAuthContext } from '../../../hooks/useAuthContext'
+import { skillsAPI } from '../../../../API';
+import { useSkillContext } from '../../../../hooks/useSkillContext'
+import { useAuthContext } from '../../../../hooks/useAuthContext'
 
 const DeleteModal = ({ showModal, onHide, title, submitText, id, children }) => {
     const { dispatch } = useSkillContext()

@@ -2,18 +2,17 @@ import axios from 'axios'
 import { useEffect } from 'react'
 
 import { usersAPI } from '../../../API'
-
-import UserAbout from './UserAbout'
-import EducationList from '../education/List'
-import ExperienceList from '../experience/List'
-import SkillList from '../skill/List'
-import UserProfile from './UserProfile'
-import Default from '../../partials/layouts/Default'
-
 import { useUserContext } from '../../../hooks/useUserContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
-const UserProfileContainer = () => {
+import UserAbout from './profile/UserAbout'
+import EducationList from './education/List'
+import ExperienceList from './experience/List'
+import SkillList from './skill/List'
+import UserProfile from './profile/UserProfile'
+import Default from '../../partials/layouts/Default'
+
+const UserPersonalProfileContainer = () => {
     const { profile, dispatch } = useUserContext()
     const { user, token } = useAuthContext()
 
@@ -88,4 +87,4 @@ const UserProfileContainer = () => {
     )
 }
 
-export default UserProfileContainer
+export default UserPersonalProfileContainer
