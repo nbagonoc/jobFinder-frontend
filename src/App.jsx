@@ -7,9 +7,7 @@ import RegisterSelect from './pages/auth/RegisterSelect'
 import Register from './pages/auth/Register'
 
 import UserProfile from './pages/users/UserProfile'
-import UserProfileEdit from './pages/users/UserProfileEdit'
-import UserEducationCreate from './pages/users/UserEducationCreate'
-import UserView from './pages/users/UserView'
+import UserPublicProfile from './pages/users/UserPublicProfile'
 
 import JobListRecruiter from './pages/jobs/JobListRecruiter'
 import JobList from './pages/jobs/JobList'
@@ -113,16 +111,8 @@ const App = () => {
                             element={<UserProfile />}
                         />
                         <Route
-                            path='/profile/edit'
-                            element={<UserProfileEdit />}
-                        />
-                        <Route
-                            path='/education/create'
-                            element={<UserEducationCreate />}
-                        />
-                        <Route
                             path='/applicant/:_id'
-                            element={<UserView />}
+                            element={<UserPublicProfile />}
                         />
                 </Routes>
         </BrowserRouter>

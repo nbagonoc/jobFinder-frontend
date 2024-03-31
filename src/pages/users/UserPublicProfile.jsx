@@ -1,9 +1,9 @@
 import UserPublicProfileContainer from '../../components/users/public/UserPublicProfileContainer'
 
-const UserView = () => {
+const UserPublicProfile = () => {
   return (
     <UserPublicProfileContainer/>
   )
 }
 
-export default UserView
+export default UserPublicProfile
