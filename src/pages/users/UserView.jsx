@@ -1,4 +1,4 @@
-import UserApplicantContainer from '../../components/users/user_applicant_view/UserApplicantContainer'
+import UserApplicantContainer from '../../components/users/public/UserApplicantContainer'
 
 const UserView = () => {
   return (
