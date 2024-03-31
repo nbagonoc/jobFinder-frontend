@@ -1,7 +1,11 @@
+import { useState } from 'react'
+import { Button, } from 'react-bootstrap'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import EditModal from './EditModal'
 
 const UserProfile = ({ profile }) => {
+    const [showEditModal, setShowEditModal] = useState(false)
+
     return (
         <div className='card'>
             <div className='card-body'>
@@ -30,10 +34,20 @@ const UserProfile = ({ profile }) => {
                     Location:{' '}
                     <span className='text-muted fw-light'>Location</span>
                 </h6>
-                <Link to={`/profile/edit`} className='btn btn-secondary btn-sm'>
+                <Button
+                    variant='secondary'
+                    className='btn btn-secondary btn-sm me-1'
+                    onClick={() => setShowEditModal(true)}
+                >
                     Edit
-                </Link>
+                </Button>
             </div>
+            <EditModal
+                showEditModal={showEditModal}
+                onHide={() => setShowEditModal(false)}
+                title='Edit Profile'
+                profile={profile ? profile : {}}
+            />
         </div>
     )
 }

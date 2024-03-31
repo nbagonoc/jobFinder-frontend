@@ -3,7 +3,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 import EditModal from './EditModal'
 
-const About = ({ profile = {} }) => {
+const About = ({ profile }) => {
     const [showEditModal, setShowEditModal] = useState(false)
 
     return (
