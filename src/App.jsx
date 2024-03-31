@@ -8,7 +8,6 @@ import Register from './pages/auth/Register'
 
 import UserProfile from './pages/users/UserProfile'
 import UserProfileEdit from './pages/users/UserProfileEdit'
-import UserAboutEdit from './pages/users/UserAboutEdit'
 import UserEducationCreate from './pages/users/UserEducationCreate'
 import UserView from './pages/users/UserView'
 
@@ -116,10 +115,6 @@ const App = () => {
                         <Route
                             path='/profile/edit'
                             element={<UserProfileEdit />}
-                        />
-                        <Route
-                            path='/about/edit'
-                            element={<UserAboutEdit />}
                         />
                         <Route
                             path='/education/create'
