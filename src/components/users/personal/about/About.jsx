@@ -1,7 +1,11 @@
+import { Button, } from 'react-bootstrap'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import EditModal from './EditModal'
 
 const About = ({ profile = {} }) => {
+    const [showEditModal, setShowEditModal] = useState(false)
+
     return (
         <div className='card'>
             <div className='card-header'>
@@ -13,13 +17,20 @@ const About = ({ profile = {} }) => {
                 ) : (
                     <p className='text-muted fw-light'>No about information available.</p>
                 )}
-                <Link
-                    to={`/about/edit`}
-                    className='btn btn-secondary btn-sm'
-                >
-                    Edit
-                </Link>
+            <Button
+                variant='secondary'
+                className='btn btn-secondary btn-sm me-1'
+                onClick={() => setShowEditModal(true)}
+            >
+                Edit
+            </Button>
             </div>
+            <EditModal
+                showEditModal={showEditModal}
+                onHide={() => setShowEditModal(false)}
+                title='Edit About'
+                about={profile.about ? profile.about : {}}
+            />
         </div>
     )
 }

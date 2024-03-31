@@ -11,6 +11,20 @@ const UserReducer = (state, action) => {
                 alert: action.payload.alert,
                 errors: action.payload.errors,
             }
+        case 'UPDATE_ABOUT':
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    about: {
+                        ...state.profile.about,
+                        about: action.payload.updatedAbout.about,
+                    },
+                },
+                alert: action.payload.alert,
+                errors: action.payload.errors,
+            };
+
         case 'SET_APPLICANT':
             return {
                 ...state,

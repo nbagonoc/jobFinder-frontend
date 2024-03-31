@@ -28,13 +28,11 @@ const UserProfileAboutEditForm = () => {
                     headers,
                 })
                 const about = response.data
-                // console.log(profile)
 
                 setFormData({
                     about: about.about,
                 })
             } catch (error) {
-                // console.log(error.response.data)
                 let message = error.message
 
                 if (error && error.response) {
