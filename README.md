@@ -28,7 +28,6 @@ npm run test
         - Need to simplify forms since its a the code is too many
         - Need to improve photo upload design style
     - Next:
-        - Editable company details (PRIORITY)
         - Close a posting
 
     
