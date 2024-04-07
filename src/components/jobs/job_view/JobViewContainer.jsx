@@ -6,7 +6,7 @@ import { jobsAPI } from '../../../API'
 import { useJobContext } from '../../../hooks/useJobContext'
 import ViewJobDetails from './JobViewDetails'
 import JobViewSubDetails from './JobViewSubDetails'
-import CompanyAboutDetails from '../../company/company_about/CompanyAboutDetails'
+import JobViewAboutCompany from './JobViewAboutCompany'
 import Default from '../../partials/layouts/Default'
 
 const JobViewContainer = () => {
@@ -62,7 +62,7 @@ const JobViewContainer = () => {
                             {job && <ViewJobDetails job={job} />}
                         </div>
                         <div className='col-xl-4 mb-3'>
-                            <CompanyAboutDetails />
+                            {job.recruiter && <JobViewAboutCompany recruiterId={job.recruiter}/>}
                         </div>
                     </div>
                 </div>
