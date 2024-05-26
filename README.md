@@ -8,6 +8,8 @@ The front-end for JobFinder. Back-end can be found here: (https://github.com/nba
 <img width="1659" alt="about" src="https://github.com/nbagonoc/jobFinder-frontend/assets/30286941/31c6b753-19ef-4682-b738-9540c6fe9566">
 <img width="1659" alt="profile" src="https://github.com/nbagonoc/jobFinder-frontend/assets/30286941/9243deab-4014-4446-8c9d-79d30e679241">
 
+![JobFinder Component Diagram - Page 1](https://github.com/nbagonoc/jobFinder-frontend/assets/30286941/36ee205e-3571-476e-9076-339e3fd4109b)
+
 ## Features:
 - Applicant
     - Manage applicant profile
