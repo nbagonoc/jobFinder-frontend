@@ -20,8 +20,13 @@ Just a few of the screenshots
 ### Profile:
 <img width="1659" alt="profile" src="https://github.com/nbagonoc/jobFinder-frontend/assets/30286941/9243deab-4014-4446-8c9d-79d30e679241">
 
-## Component Diagram:
+## Diagrams
+
+### Component Diagram:
 ![JobFinder Component Diagram - Page 1](https://github.com/nbagonoc/jobFinder-frontend/assets/30286941/36ee205e-3571-476e-9076-339e3fd4109b)
+
+### Use Case Diagram:
+![JobFinderUseCase](https://github.com/nbagonoc/jobFinder-frontend/assets/30286941/e2a6a38e-2eb3-449c-b4bd-1d83d43fdf1b)
 
 ## Features:
 
