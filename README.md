@@ -23,7 +23,7 @@ Just a few of the screenshots
 ## Component Diagram:
 ![JobFinder Component Diagram - Page 1](https://github.com/nbagonoc/jobFinder-frontend/assets/30286941/36ee205e-3571-476e-9076-339e3fd4109b)
 
-## Features: //whatdoes ## mean in markdown?
+## Features:
 
 - Applicant
     - Manage applicant profile
